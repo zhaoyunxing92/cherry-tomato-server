@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: test
+  mvc:
+    favicon:
+      enabled: false
+#  servlet:
+#    multipart:
+#      max-file-size: 10240KB
+#      max-request-size: 10240KB
+#  jackson:
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd HH:mm:ss:sss
