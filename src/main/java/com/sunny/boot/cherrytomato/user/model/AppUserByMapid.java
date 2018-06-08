@@ -1,8 +1,9 @@
 package com.sunny.boot.cherrytomato.user.model;
 
-import om.sunny.boot.cherrytomato.common.model.BaseModel;
+import com.sunny.boot.cherrytomato.common.model.BaseModel;
 
-public class AppUserByMapid extends BaseModel {
+public class AppUserByMapid extends BaseModel<String> {
+    private static final long serialVersionUID = -2227123608764333691L;
     private String mapId;
 
     private Byte type;
