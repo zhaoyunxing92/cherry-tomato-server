@@ -1,136 +1,88 @@
 package com.sunny.boot.cherrytomato.user.model;
 
-import java.util.Date;
-import om.sunny.boot.cherrytomato.common.model.BaseModel;
+import com.sunny.boot.cherrytomato.common.model.BaseModel;
 
-public class AppUser extends BaseModel {
-    private Long id;
+public class AppUser extends BaseModel<Long> {
 
-    private String username;
+  private static final long serialVersionUID = -1470400462963501819L;
+  
+  private String username;
 
-    private String password;
+  private String password;
 
-    private String intro;
+  private String intro;
 
-    private String email;
+  private String email;
 
-    private Long mobile;
+  private Long mobile;
 
-    private String avatar;
+  private String avatar;
 
-    private Boolean sex;
+  private Boolean sex;
 
-    private Byte status;
+  private Byte status;
 
-    private Long creator;
+  public String getUsername() {
+    return username;
+  }
 
-    private Date createDate;
+  public void setUsername(String username) {
+    this.username = username == null ? null : username.trim();
+  }
 
-    private Long modifier;
+  public String getPassword() {
+    return password;
+  }
 
-    private Date modifyDate;
+  public void setPassword(String password) {
+    this.password = password == null ? null : password.trim();
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public String getIntro() {
+    return intro;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setIntro(String intro) {
+    this.intro = intro == null ? null : intro.trim();
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
+  public void setEmail(String email) {
+    this.email = email == null ? null : email.trim();
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public Long getMobile() {
+    return mobile;
+  }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
+  public void setMobile(Long mobile) {
+    this.mobile = mobile;
+  }
 
-    public String getIntro() {
-        return intro;
-    }
+  public String getAvatar() {
+    return avatar;
+  }
 
-    public void setIntro(String intro) {
-        this.intro = intro == null ? null : intro.trim();
-    }
+  public void setAvatar(String avatar) {
+    this.avatar = avatar == null ? null : avatar.trim();
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public Boolean getSex() {
+    return sex;
+  }
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+  public void setSex(Boolean sex) {
+    this.sex = sex;
+  }
 
-    public Long getMobile() {
-        return mobile;
-    }
+  public Byte getStatus() {
+    return status;
+  }
 
-    public void setMobile(Long mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar == null ? null : avatar.trim();
-    }
-
-    public Boolean getSex() {
-        return sex;
-    }
-
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Long getCreator() {
-        return creator;
-    }
-
-    public void setCreator(Long creator) {
-        this.creator = creator;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Long getModifier() {
-        return modifier;
-    }
-
-    public void setModifier(Long modifier) {
-        this.modifier = modifier;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
+  public void setStatus(Byte status) {
+    this.status = status;
+  }
 }
