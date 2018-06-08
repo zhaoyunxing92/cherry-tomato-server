@@ -2,7 +2,7 @@ package com.sunny.boot.cherrytomato.user.model;
 
 import com.sunny.boot.cherrytomato.common.model.BaseModel;
 
-public class AppUserByEmail extends BaseModel<Long> {
+public class AppUserByEmail extends BaseModel<String> {
   private static final long serialVersionUID = -2539760369924185128L;
   private String email;
 
