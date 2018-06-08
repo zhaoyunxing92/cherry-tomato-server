@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration scan="true">
+    <!-- https://blog.csdn.net/wushuchu/article/details/79408825 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wEx"
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
@@ -55,6 +56,7 @@
     </springProfile>
 
     <springProfile name="!dev">
+
         <root level="info">
             <appender-ref ref="console"/>
             <appender-ref ref="file"/>
