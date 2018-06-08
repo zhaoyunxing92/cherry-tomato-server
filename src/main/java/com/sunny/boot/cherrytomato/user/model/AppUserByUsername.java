@@ -1,8 +1,9 @@
 package com.sunny.boot.cherrytomato.user.model;
 
-import om.sunny.boot.cherrytomato.common.model.BaseModel;
+import com.sunny.boot.cherrytomato.common.model.BaseModel;
 
-public class AppUserByUsername extends BaseModel {
+public class AppUserByUsername extends BaseModel<String> {
+    private static final long serialVersionUID = 2394368122540552809L;
     private String username;
 
     private Long userId;
