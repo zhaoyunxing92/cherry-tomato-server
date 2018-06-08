@@ -1,25 +1,26 @@
 package com.sunny.boot.cherrytomato.user.model;
 
-import om.sunny.boot.cherrytomato.common.model.BaseModel;
+import com.sunny.boot.cherrytomato.common.model.BaseModel;
 
-public class AppUserByMobile extends BaseModel {
-    private Long mobile;
+public class AppUserByMobile extends BaseModel<Long> {
+  private static final long serialVersionUID = 205102895509993456L;
+  private Long mobile;
 
-    private Long userId;
+  private Long userId;
 
-    public Long getMobile() {
-        return mobile;
-    }
+  public Long getMobile() {
+    return mobile;
+  }
 
-    public void setMobile(Long mobile) {
-        this.mobile = mobile;
-    }
+  public void setMobile(Long mobile) {
+    this.mobile = mobile;
+  }
 
-    public Long getUserId() {
-        return userId;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
 }
