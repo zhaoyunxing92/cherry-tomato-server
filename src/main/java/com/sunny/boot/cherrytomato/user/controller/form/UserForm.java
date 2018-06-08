@@ -1,13 +1,14 @@
-package com.sunny.boot.cherrytomato.controller.form;
+package com.sunny.boot.cherrytomato.user.controller.form;
 
-import com.sunny.boot.cherrytomato.common.valid.LoginGroup;
+
+import com.sunny.boot.cherrytomato.user.controller.form.valid.LoginGroup;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
  * @author sunny
- * @class: com.sunny.boot.cherrytomato.controller.form.UserForm
+ * @class: com.sunny.boot.cherrytomato.user.controller.form.UserForm
  * @date: 2018-06-08 16:51
  * @des:
  */

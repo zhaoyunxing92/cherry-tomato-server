@@ -1,4 +1,4 @@
-package com.sunny.boot.cherrytomato.common.valid;
+package com.sunny.boot.cherrytomato.user.controller.form.valid;
 
 /**
  * @author sunny
