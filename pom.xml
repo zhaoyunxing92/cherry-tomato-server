@@ -24,7 +24,8 @@
         <java.version>1.8</java.version>
         <!--json-->
         <fastjson.version>1.2.18</fastjson.version>
-
+        <!--跳过测试-->
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
