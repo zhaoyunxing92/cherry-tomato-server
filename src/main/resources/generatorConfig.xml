@@ -19,9 +19,9 @@
         <!-- !!!! Database Configurations !!!! -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://127.0.0.1:3306/bug-manage"
-                userId="bug-manage"
-                password="bug-manage"/>
+                connectionURL="jdbc:mysql://127.0.0.1:3306/cherry_tomato"
+                userId="root"
+                password="root"/>
         <!-- 类型转换 -->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -29,7 +29,7 @@
 
         <!-- !!!! Model Configurations !!!! -->
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.sunny.bugmanage.project.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.sunny.boot.cherrytomato.model" targetProject="src/main/java">
             <!-- 是否对model添加 构造函数 -->
             <property name="constructorBased" value="false"/>
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
@@ -37,14 +37,14 @@
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
             <property name="immutable" value="false"/>
             <!-- 给Model添加一个父类 -->
-            <property name="rootClass" value="com.sunny.bugmanage.common.model.BaseModel"/>
+            <property name="rootClass" value="om.sunny.boot.cherrytomato.common.model.BaseModel"/>
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- !!!! Mapper XML Configurations !!!! -->
         <!-- 生成mapxml文件 -->
-        <sqlMapGenerator targetPackage="com.sunny.bugmanage.project.mapper.xml" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="om.sunny.boot.cherrytomato.mapper.xml" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
@@ -72,7 +72,7 @@
              -->
             <!--   <property name="methodNameCalculator" value=""/>-->
             <!--  为生成的接口添加父接口-->
-            <property name="rootInterface" value="com.sunny.bugmanage.common.mapper.BaseMapper"/>
+            <property name="rootInterface" value="com.sunny.boot.cherrytomato.common.mapper.BaseMapper"/>
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
@@ -118,71 +118,5 @@
               <generatedKey column="id" sqlStatement="MySql" identity="true"/>
           </table>-->
 
-        <!--  <table tableName="project_issue" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                enableUpdateByExample="false">
-             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-         </table>
-
-         <table tableName="project_version" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                enableUpdateByExample="false">
-             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-         </table>
-
-         <table tableName="issue_track" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                enableUpdateByExample="false">
-             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-         </table>
-
-         <table tableName="project_user" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                enableUpdateByExample="false">
-             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-         </table>-->
-        <!--<table tableName="app_user_by_username" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false">-->
-        <!--</table>-->
-        <!--<table tableName="app_user_by_email" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false">-->
-        <!--</table>-->
-        <!--<table tableName="app_user_by_mobile" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false">-->
-        <!--</table>-->
-        <!--<table tableName="app_user_by_pin" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false">-->
-        <!--</table>-->
-        <!--<table tableName="app_user_by_recent" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
-        <!--enableUpdateByExample="false">-->
-        <!--</table>-->
-        <!--  <table tableName="wf_project_task" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_project" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_menu" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_info" domainObjectName="WfInfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_group_user" domainObjectName="WfGroupUser" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_group_task_tag" domainObjectName="WfGroupTaskTag" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_group" domainObjectName="WfGroup" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>
-          <table tableName="wf_info_receiver" domainObjectName="WfInfoReceiver" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-                 enableUpdateByExample="false">
-              <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-          </table>-->
     </context>
 </generatorConfiguration>
