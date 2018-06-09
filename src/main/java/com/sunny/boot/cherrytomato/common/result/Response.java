@@ -32,6 +32,12 @@ public class Response<T> implements Serializable {
     this.data = data;
   }
 
+  public Response(Response.Result result, T data) {
+    this.code = result.getCode();
+    this.msg = result.getMsg();
+    this.data = data;
+  }
+
   public Integer getCode() {
     return code;
   }
@@ -54,5 +60,39 @@ public class Response<T> implements Serializable {
 
   public void setData(T data) {
     this.data = data;
+  }
+
+  /**
+   * 统一返回结果码
+   */
+  enum Result {
+    /**
+     * 成功
+     */
+    SUCCESS(0, "成功!"),;
+
+    private Integer code;
+    private String msg;
+
+    Result(Integer code, String msg) {
+      this.code = code;
+      this.msg = msg;
+    }
+
+    public Integer getCode() {
+      return code;
+    }
+
+    public String getMsg() {
+      return msg;
+    }
+
+//    public void setCode(Integer code) {
+//      this.code = code;
+//    }
+//
+//    public void setMsg(String msg) {
+//      this.msg = msg;
+//    }
   }
 }
