@@ -65,7 +65,7 @@ public class Response<T> implements Serializable {
   /**
    * 统一返回结果码
    */
-  enum Result {
+  public enum Result {
     /**
      * 成功
      */
