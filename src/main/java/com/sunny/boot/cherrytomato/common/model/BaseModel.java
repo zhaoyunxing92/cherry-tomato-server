@@ -7,7 +7,7 @@ import java.util.Date;
  * @author sunny
  * @class: com.sunny.workflow.user.common.model.BaseModel
  * @date: 2018-05-18 17:00
- * @des:
+ * @des: 父模型
  */
 public class BaseModel<ID extends Serializable> implements Serializable {
 
@@ -16,11 +16,11 @@ public class BaseModel<ID extends Serializable> implements Serializable {
 
   private Long creator;
 
-  private Date createTime;
+  private Date createDate;
 
   private Long modifier;
 
-  private Date modifyTime;
+  private Date modifyDate;
 
   public ID getId() {
     return id;
@@ -38,12 +38,12 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     this.creator = creator;
   }
 
-  public Date getCreateTime() {
-    return createTime;
+  public Date getCreateDate() {
+    return createDate;
   }
 
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
+  public void setCreateDate(Date createDate) {
+    this.createDate = createDate;
   }
 
   public Long getModifier() {
@@ -54,11 +54,11 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     this.modifier = modifier;
   }
 
-  public Date getModifyTime() {
-    return modifyTime;
+  public Date getModifyDate() {
+    return modifyDate;
   }
 
-  public void setModifyTime(Date modifyTime) {
-    this.modifyTime = modifyTime;
+  public void setModifyDate(Date modifyDate) {
+    this.modifyDate = modifyDate;
   }
 }
