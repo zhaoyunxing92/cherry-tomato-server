@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 //@Configuration
 public class AppDataSourceConfig {
 
+//  @Bean(destroyMethod = "close", initMethod = "init")
   @Bean
   @Primary   //优先使用
   @ConfigurationProperties(prefix = "spring.datasource")
