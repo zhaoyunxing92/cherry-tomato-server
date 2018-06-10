@@ -3,6 +3,7 @@ package com.sunny.boot.generator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.config.MergeConstants;
 import org.mybatis.generator.config.PropertyRegistry;
@@ -87,7 +88,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
     sb.append(" * ");
     sb.append(introspectedTable.getFullyQualifiedTable());
     sb.append(" ");
-    sb.append(getDateString());
+   // sb.append(getDateString());
     innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
     innerClass.addJavaDocLine(" */");
   }
@@ -104,7 +105,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
     innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
     sb.setLength(0);
     sb.append(" * @author:");
-    sb.append(systemPro.getProperty("user.name"));
+    sb.append(" *sdfdf");
     sb.append(" ");
     sb.append(currentDateStr);
     innerClass.addJavaDocLine(" */");
@@ -193,11 +194,14 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
 
   @Override
   public void addComment(XmlElement xmlElement) {
+
+    xmlElement.addElement(new TextElement("<!-- Don't change -->"));
     return;
   }
 
   @Override
   public void addRootComment(XmlElement xmlElement) {
+    //xmlElement.addElement(new TextElement("<!-- sunny -->"));
     return;
   }
 

@@ -20,8 +20,20 @@ import java.util.Set;
  * @des: mybatis 插件
  */
 public class InterFaceExtendsPlugin extends PluginAdapter {
+  /**
+   * 根mapper
+   */
   private String baseMapper;
+  /**
+   * 根model型
+   */
   private String baseModel;
+
+
+  /**
+   * 主键类型，默认获取数据库表的第一个字段类型
+   */
+  private String primaryKeyType;
 
   @Override
   public void setProperties(Properties properties) {
@@ -52,9 +64,9 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
     // 获取实体类
     FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
     // import接口
-    if(!StringUtils.isEmpty(baseMapper)){
+    if (!StringUtils.isEmpty(baseMapper)) {
       interfaze.addImportedType(new FullyQualifiedJavaType(baseMapper));
-      interfaze.addSuperInterface(new FullyQualifiedJavaType(baseMapper + "<" + entityType.getShortName() + ">"));
+      interfaze.addSuperInterface(new FullyQualifiedJavaType(baseMapper + "<" + entityType.getShortName() + "," + primaryKeyType + ">"));
     }
     // import实体类
     interfaze.addImportedType(entityType);
@@ -63,7 +75,7 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
   }
 
   /**
-   * 生产实体
+   * model类方法
    *
    * @param topLevelClass
    * @param introspectedTable
@@ -73,8 +85,19 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
   public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass,
                                                IntrospectedTable introspectedTable) {
     addSerialVersionUID(topLevelClass, introspectedTable);
-    // topLevelClass.addImportedType(new FullyQualifiedJavaType(mapper + "<" + entityType.getShortName() + ">"));
-    String name = topLevelClass.getFields().get(0).getType().getShortName();
+    // 获取表第一个字段作为主键类型
+    primaryKeyType = topLevelClass.getFields().get(0).getType().getShortName();
+    if (!StringUtils.isEmpty(baseModel)) {
+      // topLevelClass.
+      topLevelClass.addImportedType(baseModel);
+      //topLevelClass.addsu
+//      topLevelClass
+
+      topLevelClass.addSuperInterface(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
+
+      //topLevelClass.add
+    }
+
     return super.modelBaseRecordClassGenerated(topLevelClass, introspectedTable);
   }
 
@@ -85,6 +108,7 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
   public boolean modelGetterMethodGenerated(Method method, TopLevelClass topLevelClass,
                                             IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
 
+    //topLevelClass.addFileCommentLine("/**modelGetterMethodGenerated*/");
 
     return true;
   }
@@ -102,6 +126,21 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
 
   @Override
   public boolean validate(List<String> warnings) {
+    return true;
+  }
+
+  @Override
+  public boolean modelPrimaryKeyClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+    //
+    topLevelClass.addFileCommentLine("/**modelPrimaryKeyClassGenerated*/");
+    return true;
+  }
+
+  @Override
+  public boolean modelRecordWithBLOBsClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+    //addSerialVersionUID(topLevelClass, introspectedTable);
+    topLevelClass.addFileCommentLine("/**modelRecordWithBLOBsClassGenerated*/");
+
     return true;
   }
 
