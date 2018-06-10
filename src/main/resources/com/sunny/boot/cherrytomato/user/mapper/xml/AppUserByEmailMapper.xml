@@ -2,27 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sunny.boot.cherrytomato.user.mapper.AppUserByEmailMapper" >
   <resultMap id="BaseResultMap" type="com.sunny.boot.cherrytomato.user.model.AppUserByEmail" >
+    <!-- Don't change -->
     <id column="EMAIL" property="email" jdbcType="VARCHAR" />
     <result column="USER_ID" property="userId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Base_Column_List" >
+    <!-- Don't change -->
     EMAIL, USER_ID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    <!-- Don't change -->
     select 
     <include refid="Base_Column_List" />
     from app_user_by_email
     where EMAIL = #{email,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    <!-- Don't change -->
     delete from app_user_by_email
     where EMAIL = #{email,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail" >
+    <!-- Don't change -->
     insert into app_user_by_email (EMAIL, USER_ID)
     values (#{email,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail" >
+    <!-- Don't change -->
     insert into app_user_by_email
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="email != null" >
@@ -42,6 +48,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail" >
+    <!-- Don't change -->
     update app_user_by_email
     <set >
       <if test="userId != null" >
@@ -51,6 +58,7 @@
     where EMAIL = #{email,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail" >
+    <!-- Don't change -->
     update app_user_by_email
     set USER_ID = #{userId,jdbcType=BIGINT}
     where EMAIL = #{email,jdbcType=VARCHAR}
