@@ -131,6 +131,7 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.sunny.boot.cherrytomato.user.model.AppUser">
         <!-- Don't change -->
         update app_user
@@ -174,6 +175,7 @@
         </set>
         where ID = #{id,jdbcType=BIGINT}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="com.sunny.boot.cherrytomato.user.model.AppUser">
         <!-- Don't change -->
         update app_user
