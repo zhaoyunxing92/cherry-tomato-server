@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
   //private static final String[] EXCLUDES = {"/swagger-resources", "/configuration/security", "/v2/api-docs", "/configuration/ui", "/auth/login", "/error"};
-  private static final String[] EXCLUDES = {"/auth/login", "/error"};
+  private static final String[] EXCLUDES = {"/auth/login", "/auth/reg", "/error"};
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
