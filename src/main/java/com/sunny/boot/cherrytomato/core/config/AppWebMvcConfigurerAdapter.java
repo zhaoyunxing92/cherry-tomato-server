@@ -99,7 +99,6 @@ public class AppWebMvcConfigurerAdapter implements WebMvcConfigurer {
     fastJsonConfig.setCharset(Charset.forName("UTF-8"));
     fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
     fastConverter.setFastJsonConfig(fastJsonConfig);
-    System.out.println("fastJsonConfig.getDateFormat()>>>" + fastJsonConfig.getDateFormat());
     HttpMessageConverter<?> converter = fastConverter;
     List<MediaType> mediaTypes = new ArrayList<>();
     mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);//设定json格式且编码为UTF-8
