@@ -38,6 +38,13 @@ public class Response<T> implements Serializable {
     this.data = data;
   }
 
+  public Response(Response.Result result) {
+    this.code = result.getCode();
+    this.msg = result.getMsg();
+    this.data = null;
+  }
+
+
   public Integer getCode() {
     return code;
   }
@@ -69,7 +76,23 @@ public class Response<T> implements Serializable {
     /**
      * 成功
      */
-    SUCCESS(0, "成功!"),;
+    SUCCESS(0, "成功!"),
+    /**
+     * 请先登录
+     */
+    NOT_LOGIN_ERROR(1, "请先登录"),
+    /**
+     * 用户名不存在
+     */
+    USERNAME_DOES_NOT_EXIST_ERROR(10000, "用户名不存在"),
+    /**
+     * 用户名称在byxxx表，但是在app_user表不存在
+     */
+    USERNAME_DOES_NOT_EXIST_IN_APP_USER_ERROR(10001, "用户名不存在"),
+    /**
+     * 密码错误
+     */
+    PASSWORD_NOT_EQUALS_ERROR(10002, "密码错误"),;
 
     private Integer code;
     private String msg;
