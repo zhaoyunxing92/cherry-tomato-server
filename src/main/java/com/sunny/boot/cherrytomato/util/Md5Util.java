@@ -27,12 +27,29 @@ public class Md5Util {
    */
   public static String encrypt(String str) {
     try {
-      MessageDigest md5 = MessageDigest.getInstance("MD5");
-      BASE64Encoder base64en = new BASE64Encoder();
-      return base64en.encode(md5.digest(str.getBytes("utf-8")));
+      MessageDigest md = MessageDigest.getInstance("MD5");
+      byte[] bytes = md.digest(str.getBytes("utf-8"));
+      return toHex(bytes);
     } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       //ignore
       return "";
     }
+  }
+
+  /**
+   * 转换字节数组为16进制字串
+   *
+   * @param bytes
+   * @return
+   */
+  private static String toHex(byte[] bytes) {
+
+    final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
+    StringBuilder ret = new StringBuilder(bytes.length * 2);
+    for (int i = 0; i < bytes.length; i++) {
+      ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
+      ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
+    }
+    return ret.toString();
   }
 }
