@@ -76,10 +76,15 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
       return new Response<Response.Result>(Response.Result.PASSWORD_NOT_EQUALS_ERROR);
     }
 
-    AppUserByUsername appUserByUsername = appUserByUsernameMapper.selectByPrimaryKey(userName);
-    System.out.println(appUserByUsername);
-
-    return null;
+    //保存用户信息，生成token 
+    //去除敏感信息
+    appUserVo.setPassword(null);
+    appUserVo.setStatus(null);
+    appUserVo.setCreateDate(null);
+    appUserVo.setCreator(null);
+    appUserVo.setModifier(null);
+    appUserVo.setModifyDate(null);
+    return new Response<>(Response.Result.SUCCESS, appUserVo);
   }
 
   /**
@@ -91,7 +96,7 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
    * @return
    */
   @Override
-  @Transactional(rollbackFor = { Exception.class })
+  @Transactional(rollbackFor = {Exception.class})
   public Response registerByEmail(HttpServletResponse res, String email, String password) {
     //验证邮箱是否注册过
     if (emailIsExist(email)) {
@@ -123,7 +128,7 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
   @Override
   public boolean emailIsExist(String email) {
 
-    if (appUserByEmailMapper.selectUserIdByPrimaryKey(email) != 0) {
+    if (null != appUserByEmailMapper.selectUserIdByPrimaryKey(email)) {
       return true;
     }
     return false;
