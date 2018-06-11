@@ -36,9 +36,9 @@ public class AppGlobalExceptionHandler {
       return new Response<>(101, StringUtil.errorsToString(methodArgumentNotValidException.getBindingResult().getAllErrors()));
     } else if (ex instanceof HttpMessageNotReadableException) {
       HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) ex;
-      return new Response<>(100, httpMessageNotReadableException.getMessage());
+      return new Response<>(102, httpMessageNotReadableException.getMessage());
     } else {
-      return new Response<>(100, ex.getMessage());
+      return new Response<>(103, ex.getMessage());
     }
   }
 
