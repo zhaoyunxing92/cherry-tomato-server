@@ -33,8 +33,8 @@ public class UserForm {
   /**
    * 邮箱
    */
-  @NotNull(message = "字段【email】必填", groups = {LoginGroup.class, RegisterGroup.class})
-  @NotEmpty(message = "请输入邮箱", groups = {LoginGroup.class, RegisterGroup.class})
+  @NotNull(message = "字段【email】必填", groups = { RegisterGroup.class})
+  @NotEmpty(message = "请输入邮箱", groups = {RegisterGroup.class})
   @Pattern(regexp = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$", message = "请输入正确的邮箱", groups = {RegisterGroup.class})
   @Length(min = 5, max = 50, message = "请输入{min}~{max}字符的邮箱", groups = {RegisterGroup.class})
   private String email;
