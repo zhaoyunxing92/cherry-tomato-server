@@ -92,7 +92,11 @@ public class Response<T> implements Serializable {
     /**
      * 密码错误
      */
-    PASSWORD_NOT_EQUALS_ERROR(10002, "密码错误"),;
+    PASSWORD_NOT_EQUALS_ERROR(10002, "密码错误"),
+    /**
+     * 邮箱已经被注册
+     */
+    EMAIL_IS_EXIST_ERROR(10003, "该[%s]邮箱已经被注册");
 
     private Integer code;
     private String msg;
@@ -110,12 +114,20 @@ public class Response<T> implements Serializable {
       return msg;
     }
 
-//    public void setCode(Integer code) {
-//      this.code = code;
-//    }
-//
-//    public void setMsg(String msg) {
-//      this.msg = msg;
-//    }
+    public void setCode(Integer code) {
+      this.code = code;
+    }
+
+    public void setMsg(String msg) {
+      this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+      return "Result{" +
+          "code=" + code +
+          ", msg='" + msg + '\'' +
+          "} ";
+    }
   }
 }
