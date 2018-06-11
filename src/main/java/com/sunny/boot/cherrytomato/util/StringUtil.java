@@ -12,6 +12,8 @@ import java.util.regex.Pattern;
  * @des:
  */
 public class StringUtil {
+  private StringUtil() {
+  }
 
   /**
    * 正则表达式：验证邮箱
