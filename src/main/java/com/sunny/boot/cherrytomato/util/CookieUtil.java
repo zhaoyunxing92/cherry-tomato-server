@@ -27,6 +27,7 @@ public class CookieUtil {
   public static void setCookie(HttpServletResponse res, String key, String val) {
     Cookie cookie = new Cookie(key, val);
     cookie.setPath("/");
+    cookie.setHttpOnly(true);
     res.addCookie(cookie);
   }
 
