@@ -15,6 +15,7 @@ import com.sunny.boot.cherrytomato.user.model.AppUserByMobile;
 import com.sunny.boot.cherrytomato.user.model.AppUserByUsername;
 import com.sunny.boot.cherrytomato.user.model.vo.AppUserVo;
 import com.sunny.boot.cherrytomato.user.service.AppUserAuthService;
+import com.sunny.boot.cherrytomato.util.CookieUtil;
 import com.sunny.boot.cherrytomato.util.Md5Util;
 import com.sunny.boot.cherrytomato.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,9 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
       return new Response<Response.Result>(Response.Result.PASSWORD_NOT_EQUALS_ERROR);
     }
 
-    //保存用户信息，生成token 
+    //保存用户信息，生成token 用户id+md5 方便以后修改用户信息
+    CookieUtil.setCookie(res, "token", Md5Util.encrypt(String.valueOf(appUserVo.getId())));
+
     //去除敏感信息
     appUserVo.setPassword(null);
     appUserVo.setStatus(null);
@@ -84,7 +87,8 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     appUserVo.setCreator(null);
     appUserVo.setModifier(null);
     appUserVo.setModifyDate(null);
-    return new Response<>(Response.Result.SUCCESS, appUserVo);
+
+    return new Response<>(Response.Result.LOGIN_SUCCESS, appUserVo);
   }
 
   /**
