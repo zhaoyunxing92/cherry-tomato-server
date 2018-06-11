@@ -13,4 +13,16 @@ import com.sunny.boot.cherrytomato.user.model.AppUser;
  */
 public class AppUserVo extends AppUser {
   private static final long serialVersionUID = 5785068606359211643L;
+  /**
+   * 登录令牌
+   */
+  private String token;
+
+  public String getToken() {
+    return token;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
 }
