@@ -32,6 +32,11 @@ public class Response<T> implements Serializable {
     this.data = data;
   }
 
+  public Response(Integer code, String msg) {
+    this.code = code;
+    this.msg = msg;
+  }
+
   public Response(Response.Result result, T data) {
     this.code = result.getCode();
     this.msg = result.getMsg();
@@ -124,10 +129,7 @@ public class Response<T> implements Serializable {
 
     @Override
     public String toString() {
-      return "Result{" +
-          "code=" + code +
-          ", msg='" + msg + '\'' +
-          "} ";
+      return "{\"code\":\"+code+\",\"msg\":\"+msg+\"}";
     }
   }
 }
