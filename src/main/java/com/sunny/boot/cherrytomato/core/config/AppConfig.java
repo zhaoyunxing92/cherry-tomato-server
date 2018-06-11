@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Import;
  * @date: 2018-06-08 17:53
  * @des:
  */
-@Import({AppDataSourceConfig.class,AppWebMvcConfigurerAdapter.class})
+@Import({AppDataSourceConfig.class, AppWebMvcConfigurerAdapter.class, AppMyBatisConfig.class})
 public class AppConfig {
 }
