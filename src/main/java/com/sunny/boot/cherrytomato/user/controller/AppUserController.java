@@ -45,6 +45,6 @@ public class AppUserController {
    */
   @PutMapping("/reg")
   public Response register(HttpServletResponse res, @RequestBody @Validated({RegisterGroup.class}) UserForm form) {
-    return appUserAuthService.registerByEmail(res, form.getEmail(),form.getPassword());
+    return appUserAuthService.register(res, form);
   }
 }

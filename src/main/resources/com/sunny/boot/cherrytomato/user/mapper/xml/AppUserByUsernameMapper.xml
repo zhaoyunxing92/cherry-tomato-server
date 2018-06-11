@@ -21,9 +21,24 @@
         where USERNAME = #{username,jdbcType=VARCHAR}
     </delete>
 
-    <insert id="insert" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByUsername">
+    <insert id="insertSelective" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByUsername">
         <!-- Don't change -->
-        insert into app_user_by_username (USERNAME, USER_ID)
-        values (#{username,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT})
+        insert into app_user_by_username
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+        </trim>
     </insert>
 </mapper>
