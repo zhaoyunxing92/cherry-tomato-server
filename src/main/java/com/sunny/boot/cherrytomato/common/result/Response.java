@@ -129,7 +129,7 @@ public class Response<T> implements Serializable {
 
     @Override
     public String toString() {
-      return "{\"code\":\"+code+\",\"msg\":\"+msg+\"}";
+      return "{" + "\"code\": " + code + "," + "\"msg\": \"" + msg + "\"" + "}";
     }
   }
 }
