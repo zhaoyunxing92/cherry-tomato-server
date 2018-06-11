@@ -17,18 +17,26 @@
         <result column="MODIFIER" property="modifier" jdbcType="BIGINT"/>
         <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP"/>
     </resultMap>
+
+    <!--用户扩展类-->
+    <resultMap id="AppUserVo" type="com.sunny.boot.cherrytomato.user.model.vo.AppUserVo" extends="BaseResultMap">
+
+    </resultMap>
     <sql id="Base_Column_List">
         <!-- Don't change -->
         ID, USERNAME, PASSWORD, INTRO, EMAIL, MOBILE, AVATAR, SEX, STATUS, CREATOR, CREATE_DATE,
         MODIFIER, MODIFY_DATE
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
-        <!-- Don't change -->
+
+
+    <!--根据用户id获取用户信息-->
+    <select id="selectAppUserByPrimaryKey" resultMap="AppUserVo" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
         from app_user
         where ID = #{id,jdbcType=BIGINT}
     </select>
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         <!-- Don't change -->
         delete from app_user
