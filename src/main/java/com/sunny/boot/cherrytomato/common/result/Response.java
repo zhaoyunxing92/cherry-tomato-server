@@ -83,6 +83,10 @@ public class Response<T> implements Serializable {
      */
     SUCCESS(0, "成功!"),
     /**
+     * 登录成功
+     */
+    LOGIN_SUCCESS(0, "账号[%s}登录成功"),
+    /**
      * 请先登录
      */
     NOT_LOGIN_ERROR(1, "请先登录"),
@@ -101,7 +105,7 @@ public class Response<T> implements Serializable {
     /**
      * 邮箱已经被注册
      */
-    EMAIL_IS_EXIST_ERROR(10003, "该[%s]邮箱已经被注册");
+    EMAIL_IS_EXIST_ERROR(10003, "该[%s]邮箱已经被注册"),;
 
     private Integer code;
     private String msg;
