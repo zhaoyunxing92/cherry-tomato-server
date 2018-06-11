@@ -2,6 +2,7 @@ package com.sunny.boot.cherrytomato.core.handler;
 
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.util.StringUtil;
+import org.apache.ibatis.binding.BindingException;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.sql.SQLException;
 
 /**
  * @author sunny
@@ -41,5 +44,31 @@ public class AppGlobalExceptionHandler {
       return new Response<>(103, ex.getMessage());
     }
   }
+
+  /**
+   * mybatis 级别错误拦截
+   *
+   * @param ex
+   * @return
+   */
+  @ExceptionHandler({SQLException.class, BindingException.class})
+  @ResponseBody
+  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+  public Response mybatisSQLException(Exception ex) {
+
+    if (ex instanceof SQLException) {
+      //sql语法错误
+      SQLException sqlException = (SQLException) ex;
+      return new Response<>(200, sqlException.getMessage());
+    } else if (ex instanceof BindingException) {
+      //找不到对应的mapperxml文件id
+      BindingException bindingException = (BindingException) ex;
+      logger.error(bindingException.getMessage());
+      return new Response<>(201, bindingException.getMessage());
+    } else {
+      return new Response<>(201, ex.getMessage());
+    }
+  }
+
 
 }
