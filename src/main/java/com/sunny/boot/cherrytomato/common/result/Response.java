@@ -105,7 +105,11 @@ public class Response<T> implements Serializable {
     /**
      * 邮箱已经被注册
      */
-    EMAIL_IS_EXIST_ERROR(10003, "该[%s]邮箱已经被注册"),;
+    EMAIL_IS_EXIST_ERROR(10003, "该[%s]邮箱已经被注册"),
+    /**
+     * 用户名已经被注册
+     */
+    USERNAME_IS_EXIST_ERROR(10004, "该[%s]用户名已经被注册");
 
     private Integer code;
     private String msg;
