@@ -29,7 +29,7 @@ public class Md5Util {
     try {
       MessageDigest md = MessageDigest.getInstance("MD5");
       byte[] bytes = md.digest(str.getBytes("utf-8"));
-      return toHex(bytes);
+      return toHex(bytes).toLowerCase();
     } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
       //ignore
       return "";
