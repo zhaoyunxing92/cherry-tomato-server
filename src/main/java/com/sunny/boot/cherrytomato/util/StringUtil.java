@@ -3,6 +3,9 @@
  */
 package com.sunny.boot.cherrytomato.util;
 
+import org.springframework.validation.ObjectError;
+
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -22,7 +25,7 @@ public class StringUtil {
   /**
    * 正则表达式：验证手机号
    */
-  private static final String REGEX_MOBILE = "^1(3|4|5|6|7|8|9)\\d{9}$";
+  private static final String REGEX_MOBILE = "^1([3456789])\\d{9}$";
 
   /**
    * 判断是否邮箱
@@ -44,4 +47,40 @@ public class StringUtil {
     return Pattern.matches(REGEX_MOBILE, mobile);
   }
 
+  /**
+   * 比较两个值是否相同
+   *
+   * @param str1
+   * @param str2
+   * @return
+   */
+  public static boolean equals(String str1, String str2) {
+    if (null == str1) {
+      str1 = "";
+    }
+    if (null == str2) {
+      str2 = "";
+    }
+//    if (null == str1 || null == str2) {
+//      return false;
+//    }
+    return str1.equals(str2);
+  }
+
+  /**
+   * 验证异常信息转化string
+   *
+   * @param errors
+   * @return
+   */
+  public static String errorsToString(List<ObjectError> errors) {
+    StringBuilder errorsStr = new StringBuilder();
+    if (null == errors || errors.isEmpty()) {
+      return errorsStr.toString();
+    }
+    for (ObjectError error : errors) {
+      errorsStr.append(error.getDefaultMessage()).append(",");
+    }
+    return errorsStr.substring(0, errorsStr.lastIndexOf(","));
+  }
 }
