@@ -65,6 +65,11 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     if (null == userId) {
       return new Response<Response.Result>(Response.Result.USERNAME_DOES_NOT_EXIST_ERROR);
     }
+    return getAppUser(res, userId, password);
+  }
+
+  private Response getAppUser(HttpServletResponse res, Long userId, String password) {
+
     //根据用户id获取用户信息
     AppUserVo appUserVo = appUserMapper.selectAppUserByPrimaryKey(userId);
 
@@ -77,51 +82,84 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
       return new Response<Response.Result>(Response.Result.PASSWORD_NOT_EQUALS_ERROR);
     }
 
-    //保存用户信息，生成token 用户id+md5 方便以后管理员修改用户信息
-    String token = Md5Util.encrypt(String.valueOf(appUserVo.getId()));
+    //保存用户信息，生成token 用户username 方便以后管理员修改用户信息
+    String token = Md5Util.encrypt(appUserVo.getUsername());
     CookieUtil.setCookie(res, "token", token);
     appUserVo.setToken(token);
     //去除敏感信息
     appUserVo.setPassword(null);
-    appUserVo.setStatus(null);
+    //appUserVo.setStatus(null);
     appUserVo.setCreateDate(null);
     appUserVo.setCreator(null);
     appUserVo.setModifier(null);
     appUserVo.setModifyDate(null);
 
+    String msg = Response.Result.LOGIN_SUCCESS.getMsg();
+    Response.Result.LOGIN_SUCCESS.setMsg(String.format(msg, appUserVo.getUsername()));
     return new Response<>(Response.Result.LOGIN_SUCCESS, appUserVo);
   }
 
   /**
-   * 根据邮箱和密码注册
+   * 根据邮箱和用户名注册
    *
    * @param res
-   * @param email
-   * @param password
+   * @param form
    * @return
    */
   @Override
   @Transactional(rollbackFor = {Exception.class})
-  public Response registerByEmail(HttpServletResponse res, String email, String password) {
+  public Response register(HttpServletResponse res, UserForm form) {
     //验证邮箱是否注册过
+    String email = form.getEmail();
     if (emailIsExist(email)) {
       String msg = Response.Result.EMAIL_IS_EXIST_ERROR.getMsg();
       Response.Result.EMAIL_IS_EXIST_ERROR.setMsg(String.format(msg, email));
       return new Response<Response.Result>(Response.Result.EMAIL_IS_EXIST_ERROR);
     }
+    //检查用户名是否存在userNameIsExist
+    String userName = form.getUserName();
+    if (userNameIsExist(userName)) {
+      String msg = Response.Result.USERNAME_IS_EXIST_ERROR.getMsg();
+      Response.Result.USERNAME_IS_EXIST_ERROR.setMsg(String.format(msg, userName));
+      return new Response<Response.Result>(Response.Result.USERNAME_IS_EXIST_ERROR);
+    }
+
     //注册
+    String password = form.getPassword();
     AppUser user = new AppUser();
     user.setEmail(email);
+    user.setUsername(userName);
     user.setPassword(Md5Util.encrypt(password));
     appUserMapper.insertSelective(user);
 
     //添加根据邮箱查询
+    Long userId = user.getId();
     AppUserByEmail appUserByEmail = new AppUserByEmail();
     appUserByEmail.setEmail(email);
-    appUserByEmail.setUserId(user.getId());
+    appUserByEmail.setUserId(userId);
     appUserByEmailMapper.insertSelective(appUserByEmail);
+
+    //添加根据用户名查询
+    AppUserByUsername appUserByUsername = new AppUserByUsername();
+    appUserByUsername.setUserId(userId);
+    appUserByUsername.setUsername(userName);
+    appUserByUsernameMapper.insertSelective(appUserByUsername);
     //登陆
-    return login(res, email, password);
+    return getAppUser(res, userId, password);
+  }
+
+  /**
+   * 用户名是否存在
+   *
+   * @param userName 用户名
+   * @return
+   */
+  @Override
+  public boolean userNameIsExist(String userName) {
+    if (null != appUserByUsernameMapper.selectUserIdByPrimaryKey(userName)) {
+      return true;
+    }
+    return false;
   }
 
   /**

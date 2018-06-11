@@ -26,20 +26,27 @@ public interface AppUserAuthService {
   Response login(HttpServletResponse res, String userName, String password);
 
   /**
-   * 根据邮箱和密码注册
-   *
-   * @param res
-   * @param email
-   * @param password
-   * @return
-   */
-  Response registerByEmail(HttpServletResponse res, String email, String password);
-
-  /**
    * 邮箱是否存在
    *
-   * @param email
+   * @param email 邮箱
    * @return
    */
   boolean emailIsExist(String email);
+
+  /**
+   * 用户名是否存在
+   *
+   * @param userName 用户名
+   * @return
+   */
+  boolean userNameIsExist(String userName);
+
+  /**
+   * 根据用户名、邮箱注册
+   *
+   * @param res
+   * @param form
+   * @return
+   */
+  Response register(HttpServletResponse res, UserForm form);
 }
