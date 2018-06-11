@@ -41,7 +41,7 @@ public class AppUser extends BaseModel<Long> {
   /**
    * 性别(0=未知，1=男，2=女)
    */
-  private Boolean sex;
+  private Byte sex;
 
   /**
    * 账号状态(0=未激活，1=正常，8=冻结)
@@ -166,7 +166,7 @@ public class AppUser extends BaseModel<Long> {
    *
    * @return sex 性别(0=未知，1=男，2=女)
    */
-  public Boolean getSex() {
+  public Byte getSex() {
     return sex;
   }
 
@@ -175,7 +175,7 @@ public class AppUser extends BaseModel<Long> {
    *
    * @param sex 性别(0=未知，1=男，2=女)
    */
-  public void setSex(Boolean sex) {
+  public void setSex(Byte sex) {
     this.sex = sex;
   }
 
