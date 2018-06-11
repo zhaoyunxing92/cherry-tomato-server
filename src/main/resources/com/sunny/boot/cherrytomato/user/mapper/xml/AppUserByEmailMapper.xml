@@ -20,7 +20,7 @@
         delete from app_user_by_email
         where EMAIL = #{email,jdbcType=VARCHAR}
     </delete>
-    
+
     <insert id="insert" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail">
         <!-- Don't change -->
         insert into app_user_by_email (EMAIL, USER_ID)
