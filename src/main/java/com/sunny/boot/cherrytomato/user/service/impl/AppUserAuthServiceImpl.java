@@ -77,9 +77,10 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
       return new Response<Response.Result>(Response.Result.PASSWORD_NOT_EQUALS_ERROR);
     }
 
-    //保存用户信息，生成token 用户id+md5 方便以后修改用户信息
-    CookieUtil.setCookie(res, "token", Md5Util.encrypt(String.valueOf(appUserVo.getId())));
-
+    //保存用户信息，生成token 用户id+md5 方便以后管理员修改用户信息
+    String token = Md5Util.encrypt(String.valueOf(appUserVo.getId()));
+    CookieUtil.setCookie(res, "token", token);
+    appUserVo.setToken(token);
     //去除敏感信息
     appUserVo.setPassword(null);
     appUserVo.setStatus(null);
