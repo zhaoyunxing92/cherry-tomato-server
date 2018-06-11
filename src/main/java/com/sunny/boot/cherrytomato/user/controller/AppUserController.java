@@ -1,15 +1,17 @@
-package com.sunny.boot.cherrytomato.controller;
+package com.sunny.boot.cherrytomato.user.controller;
 
 
 import com.sunny.boot.cherrytomato.common.result.Response;
-import com.sunny.boot.cherrytomato.common.valid.LoginGroup;
-import com.sunny.boot.cherrytomato.controller.form.UserForm;
+import com.sunny.boot.cherrytomato.user.controller.form.UserForm;
+import com.sunny.boot.cherrytomato.user.controller.form.valid.LoginGroup;
+import com.sunny.boot.cherrytomato.user.controller.form.valid.RegisterGroup;
+import com.sunny.boot.cherrytomato.user.service.AppUserAuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author sunny
@@ -18,24 +20,31 @@ import java.util.List;
  * @des: 用户控制器
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/auth")
 public class AppUserController {
+
+  @Autowired
+  private AppUserAuthService appUserAuthService;
+
   /**
    * 登录
    *
-   * @param form
-   * @return
+   * @param form 用户名和密码
+   * @return 登录成功返回用户信息
    */
   @PostMapping("/login")
+  public Response login(HttpServletResponse res, @RequestBody @Validated({LoginGroup.class}) UserForm form) {
+    return appUserAuthService.login(res, form.getUserName(), form.getPassword());
+  }
 
-  public Response login(@RequestBody @Validated({LoginGroup.class}) UserForm form) {
-//    List<Object> list = new ArrayList<>();
-//    list.add(1);
-//    list.add(new Date());
-//    list.add("sunny2323");
-
-
-    return new Response<UserForm>(Response.Result.SUCCESS, null);
-    // return null;
+  /**
+   * 注册
+   *
+   * @param form 邮箱和密码
+   * @return 登录成功返回用户信息
+   */
+  @PutMapping("/reg")
+  public Response register(HttpServletResponse res, @RequestBody @Validated({RegisterGroup.class}) UserForm form) {
+    return appUserAuthService.registerByEmail(res, form.getEmail(),form.getPassword());
   }
 }

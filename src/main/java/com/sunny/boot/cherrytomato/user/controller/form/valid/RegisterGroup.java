@@ -7,7 +7,7 @@ package com.sunny.boot.cherrytomato.user.controller.form.valid;
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.user.controller.form.valid.RegisterGroup
  * @date: 2018-06-11 13:24
- * @des:
+ * @des: 注册校验组
  */
 public interface RegisterGroup {
 }
