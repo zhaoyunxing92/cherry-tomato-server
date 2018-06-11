@@ -1,7 +1,6 @@
 package com.sunny.boot.cherrytomato.core.handler;
 
 import com.sunny.boot.cherrytomato.common.result.Response;
-import com.sunny.boot.cherrytomato.util.ConstraintViolationExceptionHandler;
 import com.sunny.boot.cherrytomato.util.StringUtil;
 import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.http.HttpStatus;
