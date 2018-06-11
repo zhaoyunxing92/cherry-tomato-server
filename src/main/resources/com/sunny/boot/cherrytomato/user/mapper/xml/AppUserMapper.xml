@@ -10,7 +10,7 @@
         <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
         <result column="MOBILE" property="mobile" jdbcType="BIGINT"/>
         <result column="AVATAR" property="avatar" jdbcType="VARCHAR"/>
-        <result column="SEX" property="sex" jdbcType="BIT"/>
+        <result column="SEX" property="sex" jdbcType="TINYINT"/>
         <result column="STATUS" property="status" jdbcType="TINYINT"/>
         <result column="CREATOR" property="creator" jdbcType="BIGINT"/>
         <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP"/>

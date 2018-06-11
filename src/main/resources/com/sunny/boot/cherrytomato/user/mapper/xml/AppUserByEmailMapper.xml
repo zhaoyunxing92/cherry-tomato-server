@@ -10,7 +10,7 @@
     <!--根据邮箱获取用户id-->
     <select id="selectUserIdByPrimaryKey" resultType="java.lang.Long">
         select
-          USER_ID
+        USER_ID
         from app_user_by_email
         where EMAIL = #{email,jdbcType=VARCHAR}
     </select>
@@ -25,6 +25,27 @@
         <!-- Don't change -->
         insert into app_user_by_email (EMAIL, USER_ID)
         values (#{email,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.sunny.boot.cherrytomato.user.model.AppUserByEmail">
+        <!-- Don't change -->
+        insert into app_user_by_email
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="email != null">
+                email,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=BIGINT},
+            </if>
+        </trim>
     </insert>
 
 </mapper>
