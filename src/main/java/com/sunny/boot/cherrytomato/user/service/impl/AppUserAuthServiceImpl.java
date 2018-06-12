@@ -94,8 +94,8 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     appUserVo.setModifier(null);
     appUserVo.setModifyDate(null);
 
-    String msg = Response.Result.LOGIN_SUCCESS.getMsg();
-    Response.Result.LOGIN_SUCCESS.setMsg(String.format(msg, appUserVo.getUsername()));
+    //String msg = Response.Result.LOGIN_SUCCESS.getMsg();
+    // Response.Result.LOGIN_SUCCESS.setMsg(String.format(msg, appUserVo.getUsername()));
     return new Response<>(Response.Result.LOGIN_SUCCESS, appUserVo);
   }
 
@@ -112,16 +112,16 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     //验证邮箱是否注册过
     String email = form.getEmail();
     if (emailIsExist(email)) {
-      String msg = Response.Result.EMAIL_IS_EXIST_ERROR.getMsg();
-      Response.Result.EMAIL_IS_EXIST_ERROR.setMsg(String.format(msg, email));
-      return new Response<Response.Result>(Response.Result.EMAIL_IS_EXIST_ERROR);
+      //  String msg = Response.Result.EMAIL_IS_EXIST_ERROR.getMsg();
+      //  Response.Result.EMAIL_IS_EXIST_ERROR.setMsg(String.format(msg, email));
+      return new Response<Response.Result>(Response.Result.EMAIL_IS_EXIST_ERROR, email);
     }
     //检查用户名是否存在userNameIsExist
     String userName = form.getUserName();
     if (userNameIsExist(userName)) {
-      String msg = Response.Result.USERNAME_IS_EXIST_ERROR.getMsg();
-      Response.Result.USERNAME_IS_EXIST_ERROR.setMsg(String.format(msg, userName));
-      return new Response<Response.Result>(Response.Result.USERNAME_IS_EXIST_ERROR);
+      // String msg = Response.Result.USERNAME_IS_EXIST_ERROR.getMsg();
+      //Response.Result.USERNAME_IS_EXIST_ERROR.setMsg(String.format(msg, userName));
+      return new Response<Response.Result>(Response.Result.USERNAME_IS_EXIST_ERROR, userName);
     }
 
     //注册

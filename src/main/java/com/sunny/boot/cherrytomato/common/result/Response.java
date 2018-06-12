@@ -46,7 +46,19 @@ public class Response<T> implements Serializable {
   public Response(Response.Result result) {
     this.code = result.getCode();
     this.msg = result.getMsg();
-    this.data = null;
+    //this.data = null;
+  }
+
+  /**
+   * 可以格式化的返回
+   *
+   * @param result
+   * @param args
+   */
+  public Response(Response.Result result, Object... args) {
+    this.code = result.getCode();
+    this.msg = String.format(result.getMsg(), args);
+    //this.data = null;
   }
 
 
@@ -85,7 +97,7 @@ public class Response<T> implements Serializable {
     /**
      * 登录成功
      */
-    LOGIN_SUCCESS(0, "账号[%s}登录成功"),
+    LOGIN_SUCCESS(0, "登录成功"),
     /**
      * 请先登录
      */
