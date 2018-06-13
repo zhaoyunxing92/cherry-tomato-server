@@ -39,7 +39,8 @@ public class AppGlobalExceptionHandler {
       return new Response<>(101, StringUtil.errorsToString(methodArgumentNotValidException.getBindingResult().getAllErrors()));
     } else if (ex instanceof HttpMessageNotReadableException) {
       HttpMessageNotReadableException httpMessageNotReadableException = (HttpMessageNotReadableException) ex;
-      return new Response<>(102, httpMessageNotReadableException.getMessage());
+      logger.error(httpMessageNotReadableException.getMessage());
+      return new Response<>(102, "请求体为空，请输入参数");
     } else {
       return new Response<>(103, ex.getMessage());
     }
