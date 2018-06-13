@@ -37,6 +37,7 @@ public class AppUserController {
     return appUserAuthService.login(res, form.getUserName(), form.getPassword());
   }
 
+
   /**
    * 注册
    *
