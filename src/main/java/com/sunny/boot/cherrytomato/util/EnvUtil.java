@@ -3,6 +3,8 @@
  */
 package com.sunny.boot.cherrytomato.util;
 
+import com.sunny.boot.cherrytomato.core.config.AppSpringContextAware;
+
 /**
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.util.EnvUtil
@@ -17,7 +19,7 @@ public class EnvUtil {
   private static String activeProfile;
 
   static {
-    activeProfile = SpringContextUtil.getActiveProfile()[0];
+    activeProfile = AppSpringContextAware.getActiveProfile()[0];
   }
 
   private EnvUtil() {
