@@ -103,6 +103,10 @@ public class Response<T> implements Serializable {
      */
     NOT_LOGIN_ERROR(1, "请先登录"),
     /**
+     * 签名校验异常
+     */
+    SIGNATURE_VALIDATION_ERROR(2, "签名校验异常"),
+    /**
      * 用户名不存在
      */
     USERNAME_DOES_NOT_EXIST_ERROR(10000, "用户名不存在"),
@@ -121,7 +125,7 @@ public class Response<T> implements Serializable {
     /**
      * 用户名已经被注册
      */
-    USERNAME_IS_EXIST_ERROR(10004, "该[%s]用户名已经被注册");
+    USERNAME_IS_EXIST_ERROR(10004, "该[%s]用户名已经被注册"),;
 
     private Integer code;
     private String msg;
