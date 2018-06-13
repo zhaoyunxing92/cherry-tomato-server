@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Import;
 public class CherryTomatoApplication {
 
   public static void main(String[] args) {
+
     SpringApplication.run(CherryTomatoApplication.class, args);
   }
 }
