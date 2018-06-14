@@ -1,2 +1,2 @@
 # cherry-tomato-server
-小番茄服务
+小番茄服务。
