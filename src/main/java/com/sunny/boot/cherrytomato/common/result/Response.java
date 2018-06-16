@@ -52,7 +52,7 @@ public class Response<T> implements Serializable {
     /**
      * 可以格式化的返回
      *
-     * @param result
+     * @param result 枚举参数
      * @param args
      */
     public Response(Response.Result result, Object... args) {
