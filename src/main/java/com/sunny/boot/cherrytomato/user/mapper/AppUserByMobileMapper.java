@@ -6,7 +6,9 @@ package com.sunny.boot.cherrytomato.user.mapper;
 import com.sunny.boot.cherrytomato.common.mapper.BaseMapper;
 import com.sunny.boot.cherrytomato.user.model.AppUserByMobile;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AppUserByMobileMapper extends BaseMapper<AppUserByMobile, Long> {
   /**
    * 根据手机号获取用户id
