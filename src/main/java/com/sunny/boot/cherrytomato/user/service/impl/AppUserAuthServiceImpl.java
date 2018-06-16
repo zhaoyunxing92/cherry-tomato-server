@@ -156,24 +156,17 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
    */
   @Override
   public boolean userNameIsExist(String userName) {
-    if (null != appUserByUsernameMapper.selectUserIdByPrimaryKey(userName)) {
-      return true;
-    }
-    return false;
+    return null != appUserByUsernameMapper.selectUserIdByPrimaryKey(userName);
   }
 
   /**
    * 邮箱是否存在
    *
-   * @param email
+   * @param email 邮箱
    * @return
    */
   @Override
   public boolean emailIsExist(String email) {
-
-    if (null != appUserByEmailMapper.selectUserIdByPrimaryKey(email)) {
-      return true;
-    }
-    return false;
+    return null != appUserByEmailMapper.selectUserIdByPrimaryKey(email);
   }
 }
