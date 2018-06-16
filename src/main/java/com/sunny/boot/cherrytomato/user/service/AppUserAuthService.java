@@ -15,38 +15,38 @@ import javax.servlet.http.HttpServletResponse;
  * @des: app用户认证服务
  */
 public interface AppUserAuthService {
-  /**
-   * 根据用户名密码登录
-   *
-   * @param res
-   * @param userName 用户名/邮箱/手机号
-   * @param password 密码
-   * @return
-   */
-  Response login(HttpServletResponse res, String userName, String password);
+    /**
+     * 根据用户名密码登录
+     *
+     * @param res
+     * @param userName 用户名/邮箱/手机号
+     * @param password 密码
+     * @return
+     */
+    Response login(HttpServletResponse res, String userName, String password);
 
-  /**
-   * 邮箱是否存在
-   *
-   * @param email 邮箱
-   * @return
-   */
-  boolean emailIsExist(String email);
+    /**
+     * 邮箱是否存在
+     *
+     * @param email 邮箱
+     * @return
+     */
+    boolean emailIsExist(String email);
 
-  /**
-   * 用户名是否存在
-   *
-   * @param userName 用户名
-   * @return
-   */
-  boolean userNameIsExist(String userName);
+    /**
+     * 用户名是否存在
+     *
+     * @param userName 用户名
+     * @return
+     */
+    boolean userNameIsExist(String userName);
 
-  /**
-   * 根据用户名、邮箱注册
-   *
-   * @param res
-   * @param form
-   * @return
-   */
-  Response register(HttpServletResponse res, UserForm form);
+    /**
+     * 根据用户名、邮箱注册
+     *
+     * @param res
+     * @param form
+     * @return
+     */
+    Response register(HttpServletResponse res, UserForm form);
 }
