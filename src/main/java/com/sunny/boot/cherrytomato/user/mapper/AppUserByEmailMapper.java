@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 public interface AppUserByEmailMapper extends BaseMapper<AppUserByEmail, String> {
   /**
    * 根据邮箱获取用户id
-   * @param email
-   * @return
+   * @param email 邮箱
+   * @return 返回用户id
    */
   Long selectUserIdByPrimaryKey(@Param("email") String email);
 }
