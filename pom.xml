@@ -31,7 +31,7 @@
         <mybatis.spring.boot.starter.version>1.1.1</mybatis.spring.boot.starter.version>
         <mysql.connector.java.version>5.0.5</mysql.connector.java.version>
         <druid.version>1.0.26</druid.version>
-
+        <redis.version>2.0.2.RELEASE</redis.version>
     </properties>
 
     <dependencies>
@@ -83,10 +83,15 @@
 
         <!-- MySql数据库驱动 -->
         <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>${mysql.connector.java.version}</version>-->
+        <!--<groupId>mysql</groupId>-->
+        <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--<version>${mysql.connector.java.version}</version>-->
         <!--</dependency>-->
+        <!--redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
         <!-- devtools -->
         <dependency>
