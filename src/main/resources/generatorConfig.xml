@@ -29,7 +29,7 @@
 
             <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
             <property name="suppressDate" value="false"/><!-- 是否生成注释带时间戳 -->
-            <property name="mergeable" value="false"></property>  <!--覆盖-->
+            <!--<property name="mergeable" value="false"></property>  &lt;!&ndash;覆盖&ndash;&gt;-->
         </commentGenerator>
 
         <!-- !!!! Database Configurations !!!! -->
@@ -45,7 +45,7 @@
 
         <!-- !!!! Model Configurations !!!! -->
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.sunny.boot.cherrytomato.user.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.sunny.boot.cherrytomato.organization.model" targetProject="src/main/java">
             <!-- 是否对model添加 构造函数 -->
             <property name="constructorBased" value="false"/>
             <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
@@ -60,7 +60,7 @@
 
         <!-- !!!! Mapper XML Configurations !!!! -->
         <!-- 生成mapxml文件 -->
-        <sqlMapGenerator targetPackage="com.sunny.boot.cherrytomato.user.mapper.xml" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="com.sunny.boot.cherrytomato.organization.mapper.xml" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
@@ -71,7 +71,7 @@
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator targetPackage="com.sunny.boot.cherrytomato.user.mapper" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.sunny.boot.cherrytomato.organization.mapper" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
             <!--
                     定义Maper.java 源代码中的ByExample() 方法的可视性，可选的值有：
@@ -92,7 +92,7 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="app_user" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="ORGANIZATION" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <!-- optional   , only for mybatis3 runtime
                  自动生成的键值（identity,或者序列值）
@@ -124,25 +124,9 @@
             <!--<columnRenamingRule searchString="" replaceString=""/>-->
         </table>
 
-
-
-        <table tableName="APP_USER_BY_EMAIL" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="ORGANIZATION_MEMBER" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>
-
-        <table tableName="APP_USER_BY_MAPID" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-
-        <table tableName="APP_USER_BY_MOBILE" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-
-        <table tableName="APP_USER_BY_USERNAME" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
-        </table>
-
-
 
     </context>
 </generatorConfiguration>
