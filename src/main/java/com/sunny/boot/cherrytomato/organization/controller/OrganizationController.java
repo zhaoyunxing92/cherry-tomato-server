@@ -3,6 +3,16 @@
  */
 package com.sunny.boot.cherrytomato.organization.controller;
 
+import com.sunny.boot.cherrytomato.common.result.Response;
+import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
+import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
+import com.sunny.boot.cherrytomato.organization.model.Organization;
+import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
+import com.sunny.boot.cherrytomato.user.controller.form.valid.LoginGroup;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +23,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @des: 组织模块
  */
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/org")
 public class OrganizationController {
+    @Autowired
+    private OrganizationService organizationService;
+
+    /**
+     * 创建组织
+     *
+     * @param form 组织模块表单
+     * @return 组织id
+     */
+    @PostMapping
+    public Response addOrganization(@RequestBody @Validated({InsertGroup.class}) OrgForm form) {
+        return null;
+        //return appUserAuthService.login(res, form.getUserName(), form.getPassword());
+    }
+
+
 }
