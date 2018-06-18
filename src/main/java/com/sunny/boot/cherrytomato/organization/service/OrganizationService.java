@@ -7,7 +7,7 @@ package com.sunny.boot.cherrytomato.organization.service;
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.OrganizationService
  * @date: 2018-06-18 23:18
- * @des:
+ * @des: 组织模块服务
  */
-public class OrganizationService {
+public interface OrganizationService {
 }

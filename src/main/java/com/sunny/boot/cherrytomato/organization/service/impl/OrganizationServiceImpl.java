@@ -3,11 +3,15 @@
  */
 package com.sunny.boot.cherrytomato.organization.service.impl;
 
+import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
+import org.springframework.stereotype.Service;
+
 /**
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.impl.OrganizationServiceImpl
  * @date: 2018-06-18 23:23
  * @des:
  */
-public class OrganizationServiceImpl {
+@Service
+public class OrganizationServiceImpl implements OrganizationService {
 }
