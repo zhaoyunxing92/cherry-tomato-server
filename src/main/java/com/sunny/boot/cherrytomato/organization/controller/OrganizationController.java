@@ -3,11 +3,16 @@
  */
 package com.sunny.boot.cherrytomato.organization.controller;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
- * @author ${user}
+ * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.controller.OrganizationController
  * @date: 2018-06-18 12:28
- * @des:
+ * @des: 组织模块
  */
+@RestController
+@RequestMapping("/auth")
 public class OrganizationController {
 }
