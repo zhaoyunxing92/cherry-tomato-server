@@ -3,6 +3,7 @@
  */
 package com.sunny.boot.cherrytomato.user.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.user.controller.form.UserForm;
 import com.sunny.boot.cherrytomato.user.mapper.AppUserByEmailMapper;
@@ -19,6 +20,7 @@ import com.sunny.boot.cherrytomato.util.CookieUtil;
 import com.sunny.boot.cherrytomato.util.Md5Util;
 import com.sunny.boot.cherrytomato.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,8 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     private AppUserByMobileMapper appUserByMobileMapper;
     @Autowired
     private AppUserMapper appUserMapper;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 根据用户名密码登录
@@ -87,6 +91,9 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
         String token = Md5Util.encrypt(username);
         CookieUtil.setCookie(res, "token", token);
         appUserVo.setToken(token);
+        // added to the redis
+        redisTemplate.opsForValue().set(token, JSONObject.toJSONString(appUserVo));
+
         //去除敏感信息
         appUserVo.setPassword(null);
         //appUserVo.setStatus(null);
