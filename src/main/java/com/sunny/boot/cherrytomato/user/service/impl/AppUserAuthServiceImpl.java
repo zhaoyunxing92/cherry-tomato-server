@@ -12,7 +12,6 @@ import com.sunny.boot.cherrytomato.user.mapper.AppUserByUsernameMapper;
 import com.sunny.boot.cherrytomato.user.mapper.AppUserMapper;
 import com.sunny.boot.cherrytomato.user.model.AppUser;
 import com.sunny.boot.cherrytomato.user.model.AppUserByEmail;
-import com.sunny.boot.cherrytomato.user.model.AppUserByMobile;
 import com.sunny.boot.cherrytomato.user.model.AppUserByUsername;
 import com.sunny.boot.cherrytomato.user.model.vo.AppUserVo;
 import com.sunny.boot.cherrytomato.user.service.AppUserAuthService;
@@ -24,7 +23,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -44,7 +42,7 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     @Autowired
     private AppUserMapper appUserMapper;
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     /**
      * 根据用户名密码登录
