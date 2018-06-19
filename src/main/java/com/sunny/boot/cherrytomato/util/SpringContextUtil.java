@@ -14,22 +14,22 @@ import org.springframework.context.ApplicationContextAware;
  * @des: springContext工具类, 只获取当前启用的
  */
 public class SpringContextUtil implements ApplicationContextAware {
-  private SpringContextUtil() {
-  }
+    private SpringContextUtil() {
+    }
 
-  private static ApplicationContext context = null;
+    private static ApplicationContext context = null;
 
-  @Override
-  public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-    this.context = applicationContext;
-  }
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.context = applicationContext;
+    }
 
-  /**
-   * 获取当前环境
-   *
-   * @return
-   */
-  public static String[] getActiveProfile() {
-    return context.getEnvironment().getActiveProfiles();
-  }
+    /**
+     * 获取当前环境
+     *
+     * @return
+     */
+    public static String[] getActiveProfile() {
+        return context.getEnvironment().getActiveProfiles();
+    }
 }
