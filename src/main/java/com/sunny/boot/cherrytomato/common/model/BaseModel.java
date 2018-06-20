@@ -1,7 +1,10 @@
 package com.sunny.boot.cherrytomato.common.model;
 
+import com.sunny.boot.cherrytomato.common.context.AppUserContext;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * @author sunny
@@ -66,7 +69,7 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     }
 
     public Long getCreator() {
-        return creator;
+        return Objects.isNull(creator) ? AppUserContext.UserId() : creator;
     }
 
     public void setCreator(Long creator) {
@@ -82,7 +85,7 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     }
 
     public Long getModifier() {
-        return modifier;
+        return Objects.isNull(modifier) ? AppUserContext.UserId() : modifier;
     }
 
     public void setModifier(Long modifier) {
