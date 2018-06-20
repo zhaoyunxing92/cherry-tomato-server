@@ -1,6 +1,7 @@
 package com.sunny.boot.cherrytomato.common.context;
 
 import com.sunny.boot.cherrytomato.common.model.BaseModel;
+import com.sunny.boot.cherrytomato.user.model.vo.AppUserVo;
 
 /**
  * @author sunny
@@ -9,41 +10,19 @@ import com.sunny.boot.cherrytomato.common.model.BaseModel;
  * @des:
  */
 public class AppUserContext extends BaseModel<Long> {
-  private static final long serialVersionUID = -3040901576313484640L;
-  /**
-   * 账号
-   */
-  private String userName;
-  /**
-   * 昵称
-   */
-  private String nickName;
-  /**
-   * 令牌
-   */
-  private String token;
+    private static final long serialVersionUID = -3040901576313484640L;
+    private static AppUserVo appUser;
 
-  public String getUserName() {
-    return userName;
-  }
+    public static void setAppUser(AppUserVo user) {
+        appUser = user;
+    }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
+    public static String UserName() {
+        return appUser.getUsername();
+    }
 
-  public String getNickName() {
-    return nickName;
-  }
+    public static Long UserId() {
+        return appUser.getId();
+    }
 
-  public void setNickName(String nickName) {
-    this.nickName = nickName;
-  }
-
-  public String getToken() {
-    return token;
-  }
-
-  public void setToken(String token) {
-    this.token = token;
-  }
 }
