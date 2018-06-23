@@ -3,6 +3,8 @@
  */
 package com.sunny.boot.cherrytomato.organization.service;
 
+import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
+
 /**
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.OrganizationService
@@ -10,4 +12,11 @@ package com.sunny.boot.cherrytomato.organization.service;
  * @des: 组织模块服务
  */
 public interface OrganizationService {
+    /**
+     * 添加组织
+     *
+     * @param form 组织表单
+     * @return 返回组织id
+     */
+    Long addOrganization(OrgForm form);
 }

@@ -3,8 +3,14 @@
  */
 package com.sunny.boot.cherrytomato.organization.service.impl;
 
+import com.sunny.boot.cherrytomato.common.context.AppUserContext;
+import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
+import com.sunny.boot.cherrytomato.organization.mapper.OrganizationMapper;
+import com.sunny.boot.cherrytomato.organization.model.Organization;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author sunny
@@ -14,4 +20,17 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
+    @Autowired
+    private OrganizationMapper organizationMapper;
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public Long addOrganization(OrgForm form) {
+        Organization org = new Organization();
+        org.setName(form.getName());
+        org.setDescription(form.getDesc());
+        org.setCreator(new AppUserContext().getUserId());
+        org.setModifier(new AppUserContext().getUserId());
+        return organizationMapper.insertSelective(org);
+    }
 }
