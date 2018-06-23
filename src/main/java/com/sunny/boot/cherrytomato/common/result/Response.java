@@ -102,6 +102,10 @@ public class Response<T> implements Serializable {
          */
         LOGIN_SUCCESS(0, "账号[%s]登录成功"),
         /**
+         * 组织创建成功
+         */
+        ORG_INSERT_SUCCESS(0, "组织[%s]创建成功"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
