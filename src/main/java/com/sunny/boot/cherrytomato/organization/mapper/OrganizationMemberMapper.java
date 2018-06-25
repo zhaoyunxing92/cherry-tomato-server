@@ -5,8 +5,19 @@ package com.sunny.boot.cherrytomato.organization.mapper;
 
 import com.sunny.boot.cherrytomato.common.mapper.BaseMapper;
 import com.sunny.boot.cherrytomato.organization.model.OrganizationMember;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface OrganizationMemberMapper extends BaseMapper<OrganizationMember, Long> {
+    /**
+     * 获取团队成员id
+     *
+     * @param orgId 团队id
+     * @return 返回当前团队成员id
+     */
+    List<Long> selectOrganizationMemberId(@Param("orgId") Long orgId);
+
 }
