@@ -3,14 +3,10 @@
  */
 package com.sunny.boot.cherrytomato.organization.controller;
 
-import com.sunny.boot.cherrytomato.common.context.AppUserContext;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
-import com.sunny.boot.cherrytomato.organization.model.Organization;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
-import com.sunny.boot.cherrytomato.user.controller.form.valid.LoginGroup;
-import com.sunny.boot.cherrytomato.user.model.vo.AppUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
