@@ -3,6 +3,8 @@
  */
 package com.sunny.boot.cherrytomato.organization.service;
 
+import com.sunny.boot.cherrytomato.common.result.Response;
+
 /**
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.OrganizationMemberService
@@ -16,7 +18,7 @@ public interface OrganizationMemberService {
      * @param orgId  团队id
      * @param userId 用户id
      */
-    void addOrganizationMember(Long orgId, Long userId);
+    Response addOrganizationMember(Long orgId, Long userId);
 
     /**
      * 添加团队成员
@@ -25,6 +27,6 @@ public interface OrganizationMemberService {
      * @param userId 用户id
      * @param auto   是否自动添加
      */
-    void addOrganizationMember(Long orgId, Long userId, Boolean auto);
+    Response addOrganizationMember(Long orgId, Long userId, Boolean auto);
 
 }
