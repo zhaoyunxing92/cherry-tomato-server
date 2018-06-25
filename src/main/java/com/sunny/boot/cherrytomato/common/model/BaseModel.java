@@ -69,7 +69,8 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     }
 
     public Long getCreator() {
-        return Objects.isNull(creator) ? AppUserContext.UserId() : creator;
+        //  return creator;
+        return Objects.isNull(creator) ? AppUserContext.userId() : creator;
     }
 
     public void setCreator(Long creator) {
@@ -85,7 +86,8 @@ public class BaseModel<ID extends Serializable> implements Serializable {
     }
 
     public Long getModifier() {
-        return Objects.isNull(modifier) ? AppUserContext.UserId() : modifier;
+        //return modifier;
+        return Objects.isNull(modifier) ? AppUserContext.userId() : modifier;
     }
 
     public void setModifier(Long modifier) {
