@@ -104,7 +104,7 @@ public class Response<T> implements Serializable {
         /**
          * 组织创建成功
          */
-        ORG_INSERT_SUCCESS(0, "组织[%s]创建成功"),
+        ORG_INSERT_SUCCESS(0, "团队[%s]创建成功"),
         /**
          * 请先登录
          */
