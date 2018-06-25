@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  * @des: app用户认证服务
  */
 public interface AppUserAuthService {
+    String tokenKey = "token";
+
     /**
      * 根据用户名密码登录
      *
