@@ -37,7 +37,11 @@ public class OrganizationServiceImpl implements OrganizationService {
         //添加成员
         Long orgId = org.getId();
         organizationMemberService.addOrganizationMember(orgId, AppUserContext.userId(), true);
-
         return orgId;
+    }
+
+    @Override
+    public Organization getOrganization(Long orgId) {
+        return organizationMapper.selectByPrimaryKey(orgId);
     }
 }
