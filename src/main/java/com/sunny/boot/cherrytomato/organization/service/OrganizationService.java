@@ -20,4 +20,12 @@ public interface OrganizationService {
      * @return 返回团队信息
      */
     Long addOrganization(OrgForm form);
+
+    /**
+     * 根据团队id获取团队信息
+     *
+     * @param orgId
+     * @return
+     */
+    Organization getOrganization(Long orgId);
 }
