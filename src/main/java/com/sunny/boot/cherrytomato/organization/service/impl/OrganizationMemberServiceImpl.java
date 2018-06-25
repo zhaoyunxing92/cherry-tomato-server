@@ -1,5 +1,5 @@
 /**
- * Copyright(C) 2018 Hangzhou ${user} Technology Co., Ltd. All rights reserved.
+ * Copyright(C) 2018 Hangzhou sunny Technology Co., Ltd. All rights reserved.
  */
 package com.sunny.boot.cherrytomato.organization.service.impl;
 
