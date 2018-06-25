@@ -106,9 +106,9 @@ public class Response<T> implements Serializable {
          */
         ORG_INSERT_SUCCESS(0, "团队[%s]创建成功"),
         /**
-         * 团队成员添加成员
+         * 添加成功
          */
-        ORG_MEMBER_INSERT_SUCCESS(0, "团队成员添加成员"),
+        ORG_MEMBER_INSERT_SUCCESS(0, "添加成功"),
         /**
          * 请先登录
          */
