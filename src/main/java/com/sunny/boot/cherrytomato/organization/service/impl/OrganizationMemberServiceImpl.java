@@ -58,7 +58,7 @@ public class OrganizationMemberServiceImpl implements OrganizationMemberService 
             // 是否检验用户超额
             Integer memberLimit = organization.getMemberLimit();
             if (members.size() >= memberLimit)
-                return new Response<Response.Result>(Response.Result.ORG_PERSONNEL_TRANSFINITE_ERROR);
+                return new Response<Response.Result>(Response.Result.ORG_PERSONNEL_TRANSFINITE_ERROR, organization.getName());
         }
 
 
