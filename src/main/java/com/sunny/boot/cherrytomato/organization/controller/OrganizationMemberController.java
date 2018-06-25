@@ -35,7 +35,7 @@ public class OrganizationMemberController {
      */
     @PostMapping
     public Response addOrganizationMember(@RequestBody @Validated({InsertGroup.class}) OrgMemberForm form) {
-        organizationMemberService.addOrganizationMember(form.getOrgId(), form.getUserId());
-        return new Response<Response.Result>(Response.Result.ORG_MEMBER_INSERT_SUCCESS);
+        return organizationMemberService.addOrganizationMember(form.getOrgId(), form.getUserId());
+     //  return new Response<Response.Result>(Response.Result.ORG_MEMBER_INSERT_SUCCESS);
     }
 }
