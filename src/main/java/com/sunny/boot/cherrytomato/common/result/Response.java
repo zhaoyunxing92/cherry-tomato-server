@@ -144,7 +144,11 @@ public class Response<T> implements Serializable {
         /**
          * 用户不存在异常
          */
-        USER_IS_NOT_EXIST_ERROR(10006, "用户[%s]不存在");
+        USER_IS_NOT_EXIST_ERROR(10006, "用户[%s]不存在"),
+        /**
+         * 团队人员已满，请升级
+         */
+        ORG_PERSONNEL_TRANSFINITE_ERROR(10007, "[%s]团队人员已满，请升级");
 
         private Integer code;
         private String msg;
