@@ -9,10 +9,13 @@ import com.sunny.boot.cherrytomato.organization.model.Organization;
 import com.sunny.boot.cherrytomato.organization.model.OrganizationMember;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationMemberService;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
+import com.sunny.boot.cherrytomato.user.model.AppUser;
+import com.sunny.boot.cherrytomato.user.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -27,6 +30,8 @@ public class OrganizationMemberServiceImpl implements OrganizationMemberService 
     private OrganizationMemberMapper organizationMemberMapper;
     @Autowired
     private OrganizationService organizationService;
+    @Autowired
+    private AppUserService appUserService;
 
     @Override
     public Response addOrganizationMember(Long orgId, Long userId) {
@@ -40,15 +45,20 @@ public class OrganizationMemberServiceImpl implements OrganizationMemberService 
         if (!auto) {
             //验证orgId
             Organization organization = organizationService.getOrganization(orgId);
-            if (Objects.isNull(organization)) {
-                return new Response<Response.Result>(Response.Result.ORG_IS_NOT_EXIST_ERROR,orgId);
-            }
+            if (Objects.isNull(organization))
+                return new Response<Response.Result>(Response.Result.ORG_IS_NOT_EXIST_ERROR, orgId);
             //验证用户id
-
-
+            AppUser appUser = appUserService.getAppUser(userId);
+            if (Objects.isNull(appUser))
+                return new Response<Response.Result>(Response.Result.USER_IS_NOT_EXIST_ERROR, userId);
             //验证用户是否已经添加
-
+            List<Long> members = organizationMemberMapper.selectOrganizationMemberId(orgId);
+            if (members.contains(userId))
+                return new Response<Response.Result>(Response.Result.ORG_MEMBER_INSERT_SUCCESS);
             // 是否检验用户超额
+            Integer memberLimit = organization.getMemberLimit();
+            if (members.size() >= memberLimit)
+                return new Response<Response.Result>(Response.Result.ORG_PERSONNEL_TRANSFINITE_ERROR);
         }
 
 
