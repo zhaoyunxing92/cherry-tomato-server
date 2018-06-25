@@ -7,6 +7,7 @@ import com.sunny.boot.cherrytomato.common.context.AppUserContext;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.organization.mapper.OrganizationMapper;
 import com.sunny.boot.cherrytomato.organization.model.Organization;
+import com.sunny.boot.cherrytomato.organization.service.OrganizationMemberService;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,14 @@ import org.springframework.transaction.annotation.Transactional;
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.impl.OrganizationServiceImpl
  * @date: 2018-06-18 23:23
- * @des:
+ * @des: 团队模块服务实现类
  */
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
     @Autowired
     private OrganizationMapper organizationMapper;
+    @Autowired
+    private OrganizationMemberService organizationMemberService;
 
     @Override
     @Transactional(rollbackFor = {Exception.class})
@@ -29,8 +32,12 @@ public class OrganizationServiceImpl implements OrganizationService {
         Organization org = new Organization();
         org.setName(form.getName());
         org.setDescription(form.getDesc());
-        org.setCreator(new AppUserContext().getUserId());
-        org.setModifier(new AppUserContext().getUserId());
-        return organizationMapper.insertSelective(org);
+        // 创建团队
+        organizationMapper.insertSelective(org);
+        //添加成员
+        Long orgId = org.getId();
+        organizationMemberService.addOrganizationMember(orgId, AppUserContext.userId(), true);
+
+        return orgId;
     }
 }
