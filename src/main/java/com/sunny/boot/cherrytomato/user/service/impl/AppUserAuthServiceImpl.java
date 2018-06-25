@@ -42,7 +42,7 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
     @Autowired
     private AppUserMapper appUserMapper;
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     /**
      * 根据用户名密码登录
@@ -87,10 +87,10 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
         //保存用户信息，生成token 用户username 方便以后管理员修改用户信息
         String username = appUserVo.getUsername();
         String token = Md5Util.encrypt(username);
-        CookieUtil.setCookie(res, "token", token);
+        CookieUtil.setCookie(res, AppUserAuthService.tokenKey, token);
         appUserVo.setToken(token);
         // added to the redis
-        redisTemplate.opsForValue().set(token, JSONObject.toJSONString(appUserVo));
+        redisTemplate.opsForValue().set(token, appUserVo);
 
         //去除敏感信息
         appUserVo.setPassword(null);
