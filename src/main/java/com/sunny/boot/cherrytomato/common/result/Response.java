@@ -140,7 +140,11 @@ public class Response<T> implements Serializable {
         /**
          * 团队不存在异常
          */
-        ORG_IS_NOT_EXIST_ERROR(10005, "团队ID[%s]不存在");
+        ORG_IS_NOT_EXIST_ERROR(10005, "团队[%s]不存在"),
+        /**
+         * 用户不存在异常
+         */
+        USER_IS_NOT_EXIST_ERROR(10006, "用户[%s]不存在");
 
         private Integer code;
         private String msg;
