@@ -5,6 +5,7 @@ import com.sunny.boot.cherrytomato.common.context.AppUserContext;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.core.config.AppSpringBeanAware;
 import com.sunny.boot.cherrytomato.core.config.HttpRequestTwiceReadingWrapper;
+import com.sunny.boot.cherrytomato.user.model.vo.AppUserVo;
 import com.sunny.boot.cherrytomato.user.service.AppUserAuthService;
 import com.sunny.boot.cherrytomato.util.CookieUtil;
 import com.sunny.boot.cherrytomato.util.EnvUtil;
@@ -64,15 +65,23 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
      */
     private boolean isInterceptorPath(HttpServletRequest request) {
         String path = request.getServletPath();
+        //排除公共地址
         if (Arrays.asList(EXCLUDES).contains(path)) {
             return false;
         }
-        RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) AppSpringBeanAware.getBean("redisTemplate");
-        //获取token
+        //获取token,null和"" 拦截
         String token = getToken(request);
-        //初始化用户环境信息
-        AppUserContext appUser = (AppUserContext) redisTemplate.opsForValue().get(token);
-        return StringUtils.isEmpty(token) || null == appUser;
+        if (StringUtils.isEmpty(token))
+            return true;
+
+        //redis 获取用户信息
+        RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) AppSpringBeanAware.getBean("redisTemplate");
+        AppUserVo appUser = (AppUserVo) redisTemplate.opsForValue().get(token);
+        if (null == appUser)
+            return true;
+        // 初始化用户环境信息
+        AppUserContext.setAppUser(appUser);
+        return false;
     }
 
     /**
