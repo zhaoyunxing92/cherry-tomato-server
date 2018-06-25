@@ -106,6 +106,10 @@ public class Response<T> implements Serializable {
          */
         ORG_INSERT_SUCCESS(0, "团队[%s]创建成功"),
         /**
+         * 团队成员添加成员
+         */
+        ORG_MEMBER_INSERT_SUCCESS(0, "团队成员添加成员"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
@@ -132,7 +136,11 @@ public class Response<T> implements Serializable {
         /**
          * 用户名已经被注册
          */
-        USERNAME_IS_EXIST_ERROR(10004, "该[%s]用户名已经被注册"),;
+        USERNAME_IS_EXIST_ERROR(10004, "该[%s]用户名已经被注册"),
+        /**
+         * 团队不存在异常
+         */
+        ORG_IS_NOT_EXIST_ERROR(10005, "团队ID[%s]不存在");
 
         private Integer code;
         private String msg;
