@@ -22,7 +22,7 @@ import java.util.Objects;
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.service.impl.OrganizationMemberServiceImpl
  * @date: 2018-06-25 17:16
- * @des:
+ * @des: 团队成员模块
  */
 @Service
 public class OrganizationMemberServiceImpl implements OrganizationMemberService {
