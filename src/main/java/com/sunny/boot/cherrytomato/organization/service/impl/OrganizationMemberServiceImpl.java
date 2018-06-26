@@ -70,4 +70,10 @@ public class OrganizationMemberServiceImpl implements OrganizationMemberService 
 
         return new Response<Response.Result>(Response.Result.ORG_MEMBER_INSERT_SUCCESS);
     }
+
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public Response delOrganizationMember(Long orgId, Long userId) {
+        return null;
+    }
 }
