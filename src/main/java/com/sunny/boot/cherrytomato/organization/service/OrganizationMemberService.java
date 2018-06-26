@@ -36,5 +36,5 @@ public interface OrganizationMemberService {
      * @param userId
      * @return
      */
-    Response delOrganizationMember(Long orgId, Long userId);
+    void delOrganizationMember(Long orgId, Long userId);
 }
