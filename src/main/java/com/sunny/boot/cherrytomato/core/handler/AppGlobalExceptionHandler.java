@@ -1,9 +1,11 @@
 package com.sunny.boot.cherrytomato.core.handler;
 
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.util.StringUtil;
 import org.apache.ibatis.binding.BindingException;
 import org.mybatis.spring.MyBatisSystemException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -52,7 +54,7 @@ public class AppGlobalExceptionHandler {
    * @param ex
    * @return
    */
-  @ExceptionHandler({SQLException.class, BindingException.class})
+  @ExceptionHandler({DuplicateKeyException.class,SQLException.class, BindingException.class})
   @ResponseBody
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public Response mybatisSQLException(Exception ex) {
@@ -66,8 +68,13 @@ public class AppGlobalExceptionHandler {
       BindingException bindingException = (BindingException) ex;
       logger.error(bindingException.getMessage());
       return new Response<>(201, bindingException.getMessage());
-    } else {
-      return new Response<>(201, ex.getMessage());
+    } else if(ex instanceof DuplicateKeyException) {
+      // 组合唯一主键冲突 重复
+      DuplicateKeyException duplicateKeyException= (DuplicateKeyException) ex;
+      String msg = duplicateKeyException.getMessage();
+      return new Response<>(202, msg.substring(msg.lastIndexOf(":")+2));
+    }else {
+      return new Response<>(203, ex.getMessage());
     }
   }
 
