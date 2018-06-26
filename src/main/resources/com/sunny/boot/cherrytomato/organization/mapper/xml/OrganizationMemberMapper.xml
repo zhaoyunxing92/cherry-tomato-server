@@ -94,6 +94,16 @@
         </trim>
     </insert>
 
+    <!--根据团队id和成员id删除成员-->
+    <delete id="delOrganizationMemberByOrgIdAndUserId">
+        delete
+        from
+            organization_member
+        where
+            ORG_ID = #{orgId,jdbcType=BIGINT}
+            and USER_ID = #{userId,jdbcType=BIGINT};
+    </delete>
+
     <!--获取团队成员id-->
     <select id="selectOrganizationMemberId" resultType="java.lang.Long">
          select
