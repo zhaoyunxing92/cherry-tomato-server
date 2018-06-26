@@ -4,16 +4,14 @@
 package com.sunny.boot.cherrytomato.organization.controller;
 
 import com.sunny.boot.cherrytomato.common.result.Response;
+import com.sunny.boot.cherrytomato.common.valid.DelGroup;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgMemberForm;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhaoyunxing
@@ -28,14 +26,26 @@ public class OrganizationMemberController {
     private OrganizationMemberService organizationMemberService;
 
     /**
-     * 团结添加成员
+     * 团队添加成员
      *
      * @param form 成员模块表单
-     * @return 组织id
+     * @return 团队信息
      */
     @PostMapping
     public Response addOrganizationMember(@RequestBody @Validated({InsertGroup.class}) OrgMemberForm form) {
         return organizationMemberService.addOrganizationMember(form.getOrgId(), form.getUserId());
-     //  return new Response<Response.Result>(Response.Result.ORG_MEMBER_INSERT_SUCCESS);
     }
+
+    /**
+     * 删除成员
+     *
+     * @param form 成员模块表单
+     * @return Response
+     */
+    @DeleteMapping
+    public Response delOrganizationMember(@RequestBody @Validated({DelGroup.class}) OrgMemberForm form) {
+        organizationMemberService.delOrganizationMember(form.getOrgId(), form.getUserId());
+        return new Response<Response.Result>(Response.Result.ORG_MEMBER_DEL_SUCCESS);
+    }
+
 }
