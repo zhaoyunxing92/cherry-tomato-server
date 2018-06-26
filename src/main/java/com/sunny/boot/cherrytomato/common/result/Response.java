@@ -110,6 +110,10 @@ public class Response<T> implements Serializable {
          */
         ORG_MEMBER_INSERT_SUCCESS(0, "添加成功"),
         /**
+         * 团队成员删除成功
+         */
+        ORG_MEMBER_DEL_SUCCESS(0, "团队成员删除成功"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
@@ -148,7 +152,7 @@ public class Response<T> implements Serializable {
         /**
          * 团队人员已满，请升级
          */
-        ORG_PERSONNEL_TRANSFINITE_ERROR(10007, "[%s]团队人员已满，请升级");
+        ORG_PERSONNEL_TRANSFINITE_ERROR(10007, "[%s]团队人员已满，请升级"),;
 
         private Integer code;
         private String msg;
