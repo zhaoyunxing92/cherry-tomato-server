@@ -29,4 +29,12 @@ public interface OrganizationMemberService {
      */
     Response addOrganizationMember(Long orgId, Long userId, Boolean auto);
 
+    /**
+     * 删除团队成员
+     *
+     * @param orgId
+     * @param userId
+     * @return
+     */
+    Response delOrganizationMember(Long orgId, Long userId);
 }
