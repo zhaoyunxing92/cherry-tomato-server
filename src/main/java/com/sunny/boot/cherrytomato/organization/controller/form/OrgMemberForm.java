@@ -3,6 +3,7 @@
  */
 package com.sunny.boot.cherrytomato.organization.controller.form;
 
+import com.sunny.boot.cherrytomato.common.valid.DelGroup;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
 
 import javax.validation.constraints.NotNull;
@@ -17,12 +18,12 @@ public class OrgMemberForm {
     /**
      * 团队id
      */
-    @NotNull(message = "字段【orgId】必填", groups = {InsertGroup.class})
+    @NotNull(message = "字段【orgId】必填", groups = {InsertGroup.class, DelGroup.class})
     private Long orgId;
     /**
      * 用户id
      */
-    @NotNull(message = "字段【userId】必填", groups = {InsertGroup.class})
+    @NotNull(message = "字段【userId】必填", groups = {InsertGroup.class, DelGroup.class})
     private Long userId;
 
     public Long getOrgId() {
