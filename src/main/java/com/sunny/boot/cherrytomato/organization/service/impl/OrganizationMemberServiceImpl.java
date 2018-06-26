@@ -74,6 +74,6 @@ public class OrganizationMemberServiceImpl implements OrganizationMemberService 
     @Override
     @Transactional(rollbackFor = {Exception.class})
     public void delOrganizationMember(Long orgId, Long userId) {
-      //  return null;
+        organizationMemberMapper.delOrganizationMemberByOrgIdAndUserId(orgId, userId);
     }
 }
