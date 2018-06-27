@@ -114,6 +114,10 @@ public class Response<T> implements Serializable {
          */
         ORG_MEMBER_DEL_SUCCESS(0, "团队成员删除成功"),
         /**
+         * 项目创建成功
+         */
+        ORG_PROJECT_INSERT_SUCCESS(0, "项目[%s]创建成功"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
