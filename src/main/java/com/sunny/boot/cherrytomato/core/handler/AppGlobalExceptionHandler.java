@@ -1,6 +1,5 @@
 package com.sunny.boot.cherrytomato.core.handler;
 
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.core.exception.AppGlobalException;
 import com.sunny.boot.cherrytomato.util.StringUtil;
