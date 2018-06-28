@@ -3,7 +3,6 @@
  */
 package com.sunny.boot.cherrytomato.user.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.user.controller.form.UserForm;
 import com.sunny.boot.cherrytomato.user.mapper.AppUserByEmailMapper;
