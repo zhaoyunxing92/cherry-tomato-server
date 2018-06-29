@@ -62,7 +62,12 @@ public class OrganizationProjectServiceImpl implements OrganizationProjectServic
         orgProjectMapper.insertSelective(project);
         // 添加成员
         Long proId = project.getId();
-        orgProjectMemberService.addOrgProjectMember(proId,AppUserContext.userId(), true);
+        orgProjectMemberService.addOrgProjectMember(proId, AppUserContext.userId(), true);
         return proId;
+    }
+
+    @Override
+    public OrgProject getOrgProjectById(Long proId) {
+        return orgProjectMapper.selectByPrimaryKey(proId);
     }
 }
