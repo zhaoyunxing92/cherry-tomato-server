@@ -15,6 +15,7 @@ import com.sunny.boot.cherrytomato.project.service.OrganizationProjectMemberServ
 import com.sunny.boot.cherrytomato.project.service.OrganizationProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 
@@ -40,6 +41,7 @@ public class OrganizationProjectServiceImpl implements OrganizationProjectServic
      * @return 项目id
      */
     @Override
+    @Transactional(rollbackFor = {Exception.class})
     public Long addOrganizationProject(ProjectForm form) {
         Long orgId = form.getOrgId();
         Organization org = organizationService.getOrganization(orgId);
