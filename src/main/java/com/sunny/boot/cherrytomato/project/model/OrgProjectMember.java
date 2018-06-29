@@ -6,7 +6,7 @@ package com.sunny.boot.cherrytomato.project.model;
 import com.sunny.boot.cherrytomato.common.model.BaseModel;
 import java.util.Date;
 
-public class OrgProjectMember implements BaseModel<Long> {
+public class OrgProjectMember extends BaseModel<Long> {
     /**
      * 项目id
      */
