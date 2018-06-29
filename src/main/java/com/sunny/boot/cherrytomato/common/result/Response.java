@@ -1,5 +1,6 @@
 package com.sunny.boot.cherrytomato.common.result;
 
+import java.beans.XMLDecoder;
 import java.io.Serializable;
 
 /**
@@ -118,6 +119,10 @@ public class Response<T> implements Serializable {
          */
         ORG_PROJECT_INSERT_SUCCESS(0, "项目[%s]创建成功"),
         /**
+         * 项目成员添加成功
+         */
+        ORG_PROJECT_INSERT_MEMBER_SUCCESS(0, "项目成员添加成功"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
@@ -160,7 +165,15 @@ public class Response<T> implements Serializable {
         /**
          * 团队项目个数达限
          */
-        ORG_PROJECT_COUNT_OVER_ERROR(10008,"[%s]团队项目个数达限，请升级" );
+        ORG_PROJECT_COUNT_OVER_ERROR(10008, "[%s]团队项目个数达限，请升级"),
+        /**
+         * 项目不存在
+         */
+        ORG_PROJECT_IS_NOT_EXIST_ERROR(10009, "项目[%s]不存在"),
+        /**
+         * 项目人员已满，请升级
+         */
+        ORG_PROJECT_PERSONNEL_TRANSFINITE_ERROR(10010, "[%s]项目人员已满，请升级");
 
         private Integer code;
         private String msg;
