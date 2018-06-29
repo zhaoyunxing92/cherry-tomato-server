@@ -156,7 +156,11 @@ public class Response<T> implements Serializable {
         /**
          * 团队人员已满，请升级
          */
-        ORG_PERSONNEL_TRANSFINITE_ERROR(10007, "[%s]团队人员已满，请升级"),;
+        ORG_PERSONNEL_TRANSFINITE_ERROR(10007, "[%s]团队人员已满，请升级"),
+        /**
+         * 团队项目个数达限
+         */
+        ORG_PROJECT_COUNT_OVER_ERROR(10008,"[%s]团队项目个数达限，请升级" );
 
         private Integer code;
         private String msg;
