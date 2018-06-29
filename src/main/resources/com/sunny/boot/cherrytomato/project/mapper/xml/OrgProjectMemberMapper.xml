@@ -79,4 +79,14 @@
             </if>
         </trim>
     </insert>
+
+    <!--获取项目成员-->
+    <select id="selectProjectMemberId" resultType="java.lang.Long">
+        select
+            USER_ID
+        from
+            org_project_member
+        where
+            PROJECT_ID =#{proId,jdbcType=BIGINT}
+    </select>
 </mapper>
