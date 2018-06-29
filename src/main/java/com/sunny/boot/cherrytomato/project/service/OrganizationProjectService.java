@@ -4,6 +4,7 @@
 package com.sunny.boot.cherrytomato.project.service;
 
 import com.sunny.boot.cherrytomato.project.controller.from.ProjectForm;
+import com.sunny.boot.cherrytomato.project.model.OrgProject;
 
 /**
  * @author zhaoyunxing
@@ -19,5 +20,13 @@ public interface OrganizationProjectService {
      * @return 项目id
      */
     Long addOrganizationProject(ProjectForm form);
+
+    /**
+     * 根据id获取项目信息
+     *
+     * @param proId 项目id
+     * @return
+     */
+    OrgProject getOrgProjectById(Long proId);
 
 }
