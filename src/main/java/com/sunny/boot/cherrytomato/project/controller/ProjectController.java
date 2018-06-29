@@ -5,7 +5,6 @@ package com.sunny.boot.cherrytomato.project.controller;
 
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
-import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.project.controller.from.ProjectForm;
 import com.sunny.boot.cherrytomato.project.service.OrganizationProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
