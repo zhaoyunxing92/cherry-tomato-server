@@ -5,7 +5,7 @@ package com.sunny.boot.cherrytomato.project.service.impl;
 
 import com.sunny.boot.cherrytomato.project.mapper.OrgProjectMemberMapper;
 import com.sunny.boot.cherrytomato.project.model.OrgProjectMember;
-import com.sunny.boot.cherrytomato.project.service.OrgProjectMemberService;
+import com.sunny.boot.cherrytomato.project.service.OrganizationProjectMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @des:
  */
 @Service
-public class OrgProjectMemberServiceImpl implements OrgProjectMemberService {
+public class OrganizationProjectMemberServiceImpl implements OrganizationProjectMemberService {
     @Autowired
     private OrgProjectMemberMapper orgProjectMemberMapper;
 
