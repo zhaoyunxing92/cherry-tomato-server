@@ -23,31 +23,6 @@ public class OrgProjectMember extends BaseModel<Long> {
     private Boolean isManage;
 
     /**
-     * 用户状态(1=正常，8=冻结)
-     */
-    private Byte status;
-
-    /**
-     * 创建人
-     */
-    private Long creator;
-
-    /**
-     * 创建时间
-     */
-    private Date createDate;
-
-    /**
-     * 修改人
-     */
-    private Long modifier;
-
-    /**
-     * 修改时间
-     */
-    private Date modifyDate;
-
-    /**
      * org_project_member
      */
     private static final long serialVersionUID = 1L;
@@ -100,83 +75,4 @@ public class OrgProjectMember extends BaseModel<Long> {
         this.isManage = isManage;
     }
 
-    /**
-     * 用户状态(1=正常，8=冻结)
-     * @return status 用户状态(1=正常，8=冻结)
-     */
-    public Byte getStatus() {
-        return status;
-    }
-
-    /**
-     * 用户状态(1=正常，8=冻结)
-     * @param status 用户状态(1=正常，8=冻结)
-     */
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    /**
-     * 创建人
-     * @return creator 创建人
-     */
-    public Long getCreator() {
-        return creator;
-    }
-
-    /**
-     * 创建人
-     * @param creator 创建人
-     */
-    public void setCreator(Long creator) {
-        this.creator = creator;
-    }
-
-    /**
-     * 创建时间
-     * @return createDate 创建时间
-     */
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    /**
-     * 创建时间
-     * @param createDate 创建时间
-     */
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    /**
-     * 修改人
-     * @return modifier 修改人
-     */
-    public Long getModifier() {
-        return modifier;
-    }
-
-    /**
-     * 修改人
-     * @param modifier 修改人
-     */
-    public void setModifier(Long modifier) {
-        this.modifier = modifier;
-    }
-
-    /**
-     * 修改时间
-     * @return modifyDate 修改时间
-     */
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    /**
-     * 修改时间
-     * @param modifyDate 修改时间
-     */
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
 }
