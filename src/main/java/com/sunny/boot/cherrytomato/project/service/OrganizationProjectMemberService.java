@@ -7,11 +7,11 @@ import com.sunny.boot.cherrytomato.common.result.Response;
 
 /**
  * @author zhaoyunxing
- * @class: com.sunny.boot.cherrytomato.project.service.OrgProjectMemberService
+ * @class: com.sunny.boot.cherrytomato.project.service.OrganizationProjectMemberService
  * @date: 2018-06-29 10:49
  * @des: 项目成员接口
  */
-public interface OrgProjectMemberService {
+public interface OrganizationProjectMemberService {
     /**
      * 项目添加成员
      *
