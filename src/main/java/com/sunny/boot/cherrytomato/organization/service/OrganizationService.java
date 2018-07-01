@@ -27,16 +27,16 @@ public interface OrganizationService {
     /**
      * 根据团队id获取团队信息
      *
-     * @param orgId
-     * @return
+     * @param orgId 团队id
+     * @return 团队
      */
     Organization getOrganization(Long orgId);
 
     /**
      * 获取当前登陆人的团队
      *
-     * @param name
-     * @return
+     * @param name 团队名称
+     * @return 团队
      */
     List<OrganizationVo> getCurrentOrganization(String name);
 }
