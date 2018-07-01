@@ -58,4 +58,20 @@ public class OrganizationServiceImpl implements OrganizationService {
     public List<OrganizationVo> getCurrentOrganization(String name) {
         return organizationMapper.selectCurrentOrganization(AppUserContext.userId(), name);
     }
+
+    /**
+     * 编辑团队信息
+     *
+     * @param form
+     */
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public void modifyOrganization(OrgForm form) {
+        Organization org = new Organization();
+        org.setId(form.getId());
+        org.setName(form.getName());
+        org.setDescription(form.getDesc());
+
+        organizationMapper.updateByPrimaryKeySelective(org);
+    }
 }
