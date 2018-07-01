@@ -7,11 +7,14 @@ import com.sunny.boot.cherrytomato.common.context.AppUserContext;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.organization.mapper.OrganizationMapper;
 import com.sunny.boot.cherrytomato.organization.model.Organization;
+import com.sunny.boot.cherrytomato.organization.model.vo.OrganizationVo;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationMemberService;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author sunny
@@ -43,5 +46,16 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public Organization getOrganization(Long orgId) {
         return organizationMapper.selectByPrimaryKey(orgId);
+    }
+
+    /**
+     * 获取当前登陆人的团队
+     *
+     * @param name 团队名称
+     * @return 团队
+     */
+    @Override
+    public List<OrganizationVo> getCurrentOrganization(String name) {
+        return organizationMapper.selectCurrentOrganization(AppUserContext.userId(), name);
     }
 }
