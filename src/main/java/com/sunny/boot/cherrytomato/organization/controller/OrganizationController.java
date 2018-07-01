@@ -5,6 +5,7 @@ package com.sunny.boot.cherrytomato.organization.controller;
 
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
+import com.sunny.boot.cherrytomato.common.valid.UpdateGroup;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.organization.model.vo.OrganizationVo;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
@@ -36,6 +37,18 @@ public class OrganizationController {
     public Response addOrganization(@RequestBody @Validated({InsertGroup.class}) OrgForm form) {
 
         return new Response<Long>(Response.Result.ORG_INSERT_SUCCESS, organizationService.addOrganization(form), form.getName());
+    }
+
+    /**
+     * 编辑团队信息
+     *
+     * @param form 组织模块表单
+     * @return 团队
+     */
+    @PutMapping
+    public Response modifyOrganization(@RequestBody @Validated({UpdateGroup.class}) OrgForm form) {
+        organizationService.modifyOrganization(form);
+        return new Response<Response.Result>(Response.Result.ORG_MODIFY_SUCCESS, form.getName());
     }
 
     /**
