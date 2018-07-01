@@ -6,13 +6,13 @@ package com.sunny.boot.cherrytomato.organization.controller;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
+import com.sunny.boot.cherrytomato.organization.model.vo.OrganizationVo;
 import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author sunny
@@ -38,5 +38,15 @@ public class OrganizationController {
         return new Response<Long>(Response.Result.ORG_INSERT_SUCCESS, organizationService.addOrganization(form), form.getName());
     }
 
+    /**
+     * 获取当前登陆人的团队
+     *
+     * @param name 团队名称
+     * @return
+     */
+    @GetMapping("/current")
+    public Response<List<OrganizationVo>> addOrganization(String name) {
 
+        return new Response<>(Response.Result.SUCCESS, organizationService.getCurrentOrganization(name));
+    }
 }
