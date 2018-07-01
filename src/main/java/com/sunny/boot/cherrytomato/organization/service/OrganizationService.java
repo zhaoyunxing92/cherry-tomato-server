@@ -5,6 +5,9 @@ package com.sunny.boot.cherrytomato.organization.service;
 
 import com.sunny.boot.cherrytomato.organization.controller.form.OrgForm;
 import com.sunny.boot.cherrytomato.organization.model.Organization;
+import com.sunny.boot.cherrytomato.organization.model.vo.OrganizationVo;
+
+import java.util.List;
 
 /**
  * @author sunny
@@ -28,4 +31,12 @@ public interface OrganizationService {
      * @return
      */
     Organization getOrganization(Long orgId);
+
+    /**
+     * 获取当前登陆人的团队
+     *
+     * @param name
+     * @return
+     */
+    List<OrganizationVo> getCurrentOrganization(String name);
 }
