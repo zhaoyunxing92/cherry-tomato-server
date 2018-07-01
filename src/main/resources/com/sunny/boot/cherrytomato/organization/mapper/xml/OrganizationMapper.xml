@@ -111,17 +111,18 @@
             </if>
         </trim>
     </insert>
+
     <update id="updateByPrimaryKeySelective" parameterType="com.sunny.boot.cherrytomato.organization.model.Organization">
         <!-- Don't change -->
         update organization
         <set>
-            <if test="name != null">
+            <if test="name != null and name !=''">
                 NAME = #{name,jdbcType=VARCHAR},
             </if>
-            <if test="logo != null">
+            <if test="logo != null and logo !=''">
                 LOGO = #{logo,jdbcType=VARCHAR},
             </if>
-            <if test="description != null">
+            <if test="description != null and description !=''">
                 DESCRIPTION = #{description,jdbcType=VARCHAR},
             </if>
             <if test="memberLimit != null">
@@ -133,15 +134,7 @@
             <if test="status != null">
                 STATUS = #{status,jdbcType=TINYINT},
             </if>
-            <if test="versions != null">
-                VERSIONS = #{versions,jdbcType=INTEGER},
-            </if>
-            <if test="creator != null">
-                CREATOR = #{creator,jdbcType=BIGINT},
-            </if>
-            <if test="createDate != null">
-                CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
-            </if>
+                VERSIONS =VERSIONS+ 1,
             <if test="modifier != null">
                 MODIFIER = #{modifier,jdbcType=BIGINT},
             </if>
