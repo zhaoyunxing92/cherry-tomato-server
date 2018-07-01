@@ -22,7 +22,7 @@ public class OrgForm {
      */
     @NotNull(message = "字段【name】必填", groups = {InsertGroup.class})
     @NotBlank(message = "请输入组织名称", groups = {InsertGroup.class})
-    @Length(min = 3, max = 15, message = "组织名称在{min}~{max}个字符之间", groups = {InsertGroup.class})
+    @Length(min = 2, max = 30, message = "组织名称在{min}~{max}个字符之间", groups = {InsertGroup.class})
     @Pattern(regexp = "^[\\u4e00-\\u9fa5a-zA-Z]+$", message = "组织名称只能字母和汉字", groups = {InsertGroup.class})
     private String name;
     /**
