@@ -39,4 +39,11 @@ public interface OrganizationService {
      * @return 团队
      */
     List<OrganizationVo> getCurrentOrganization(String name);
+
+    /**
+     * 编辑团队信息
+     *
+     * @param form
+     */
+    void modifyOrganization(OrgForm form);
 }
