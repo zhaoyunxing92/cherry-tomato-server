@@ -28,7 +28,7 @@ public class UserForm {
    */
   @NotNull(message = "字段【password】必填", groups = {LoginGroup.class, RegisterGroup.class})
   @NotEmpty(message = "请输入密码", groups = {LoginGroup.class, RegisterGroup.class})
-  @Length(min = 3, max = 15, message = "请输入{min}~{max}字符的密码", groups = {RegisterGroup.class})
+  @Length(min = 6, max = 32, message = "请输入{min}~{max}字符的密码", groups = {RegisterGroup.class})
   private String password;
   /**
    * 邮箱
