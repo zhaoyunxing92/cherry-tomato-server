@@ -123,6 +123,10 @@ public class Response<T> implements Serializable {
          */
         ORG_PROJECT_INSERT_MEMBER_SUCCESS(0, "项目成员添加成功"),
         /**
+         * 修改团队信息
+         */
+        ORG_MODIFY_SUCCESS(0, "团队[%s]修改成功"),
+        /**
          * 请先登录
          */
         NOT_LOGIN_ERROR(1, "请先登录"),
@@ -173,7 +177,7 @@ public class Response<T> implements Serializable {
         /**
          * 项目人员已满，请升级
          */
-        ORG_PROJECT_PERSONNEL_TRANSFINITE_ERROR(10010, "[%s]项目人员已满，请升级");
+        ORG_PROJECT_PERSONNEL_TRANSFINITE_ERROR(10010, "[%s]项目人员已满，请升级"),;
 
         private Integer code;
         private String msg;
