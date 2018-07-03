@@ -35,6 +35,11 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        //OPTIONS
+        if ("OPTIONS".equals(request.getMethod())) {
+            return true;
+        }
+
         //是否拦截path 401状态
         if (isInterceptorPath(request)) {
             responseMsg(response, HttpServletResponse.SC_UNAUTHORIZED, Response.Result.NOT_LOGIN_ERROR);
@@ -42,7 +47,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         }
         //参数签名校验 403状态
         if (!signatureValidation(request)) {
-            responseMsg(response, HttpServletResponse.SC_FORBIDDEN, Response.Result.SIGNATURE_VALIDATION_ERROR);
+            responseMsg(response, HttpServletResponse.SC_OK, Response.Result.SIGNATURE_VALIDATION_ERROR);
             return false;
         } else {
             return true;
@@ -132,9 +137,9 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
          * 不是get请求并且头是【application/json】流读取参数
          */
         if (!"get".equals(method.toLowerCase()) && "application/json".equals(contentType)) {
-            str = getParameterTOInputStream(request);
-        } else {
             str = getParameter(request);
+        } else {
+            str = getParameterTOInputStream(request);
         }
         return Md5Util.encrypt(str);
     }
@@ -156,9 +161,9 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         JSONObject json = JSONObject.parseObject(string);
         sb.setLength(0);
         Set<String> keySet = json.keySet();
-        String[] keyArray = keySet.toArray(new String[keySet.size()]);
-        Arrays.sort(keyArray);
-        for (String key : keyArray) {
+        String[] keys = keySet.toArray(new String[keySet.size()]);
+        Arrays.sort(keys);
+        for (String key : keys) {
             if (key.equals("sign")) {
                 continue;
             }
@@ -180,11 +185,11 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
     private String getParameter(HttpServletRequest req) {
         //Map<String, String[]> parameterMap = req.getParameterMap();
         Set<String> keySet = req.getParameterMap().keySet();
-        String[] keyArray = keySet.toArray(new String[keySet.size()]);
-        Arrays.sort(keyArray);
+        String[] keys = keySet.toArray(new String[keySet.size()]);
+        Arrays.sort(keys);
 
         StringBuilder sb = new StringBuilder();
-        for (String key : keyArray) {
+        for (String key : keys) {
             if (key.equals("sign")) {
                 continue;
             }
@@ -193,7 +198,11 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
                 sb.append(key).append("=").append(value).append("&");
             }
         }
+        // 解决空字符串问题
         String str = sb.toString();
+        if (StringUtils.isEmpty(str)) {
+            return str;
+        }
         return str.substring(0, str.lastIndexOf("&"));
     }
 

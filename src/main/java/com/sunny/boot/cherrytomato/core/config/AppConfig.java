@@ -1,6 +1,7 @@
 package com.sunny.boot.cherrytomato.core.config;
 
 import org.springframework.context.annotation.Import;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * @author sunny
