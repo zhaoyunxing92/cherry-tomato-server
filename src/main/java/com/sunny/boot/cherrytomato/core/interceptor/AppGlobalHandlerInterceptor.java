@@ -47,7 +47,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         }
         //参数签名校验 403状态
         if (!signatureValidation(request)) {
-            responseMsg(response, HttpServletResponse.SC_OK, Response.Result.SIGNATURE_VALIDATION_ERROR);
+            responseMsg(response, HttpServletResponse.SC_FORBIDDEN, Response.Result.SIGNATURE_VALIDATION_ERROR);
             return false;
         } else {
             return true;
