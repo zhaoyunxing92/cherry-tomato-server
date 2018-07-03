@@ -9,6 +9,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -76,6 +77,33 @@ public class AppGlobalExceptionHandler {
         } else {
             return new Response<>(203, ex.getMessage());
         }
+    }
+
+    //HttpRequestMethodNotSupportedException
+    @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+    public Response mybatisSQLException(HttpRequestMethodNotSupportedException ex) {
+        System.out.println(ex.getMessage());
+        return new Response<>(415, ex.getMessage());
+
+//        if (ex instanceof SQLException) {
+//            //sql语法错误
+//            SQLException sqlException = (SQLException) ex;
+//            return new Response<>(200, sqlException.getMessage());
+//        } else if (ex instanceof BindingException) {
+//            //找不到对应的mapperxml文件id
+//            BindingException bindingException = (BindingException) ex;
+//            logger.error(bindingException.getMessage());
+//            return new Response<>(201, bindingException.getMessage());
+//        } else if (ex instanceof DuplicateKeyException) {
+//            // 组合唯一主键冲突 重复
+//            DuplicateKeyException duplicateKeyException = (DuplicateKeyException) ex;
+//            String msg = duplicateKeyException.getMessage();
+//            return new Response<>(202, msg.substring(msg.lastIndexOf(":") + 2));
+//        } else {
+//            return new Response<>(203, ex.getMessage());
+//        }
     }
 
     /**
