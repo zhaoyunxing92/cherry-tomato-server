@@ -4,17 +4,22 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.sunny.boot.cherrytomato.core.interceptor.AppGlobalHandlerInterceptor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.mvc.WebContentInterceptor;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Filter;
 
 /**
  * @author sunny
@@ -25,21 +30,21 @@ import java.util.List;
 public class AppWebMvcConfigurerAdapter implements WebMvcConfigurer {
 
 
-    /**
-     * 跨域配置
-     *
-     * @param registry
-     */
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedHeaders("*")
-                .allowCredentials(true)
-                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
-                .maxAge(3600);
-
-    }
+//    /**
+//     * 跨域配置
+//     *
+//     * @param registry
+//     */
+//    @Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("*")//content-type,sign,token
+//                .allowedHeaders("content-type","sign","token","sunny")
+//                .allowCredentials(false)
+//                .allowedMethods("GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "TRACE")
+//                .maxAge(7200);
+//
+//    }
 
     /**
      * 拦截器配置

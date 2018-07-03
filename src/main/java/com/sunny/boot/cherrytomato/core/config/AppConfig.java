@@ -9,6 +9,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * @date: 2018-06-08 17:53
  * @des:
  */
-@Import({AppDataSourceConfig.class, AppWebMvcConfigurerAdapter.class, AppMyBatisConfig.class, AppSpringContextAware.class, AppSpringBeanAware.class, AppRedisConfig.class})
+@Import({AppDataSourceConfig.class, AppWebMvcConfigurerAdapter.class, AppMyBatisConfig.class, AppSpringContextAware.class, AppSpringBeanAware.class, AppRedisConfig.class,AppCorsConfig.class})
 public class AppConfig {
 }
