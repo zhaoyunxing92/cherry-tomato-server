@@ -56,7 +56,7 @@ public class OrganizationServiceImpl implements OrganizationService {
      */
     @Override
     public List<OrganizationVo> getCurrentOrganization(String name) {
-        return organizationMapper.selectCurrentOrganization(AppUserContext.userId(), name);
+        return organizationMapper.selectOrganizationByUserId(AppUserContext.userId(), name);
     }
 
     /**

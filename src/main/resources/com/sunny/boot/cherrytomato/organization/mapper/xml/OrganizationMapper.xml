@@ -151,7 +151,7 @@
     </resultMap>
 
     <!--获取当前登陆人的团队-->
-    <select id="selectCurrentOrganization" resultMap="OrganizationVo">
+    <select id="selectOrganizationByUserId" resultMap="OrganizationVo">
         select
             a.IS_SUPER_ADMIN,
             a.USER_ID,
