@@ -23,29 +23,29 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/auth")
 public class AppUserController {
 
-  @Autowired
-  private AppUserAuthService appUserAuthService;
+    @Autowired
+    private AppUserAuthService appUserAuthService;
 
-  /**
-   * 登录
-   *
-   * @param form 用户名和密码
-   * @return 登录成功返回用户信息
-   */
-  @PostMapping("/login")
-  public Response login(HttpServletResponse res, @RequestBody @Validated({LoginGroup.class}) UserForm form) {
-    return appUserAuthService.login(res, form.getUserName(), form.getPassword());
-  }
+    /**
+     * 登录
+     *
+     * @param form 用户名和密码
+     * @return 登录成功返回用户信息
+     */
+    @PostMapping("/login")
+    public Response login(HttpServletResponse res, @RequestBody @Validated({LoginGroup.class}) UserForm form) {
+        return appUserAuthService.login(res, form.getUserName(), form.getPassword());
+    }
 
 
-  /**
-   * 注册
-   *
-   * @param form 邮箱和密码
-   * @return 登录成功返回用户信息
-   */
-  @PutMapping("/reg")
-  public Response register(HttpServletResponse res, @RequestBody @Validated({RegisterGroup.class}) UserForm form) {
-    return appUserAuthService.register(res, form);
-  }
+    /**
+     * 注册
+     *
+     * @param form 邮箱和密码
+     * @return 登录成功返回用户信息
+     */
+    @PutMapping("/reg")
+    public Response register(HttpServletResponse res, @RequestBody @Validated({RegisterGroup.class}) UserForm form) {
+        return appUserAuthService.register(res, form);
+    }
 }
