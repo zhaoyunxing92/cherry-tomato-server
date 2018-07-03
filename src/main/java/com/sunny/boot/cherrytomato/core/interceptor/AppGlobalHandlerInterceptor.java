@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.parser.Entity;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
@@ -53,6 +55,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
             return true;
         }
     }
+
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
@@ -120,7 +123,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
 //        }
 
         String sign = req.getHeader("sign");
-        return StringUtil.equals(sign, signature(req));
+        return !StringUtil.equals(sign, signature(req));
     }
 
     /**
@@ -136,10 +139,10 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         /**
          * 不是get请求并且头是【application/json】流读取参数
          */
-        if (!"get".equals(method.toLowerCase()) && "application/json".equals(contentType)) {
-            str = getParameter(request);
-        } else {
+        if (!"get".equals(method.toLowerCase()) && contentType.startsWith("application/json")) {
             str = getParameterTOInputStream(request);
+        } else {
+            str = getParameter(request);
         }
         return Md5Util.encrypt(str);
     }
@@ -151,8 +154,8 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
      * @return
      */
     private String getParameterTOInputStream(HttpServletRequest request) throws IOException {
+        String string=new HttpRequestTwiceReadingWrapper(request).getBodyString(request);
 
-        String string = new HttpRequestTwiceReadingWrapper(request).getBodyString(request);
         if (StringUtils.isEmpty(string)) {
             return "{}";
         }
@@ -173,7 +176,20 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
             }
         }
         String str = sb.toString();
+        if (StringUtils.isEmpty(str)) {
+            return "{}";
+        }
         return str.substring(0, str.lastIndexOf("&"));
+    }
+
+    private static String getBodyData(HttpServletRequest request) throws IOException {
+        StringBuffer data = new StringBuffer();
+        String line;
+        BufferedReader reader;
+        reader = request.getReader();
+        while (null != (line = reader.readLine()))
+            data.append(line);
+        return data.toString();
     }
 
     /**
