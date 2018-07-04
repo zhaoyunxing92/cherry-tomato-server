@@ -51,12 +51,11 @@ public class OrganizationServiceImpl implements OrganizationService {
     /**
      * 获取当前登陆人的团队
      *
-     * @param name 团队名称
      * @return 团队
      */
     @Override
-    public List<OrganizationVo> getCurrentOrganization(String name) {
-        return organizationMapper.selectOrganizationByUserId(AppUserContext.userId(), name);
+    public List<OrganizationVo> getCurrentOrganization() {
+        return organizationMapper.selectOrganizationByUserId(AppUserContext.userId());
     }
 
     /**

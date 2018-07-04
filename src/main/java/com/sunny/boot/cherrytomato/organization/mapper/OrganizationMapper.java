@@ -17,9 +17,8 @@ public interface OrganizationMapper extends BaseMapper<Organization, Long> {
      * 根据用户id获取团队列表
      *
      * @param userId
-     * @param name
      * @return
      */
-    List<OrganizationVo> selectOrganizationByUserId(@Param("userId") Long userId, @Param("name") String name);
+    List<OrganizationVo> selectOrganizationByUserId(@Param("userId") Long userId);
 
 }

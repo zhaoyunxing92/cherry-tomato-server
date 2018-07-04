@@ -35,10 +35,9 @@ public interface OrganizationService {
     /**
      * 获取当前登陆人的团队
      *
-     * @param name 团队名称
      * @return 团队
      */
-    List<OrganizationVo> getCurrentOrganization(String name);
+    List<OrganizationVo> getCurrentOrganization();
 
     /**
      * 编辑团队信息

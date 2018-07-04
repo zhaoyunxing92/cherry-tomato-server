@@ -54,12 +54,11 @@ public class OrganizationController {
     /**
      * 获取当前登陆人的团队
      *
-     * @param name 团队名称
      * @return
      */
     @GetMapping("/current")
-    public Response<List<OrganizationVo>> addOrganization(String name) {
+    public Response<List<OrganizationVo>> addOrganization() {
 
-        return new Response<>(Response.Result.SUCCESS, organizationService.getCurrentOrganization(name));
+        return new Response<>(Response.Result.SUCCESS, organizationService.getCurrentOrganization());
     }
 }
