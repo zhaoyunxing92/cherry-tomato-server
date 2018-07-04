@@ -84,7 +84,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
 
         //redis 获取用户信息
         RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) AppSpringBeanAware.getBean("redisTemplate");
-        AppUserVo appUser = (AppUserVo) redisTemplate.opsForValue().get(token);
+        AppUserVo                     appUser       = (AppUserVo) redisTemplate.opsForValue().get(token);
         if (null == appUser)
             return true;
         // 初始化用户环境信息
@@ -99,7 +99,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
      * @return
      */
     private String getToken(HttpServletRequest request) {
-        String key = AppUserAuthService.tokenKey;
+        String key   = AppUserAuthService.tokenKey;
         String token = request.getHeader(key);
         if (StringUtils.isEmpty(token)) {
             token = Objects.requireNonNull(CookieUtil.getCookie(request, key)).getValue();
@@ -117,10 +117,10 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         if (EnvUtil.isDev()) {
             return true;
         }
-//        //忽略校验路径
-//        if ("/error".equals(req.getServletPath())) {
-//            return true;
-//        }
+        //        //忽略校验路径
+        //        if ("/error".equals(req.getServletPath())) {
+        //            return true;
+        //        }
 
         String sign = req.getHeader("sign");
         return !StringUtil.equals(sign, signature(req));
@@ -134,7 +134,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
      */
     private String signature(HttpServletRequest request) throws IOException {
         String contentType = request.getContentType();
-        String method = request.getMethod();
+        String method      = request.getMethod();
         String str;
         /**
          * 不是get请求并且头是【application/json】流读取参数
@@ -154,7 +154,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
      * @return
      */
     private String getParameterTOInputStream(HttpServletRequest request) throws IOException {
-        String string=new HttpRequestTwiceReadingWrapper(request).getBodyString(request);
+        String string = new HttpRequestTwiceReadingWrapper(request).getBodyString(request);
 
         if (StringUtils.isEmpty(string)) {
             return "{}";
@@ -164,7 +164,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         JSONObject json = JSONObject.parseObject(string);
         sb.setLength(0);
         Set<String> keySet = json.keySet();
-        String[] keys = keySet.toArray(new String[keySet.size()]);
+        String[]    keys   = keySet.toArray(new String[keySet.size()]);
         Arrays.sort(keys);
         for (String key : keys) {
             if (key.equals("sign")) {
@@ -183,8 +183,8 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
     }
 
     private static String getBodyData(HttpServletRequest request) throws IOException {
-        StringBuffer data = new StringBuffer();
-        String line;
+        StringBuffer   data = new StringBuffer();
+        String         line;
         BufferedReader reader;
         reader = request.getReader();
         while (null != (line = reader.readLine()))
@@ -201,7 +201,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
     private String getParameter(HttpServletRequest req) {
         //Map<String, String[]> parameterMap = req.getParameterMap();
         Set<String> keySet = req.getParameterMap().keySet();
-        String[] keys = keySet.toArray(new String[keySet.size()]);
+        String[]    keys   = keySet.toArray(new String[keySet.size()]);
         Arrays.sort(keys);
 
         StringBuilder sb = new StringBuilder();
