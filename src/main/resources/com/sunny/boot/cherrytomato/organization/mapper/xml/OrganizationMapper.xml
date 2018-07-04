@@ -165,8 +165,9 @@
         where
             a.USER_ID = #{userId,jdbcType=BIGINT}
             and a.STATUS=1
-        <if test="name != null and name !=''">
-            and b.name like concat('%',#{name,jdbcType=VARCHAR},'%')
-        </if>
+        order by b.id desc
+        <!--<if test="name != null and name !=''">-->
+            <!--and b.name like concat('%',#{name,jdbcType=VARCHAR},'%')-->
+        <!--</if>-->
     </select>
 </mapper>
