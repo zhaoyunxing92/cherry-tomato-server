@@ -38,7 +38,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //OPTIONS
-        if ("OPTIONS".equals(request.getMethod())) {
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             return true;
         }
 
@@ -139,7 +139,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         /**
          * 不是get请求并且头是【application/json】流读取参数
          */
-        if (!"get".equals(method.toLowerCase()) && contentType.startsWith("application/json")) {
+        if (!"get".equalsIgnoreCase(method) && contentType.startsWith("application/json")) {
             str = getParameterTOInputStream(request);
         } else {
             str = getParameter(request);
