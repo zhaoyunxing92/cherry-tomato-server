@@ -16,14 +16,14 @@ public class OrgProjectVo extends OrgProject {
     /**
      * 是否管理员
      */
-    private Boolean admin;
+    private              Boolean manage;
 
-    public Boolean getAdmin() {
-        return admin;
+    public Boolean getManage() {
+        return manage;
     }
 
-    public OrgProjectVo setAdmin(Boolean admin) {
-        this.admin = admin;
+    public OrgProjectVo setManage(Boolean manage) {
+        this.manage = manage;
         return this;
     }
 }
