@@ -188,4 +188,25 @@
        from org_project
        where org_id=#{orgId,jdbcType=BIGINT}
     </select>
+
+    <resultMap id="OrgProjectVo" extends="BaseResultMap" type="com.sunny.boot.cherrytomato.project.model.vo.OrgProjectVo">
+        <result column="IS_MANAGE" property="manage" jdbcType="BIT"/>
+    </resultMap>
+
+    <!--获取团队项目-->
+    <select id="selectOrganizationProjectByOrgIdAndUserId" resultMap="BaseResultMap">
+        select
+            a.IS_MANAGE,
+            b.NAME,
+            b.LOGO,
+            b.ID
+        from
+            org_project_member a
+        left join org_project b on
+                a.PROJECT_ID = b.id
+        where b.ORG_ID=#{orgId,jdbcType=BIGINT}
+        and a.USER_ID=#{userId,jdbcType=BIGINT}
+        and b.STATUS=1
+        order by b.id desc
+    </select>
 </mapper>
