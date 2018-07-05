@@ -102,7 +102,7 @@ public class AppGlobalHandlerInterceptor implements HandlerInterceptor {
         String key   = AppUserAuthService.tokenKey;
         String token = request.getHeader(key);
         if (StringUtils.isEmpty(token)) {
-            token = Objects.requireNonNull(CookieUtil.getCookie(request, key)).getValue();
+            token = CookieUtil.getValue(request, key);
         }
         return token;
     }
