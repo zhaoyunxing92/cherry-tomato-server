@@ -9,6 +9,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.Arrays;
+
 /**
  * @author zhaoyunxing
  * @class: com.sunny.boot.cherrytomato.core.config.AppCorsConfig
@@ -18,11 +20,13 @@ import org.springframework.web.filter.CorsFilter;
 public class AppCorsConfig {
     @Bean
     public FilterRegistrationBean corsFilter() {
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
+        CorsConfiguration               config = new CorsConfiguration();
+        config.setAllowedOrigins(Arrays.asList("http://localhost:7800","http://localhost:7810"));
         config.setAllowCredentials(true);
         // 设置你要允许的网站域名，如果全允许则设为 *
-        config.addAllowedOrigin("http://localhost:7800");
+       // config.addAllowedOrigin("http://localhost:7800");
         // 如果要限制 HEADER 或 METHOD 请自行更改
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
