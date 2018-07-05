@@ -9,19 +9,19 @@ import java.io.Serializable;
  * @des: 统一返回
  */
 public class Response<T> implements Serializable {
-    private static final long serialVersionUID = 393612537159594290L;
+    private static final long    serialVersionUID = 393612537159594290L;
     /**
      * code码
      */
-    private Integer code;
+    private              Integer code;
     /**
      * 消息
      */
-    private String msg;
+    private              String  msg;
     /**
      * 数据
      */
-    private T data;
+    private              T       data;
 
     public Response(Integer code, String msg) {
         this.code = code;
@@ -125,6 +125,10 @@ public class Response<T> implements Serializable {
          * 修改团队信息
          */
         ORG_MODIFY_SUCCESS(0, "团队[%s]修改成功"),
+        /**
+         * 加载团队项目成功
+         */
+        ORG_PROJECT_GET_SUCCESS(0, "加载团队项目成功"),
 
         /**
          * 请先登录
@@ -181,7 +185,7 @@ public class Response<T> implements Serializable {
 
 
         private Integer code;
-        private String msg;
+        private String  msg;
 
         Result(Integer code, String msg) {
             this.code = code;

@@ -6,13 +6,16 @@ package com.sunny.boot.cherrytomato.project.controller;
 import com.sunny.boot.cherrytomato.common.result.Response;
 import com.sunny.boot.cherrytomato.common.valid.InsertGroup;
 import com.sunny.boot.cherrytomato.project.controller.from.ProjectForm;
+import com.sunny.boot.cherrytomato.project.model.OrgProject;
+import com.sunny.boot.cherrytomato.project.model.vo.OrgProjectVo;
 import com.sunny.boot.cherrytomato.project.service.OrganizationProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author zhaoyunxing
@@ -33,8 +36,19 @@ public class ProjectController {
      * @return 项目id
      */
     @PostMapping
-    public Response addOrganization(@RequestBody @Validated({InsertGroup.class}) ProjectForm form) {
-        
+    public Response addOrganizationProject(@RequestBody @Validated({InsertGroup.class}) ProjectForm form) {
+
         return new Response<Long>(Response.Result.ORG_PROJECT_INSERT_SUCCESS, organizationProjectService.addOrganizationProject(form), form.getName());
+    }
+
+    /**
+     * 获取团队项目
+     *
+     * @param orgId 团队id
+     * @return 项目
+     */
+    @GetMapping
+    public Response<List<OrgProjectVo>> getOrganizationProject(@RequestBody @RequestParam Long orgId) {
+        return new Response<>(Response.Result.ORG_PROJECT_GET_SUCCESS, organizationProjectService.getOrganizationProject(orgId));
     }
 }
