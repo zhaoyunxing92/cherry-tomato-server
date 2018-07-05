@@ -3,11 +3,27 @@
  */
 package com.sunny.boot.cherrytomato.project.model.vo;
 
+import com.sunny.boot.cherrytomato.project.model.OrgProject;
+
 /**
  * @author zhaoyunxing
  * @class: com.sunny.boot.cherrytomato.project.model.vo.OrgProjectVo
  * @date: 2018-07-05 23:49
- * @des:
+ * @des: 项目扩展类
  */
-public class OrgProjectVo {
+public class OrgProjectVo extends OrgProject {
+    private static final long    serialVersionUID = -4271369488313412433L;
+    /**
+     * 是否管理员
+     */
+    private Boolean admin;
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public OrgProjectVo setAdmin(Boolean admin) {
+        this.admin = admin;
+        return this;
+    }
 }
