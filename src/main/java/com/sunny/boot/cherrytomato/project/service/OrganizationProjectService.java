@@ -5,6 +5,9 @@ package com.sunny.boot.cherrytomato.project.service;
 
 import com.sunny.boot.cherrytomato.project.controller.from.ProjectForm;
 import com.sunny.boot.cherrytomato.project.model.OrgProject;
+import com.sunny.boot.cherrytomato.project.model.vo.OrgProjectVo;
+
+import java.util.List;
 
 /**
  * @author zhaoyunxing
@@ -29,4 +32,11 @@ public interface OrganizationProjectService {
      */
     OrgProject getOrgProjectById(Long proId);
 
+    /**
+     * 获取团队项目
+     *
+     * @param orgId 团队id
+     * @return
+     */
+    List<OrgProjectVo> getOrganizationProject(Long orgId);
 }

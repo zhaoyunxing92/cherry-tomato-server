@@ -11,12 +11,14 @@ import com.sunny.boot.cherrytomato.organization.service.OrganizationService;
 import com.sunny.boot.cherrytomato.project.controller.from.ProjectForm;
 import com.sunny.boot.cherrytomato.project.mapper.OrgProjectMapper;
 import com.sunny.boot.cherrytomato.project.model.OrgProject;
+import com.sunny.boot.cherrytomato.project.model.vo.OrgProjectVo;
 import com.sunny.boot.cherrytomato.project.service.OrganizationProjectMemberService;
 import com.sunny.boot.cherrytomato.project.service.OrganizationProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -28,11 +30,11 @@ import java.util.Objects;
 @Service
 public class OrganizationProjectServiceImpl implements OrganizationProjectService {
     @Autowired
-    private OrganizationService organizationService;
+    private OrganizationService              organizationService;
     @Autowired
     private OrganizationProjectMemberService orgProjectMemberService;
     @Autowired
-    private OrgProjectMapper orgProjectMapper;
+    private OrgProjectMapper                 orgProjectMapper;
 
     /**
      * 创建项目
@@ -43,8 +45,8 @@ public class OrganizationProjectServiceImpl implements OrganizationProjectServic
     @Override
     @Transactional(rollbackFor = {Exception.class})
     public Long addOrganizationProject(ProjectForm form) {
-        Long orgId = form.getOrgId();
-        Organization org = organizationService.getOrganization(orgId);
+        Long         orgId = form.getOrgId();
+        Organization org   = organizationService.getOrganization(orgId);
         //验证团队是否存在
         if (Objects.isNull(org)) {
             throw new AppServiceException(Response.Result.ORG_IS_NOT_EXIST_ERROR, orgId);
@@ -69,5 +71,16 @@ public class OrganizationProjectServiceImpl implements OrganizationProjectServic
     @Override
     public OrgProject getOrgProjectById(Long proId) {
         return orgProjectMapper.selectByPrimaryKey(proId);
+    }
+
+    /**
+     * 获取团队项目
+     *
+     * @param orgId 团队id
+     * @return 项目集合
+     */
+    @Override
+    public List<OrgProjectVo> getOrganizationProject(Long orgId) {
+        return orgProjectMapper.selectOrganizationProjectByOrgIdAndUserId(orgId,AppUserContext.userId());
     }
 }
