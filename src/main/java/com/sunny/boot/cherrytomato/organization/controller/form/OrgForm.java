@@ -16,23 +16,23 @@ import javax.validation.constraints.Pattern;
  * @author sunny
  * @class: com.sunny.boot.cherrytomato.organization.controller.form.OrgForm
  * @date: 2018-06-18 17:26
- * @des: 组织模块表单
+ * @des: 团队模块表单
  */
 public class OrgForm extends BaseForm<Long> {
     /**
-     * 组织名称（只能字母和汉字）
+     * 团队名称（只能字母和汉字）
      */
     @NotNull(message = "字段【name】必填", groups = {InsertGroup.class})
-    @NotBlank(message = "请输入组织名称", groups = {InsertGroup.class})
-    @Length(min = 2, max = 30, message = "组织名称在{min}~{max}个字符之间", groups = {InsertGroup.class, UpdateGroup.class})
-    @Pattern(regexp = "^[\\u4e00-\\u9fa5a-zA-Z]+$", message = "组织名称只能字母和汉字", groups = {InsertGroup.class, UpdateGroup.class})
+    @NotBlank(message = "请输入团队名称", groups = {InsertGroup.class})
+    @Length(min = 2, max = 30, message = "团队名称在{min}~{max}个字符之间", groups = {InsertGroup.class, UpdateGroup.class})
+    @Pattern(regexp = "^[\\u4e00-\\u9fa5a-zA-Z]+$", message = "团队名称只能字母和汉字", groups = {InsertGroup.class, UpdateGroup.class})
     private String name;
     /**
      * 描述
      */
     @NotNull(message = "字段【desc】必填", groups = {InsertGroup.class})
-    @NotBlank(message = "请输入组织描述", groups = {InsertGroup.class})
-    @Length(min = 3, max = 500, message = "组织简介在{min}~{max}个字符之间", groups = {InsertGroup.class, UpdateGroup.class})
+    @NotBlank(message = "请输入团队描述", groups = {InsertGroup.class})
+    @Length(min = 3, max = 500, message = "团队简介在{min}~{max}个字符之间", groups = {InsertGroup.class, UpdateGroup.class})
     private String desc;
 
     public String getName() {
