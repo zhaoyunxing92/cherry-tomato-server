@@ -118,6 +118,7 @@ public class AppGlobalExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Response mybatisSQLException(AppGlobalException ex) {
+        logger.error(ex.getResult().toString());
         return new Response<Response.Result>(ex.getResult());
     }
 }
