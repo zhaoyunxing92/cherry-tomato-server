@@ -33,13 +33,13 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class AppUserAuthServiceImpl implements AppUserAuthService {
     @Autowired
-    private AppUserByUsernameMapper appUserByUsernameMapper;
+    private AppUserByUsernameMapper       appUserByUsernameMapper;
     @Autowired
-    private AppUserByEmailMapper appUserByEmailMapper;
+    private AppUserByEmailMapper          appUserByEmailMapper;
     @Autowired
-    private AppUserByMobileMapper appUserByMobileMapper;
+    private AppUserByMobileMapper         appUserByMobileMapper;
     @Autowired
-    private AppUserMapper appUserMapper;
+    private AppUserMapper                 appUserMapper;
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -85,8 +85,9 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
 
         //保存用户信息，生成token 用户username 方便以后管理员修改用户信息
         String username = appUserVo.getUsername();
-        String token = Md5Util.encrypt(username);
-        CookieUtil.setCookie(res, AppUserAuthService.tokenKey, token);
+        String token    = Md5Util.encrypt(username);
+        //TODO: 去除cookie设置token
+        // CookieUtil.setCookie(res, AppUserAuthService.tokenKey, token);
         appUserVo.setToken(token);
         // added to the redis
         redisTemplate.opsForValue().set(token, appUserVo);
@@ -130,15 +131,15 @@ public class AppUserAuthServiceImpl implements AppUserAuthService {
         }
 
         //注册
-        String password = form.getPassword();
-        AppUser user = new AppUser();
+        String  password = form.getPassword();
+        AppUser user     = new AppUser();
         user.setEmail(email);
         user.setUsername(userName);
         user.setPassword(Md5Util.encrypt(password));
         appUserMapper.insertSelective(user);
 
         //添加根据邮箱查询
-        Long userId = user.getId();
+        Long           userId         = user.getId();
         AppUserByEmail appUserByEmail = new AppUserByEmail();
         appUserByEmail.setEmail(email);
         appUserByEmail.setUserId(userId);
