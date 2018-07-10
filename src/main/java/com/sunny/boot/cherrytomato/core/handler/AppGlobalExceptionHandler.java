@@ -116,7 +116,7 @@ public class AppGlobalExceptionHandler {
      */
     @ExceptionHandler({AppGlobalException.class})
     @ResponseBody
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Response mybatisSQLException(AppGlobalException ex) {
         return new Response<Response.Result>(ex.getResult());
     }
