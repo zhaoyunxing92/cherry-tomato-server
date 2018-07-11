@@ -24,6 +24,7 @@ public class HttpRequestTwiceReadingWrapper extends HttpServletRequestWrapper {
 
     public HttpRequestTwiceReadingWrapper(HttpServletRequest request) throws IOException {
         super(request);
+//        StreamUtils.copyToByteArray((InputStream) request);
         body = getBodyString(request).getBytes(Charset.forName("UTF-8"));
     }
 
