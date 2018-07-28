@@ -66,6 +66,7 @@
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
             <version>${mybatis.generator.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Mybatis -->
