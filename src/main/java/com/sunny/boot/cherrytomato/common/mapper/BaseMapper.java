@@ -11,15 +11,15 @@ import java.io.Serializable;
  * @des:
  */
 public interface BaseMapper<T extends BaseModel<ID>, ID extends Serializable> {
-    long deleteByPrimaryKey(ID id);
+    int deleteByPrimaryKey(ID id);
 
-    long insert(T record);
+    int insert(T record);
 
-    long insertSelective(T record);
+    int insertSelective(T record);
 
     T selectByPrimaryKey(ID id);
 
-    long updateByPrimaryKeySelective(T record);
+    int updateByPrimaryKeySelective(T record);
 
-    long updateByPrimaryKey(T record);
+    int updateByPrimaryKey(T record);
 }
