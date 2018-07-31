@@ -85,7 +85,7 @@ public class AppGlobalExceptionHandler {
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-    public Response mybatisSQLException(HttpRequestMethodNotSupportedException ex) {
+    public Response methodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
         System.out.println(ex.getMessage());
         return new Response<>(415, ex.getMessage());
 
