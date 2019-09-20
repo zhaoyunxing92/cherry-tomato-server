@@ -1,20 +1,23 @@
-package com.sunny.boot.cherrytomato.common.model;
+package io.github.sunny.cherry.tomato.core.common.model;
 
-import com.sunny.boot.cherrytomato.common.context.AppUserContext;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Objects;
 
 /**
- * @author sunny
- * @class: com.sunny.workflow.user.common.model.BaseModel
+ * 基础实体模型
+ *
+ * @author zhaoyunxing
  * @date: 2018-05-18 17:00
- * @des: 父模型
  */
+@Data
 public class BaseModel<ID extends Serializable> implements Serializable {
 
     private static final long serialVersionUID = 720013901235423189L;
+    /**
+     * id
+     */
     private ID id;
 
     /**
@@ -43,62 +46,4 @@ public class BaseModel<ID extends Serializable> implements Serializable {
      * 修改时间
      */
     private Date modifyDate;
-
-    public ID getId() {
-        return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Integer getVersions() {
-        return versions;
-    }
-
-    public void setVersions(Integer versions) {
-        this.versions = versions;
-    }
-
-    public Long getCreator() {
-        //  return creator;
-        return Objects.isNull(creator) ? AppUserContext.userId() : creator;
-    }
-
-    public void setCreator(Long creator) {
-        this.creator = creator;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Long getModifier() {
-        //return modifier;
-        return Objects.isNull(modifier) ? AppUserContext.userId() : modifier;
-    }
-
-    public void setModifier(Long modifier) {
-        this.modifier = modifier;
-    }
-
-    public Date getModifyDate() {
-        return modifyDate;
-    }
-
-    public void setModifyDate(Date modifyDate) {
-        this.modifyDate = modifyDate;
-    }
 }

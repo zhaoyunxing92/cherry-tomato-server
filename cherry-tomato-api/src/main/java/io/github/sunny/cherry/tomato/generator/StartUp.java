@@ -1,4 +1,4 @@
-package com.sunny.boot.generator;
+package io.github.sunny.cherry.tomato.generator;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
@@ -9,7 +9,6 @@ import org.mybatis.generator.internal.DefaultShellCallback;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

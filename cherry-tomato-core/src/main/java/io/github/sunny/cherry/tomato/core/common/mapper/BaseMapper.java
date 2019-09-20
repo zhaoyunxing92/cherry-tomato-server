@@ -1,25 +1,54 @@
-package com.sunny.boot.cherrytomato.common.mapper;
+package io.github.sunny.cherry.tomato.core.common.mapper;
 
-import com.sunny.boot.cherrytomato.common.model.BaseModel;
+import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
 
 import java.io.Serializable;
 
 /**
+ * 基础mybatis操作
+ *
  * @author sunny
- * @class: com.sunny.workflow.user.common.mapper.BaseMapper
  * @date: 2018-05-18 17:07
- * @des:
  */
 public interface BaseMapper<T extends BaseModel<ID>, ID extends Serializable> {
+    
+    /**
+     * 根据id删除
+     *
+     * @param id id
+     * @return 返回影响行数
+     */
     int deleteByPrimaryKey(ID id);
 
-    int insert(T record);
-
+    /**
+     * 插入实体
+     *
+     * @param record 实体
+     * @return 返回影响行数
+     */
     int insertSelective(T record);
 
+    /**
+     * 根据id查询实体
+     *
+     * @param id id
+     * @return T
+     */
     T selectByPrimaryKey(ID id);
 
+    /**
+     * 更新实体
+     *
+     * @param record T
+     * @return 返回影响行数
+     */
     int updateByPrimaryKeySelective(T record);
 
+    /**
+     * 更新实体
+     *
+     * @param record T
+     * @return 返回影响行数
+     */
     int updateByPrimaryKey(T record);
 }

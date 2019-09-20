@@ -4,9 +4,10 @@
 package io.github.sunny.cherry.tomato.core.common;
 
 /**
+ * 统一返回结果
+ *
  * @author zhaoyunxing
  * @date: 2019-09-20 14:02
- * @desc:
  */
-public class ApiResult {
+public class ApiResult<T> {
 }

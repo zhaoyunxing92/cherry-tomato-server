@@ -1,4 +1,4 @@
-package com.sunny.boot.generator;
+package io.github.sunny.cherry.tomato.generator;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

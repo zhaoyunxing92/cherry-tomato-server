@@ -1,17 +1,14 @@
-package com.sunny.boot.generator.mybatis.plugin;
+package io.github.sunny.cherry.tomato.generator.mybatis.plugin;
 
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.*;
-import org.mybatis.generator.internal.util.StringUtility;
 import org.springframework.util.StringUtils;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 /**
  * @author sunny
