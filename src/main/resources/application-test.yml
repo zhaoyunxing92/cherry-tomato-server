@@ -1,8 +1,0 @@
-server:
-  port: 8100
-  servlet:
-    context-path: /tomato/api
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/file
