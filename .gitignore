@@ -26,3 +26,5 @@
 /logs/
 /src/test/
 /src/main/resources/generatorConfig.xml
+
+**/.vagrant
