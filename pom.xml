@@ -12,6 +12,7 @@
         <module>cherry-tomato-api</module>
         <module>cherry-tomato-server</module>
         <module>cherry-tomato-core</module>
+        <module>cherry-tomato-generator</module>
     </modules>
 
     <name>cherry-tomato-parent</name>
@@ -25,7 +26,7 @@
     </developers>
 
     <properties>
-        <revision>1.0.0.RELEASE</revision>
+        <revision>1.0.0</revision>
         <spring.boot>2.1.0.RELEASE</spring.boot>
         <mybatis.spring.version>2.0.1</mybatis.spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

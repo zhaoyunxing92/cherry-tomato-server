@@ -1,0 +1,15 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: cherry-tomato-api
+  profiles:
+    active: local
+#  redis:
+#    database: 13
+#    host: 192.168.200.22
+#    port: 30044
+#    password: Bn3oNpnuAO2yM9B8yciM
+
+
+

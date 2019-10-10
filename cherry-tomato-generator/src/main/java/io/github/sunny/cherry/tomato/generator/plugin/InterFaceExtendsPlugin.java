@@ -1,4 +1,4 @@
-package io.github.sunny.cherry.tomato.generator.mybatis.plugin;
+package io.github.sunny.cherry.tomato.generator.plugin;
 
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
@@ -12,9 +12,7 @@ import java.util.Properties;
 
 /**
  * @author sunny
- * @class: com.sunny.boot.generator.mybatis.plugin.InterFaceExtendsPlugin
  * @date: 2018-06-09 21:22
- * @des: mybatis 插件
  */
 public class InterFaceExtendsPlugin extends PluginAdapter {
     /**
@@ -35,7 +33,6 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
     @Override
     public void setProperties(Properties properties) {
         super.setProperties(properties);
-
 
         /**
          * 添加baseMapper
@@ -90,7 +87,7 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
             // topLevelClass.
             topLevelClass.addImportedType(baseModel);
             //topLevelClass.addsu
-//      topLevelClass
+            //      topLevelClass
 
             topLevelClass.addSuperInterface(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
 
@@ -106,7 +103,6 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
     @Override
     public boolean modelGetterMethodGenerated(Method method, TopLevelClass topLevelClass,
                                               IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, ModelClassType modelClassType) {
-
         //topLevelClass.addFileCommentLine("/**modelGetterMethodGenerated*/");
 
         return true;
