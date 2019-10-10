@@ -24,10 +24,10 @@ import java.text.SimpleDateFormat;
  * @date: 2019-09-20 13:56
  */
 @Configuration
+@ConditionalOnClass(RedisOperations.class)
 public class AppConfig {
 
     @Bean
-    @ConditionalOnClass(RedisOperations.class)
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         /**
          * 配置自己的redisTemplate
