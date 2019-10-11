@@ -2,7 +2,7 @@ server:
   port: 8100
 spring:
   application:
-    name: cherry-tomato-api
+    name: cherry-tomato
   profiles:
     active: local
 #  redis:

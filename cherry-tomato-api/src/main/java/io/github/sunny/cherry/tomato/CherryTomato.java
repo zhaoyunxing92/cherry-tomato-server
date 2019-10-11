@@ -9,12 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author zhaoyunxing
  * @date: 2019-09-20 13:34
- * @desc:
  */
 @SpringBootApplication
-public class CherryTomatoServerApi {
+public class CherryTomato {
 
     public static void main(String[] args) {
-        SpringApplication.run(CherryTomatoServerApi.class, args);
+        SpringApplication.run(CherryTomato.class, args);
     }
 }
