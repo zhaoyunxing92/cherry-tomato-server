@@ -25,7 +25,7 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/> -->
 
         <!-- mybatis自己的注释 -->
-        <commentGenerator type="io.github.sunny.cherry.tomato.generator.MyCommentGenerator">
+        <commentGenerator type="io.github.sunny.cherry.tomato.generator.CherryCommentGenerator">
             <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
             <property name="suppressDate" value="false"/><!-- 是否生成注释带时间戳 -->
             <!--<property name="mergeable" value="false"></property>  &lt;!&ndash;覆盖&ndash;&gt;-->

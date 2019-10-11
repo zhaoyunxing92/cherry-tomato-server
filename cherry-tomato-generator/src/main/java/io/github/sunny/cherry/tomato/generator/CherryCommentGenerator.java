@@ -9,10 +9,8 @@ import org.mybatis.generator.config.MergeConstants;
 import org.mybatis.generator.config.PropertyRegistry;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Properties;
 
 import static org.mybatis.generator.internal.util.StringUtility.isTrue;
@@ -21,7 +19,7 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
  * @author sunny
  * @date: 2018-06-09 15:27
  */
-public class MyCommentGenerator extends DefaultCommentGenerator {
+public class CherryCommentGenerator extends DefaultCommentGenerator {
     private Properties properties;
     private Properties systemPro;
     private boolean suppressDate;
@@ -32,7 +30,7 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
      */
     private int currentYear;
 
-    public MyCommentGenerator() {
+    public CherryCommentGenerator() {
         super();
         properties = new Properties();
         systemPro = System.getProperties();
