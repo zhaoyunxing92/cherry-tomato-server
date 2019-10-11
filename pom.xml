@@ -13,7 +13,6 @@
         <module>cherry-tomato-server</module>
         <module>cherry-tomato-core</module>
         <module>cherry-tomato-generator</module>
-        <module>cherry-tomato-security</module>
     </modules>
 
     <name>cherry-tomato-parent</name>
