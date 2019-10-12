@@ -28,14 +28,14 @@ import java.text.SimpleDateFormat;
 public class AppConfig {
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         /**
          * 配置自己的redisTemplate
          * StringRedisTemplate 默认使用使用StringRedisSerializer来序列化
          * RedisTemplate 默认使用JdkSerializationRedisSerializer来序列化
          */
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        redisTemplate.setConnectionFactory(factory);
 
         //开启默认类型
         ObjectMapper objectMapper = new ObjectMapper();

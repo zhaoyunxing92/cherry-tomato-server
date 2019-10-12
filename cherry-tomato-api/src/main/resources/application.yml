@@ -1,3 +1,9 @@
+#redis:
+#  database: 13
+#  host: 192.168.200.22
+#  port: 30044
+#  password: Bn3oNpnuAO2yM9B8yciM
+
 server:
   port: 8100
 spring:
@@ -5,11 +11,10 @@ spring:
     name: @project.artifactId@
   profiles:
     active: local
-#  redis:
-#    database: 13
-#    host: 192.168.200.22
-#    port: 30044
-#    password: Bn3oNpnuAO2yM9B8yciM
-
-
+  redis:
+    database:
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848
+    type: yaml
 

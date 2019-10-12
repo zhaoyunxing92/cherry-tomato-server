@@ -29,3 +29,5 @@
 
 **/.vagrant
 **/**.box
+
+*.flattened-pom.xml
