@@ -3,18 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cherry-tomato-server</artifactId>
+        <artifactId>cherry-tomato-cache</artifactId>
         <groupId>io.github.sunny</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cherry-tomato-cache</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>cherry-tomato-cache-api</artifactId>
 
-    <modules>
-        <module>cherry-tomato-cache-api</module>
-        <module>cherry-tomato-cache-server</module>
-    </modules>
 
 </project>
