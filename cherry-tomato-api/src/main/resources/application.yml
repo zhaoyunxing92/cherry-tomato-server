@@ -11,10 +11,8 @@ spring:
     name: @project.artifactId@
   profiles:
     active: local
-  redis:
-    database:
-nacos:
-  config:
-    server-addr: 127.0.0.1:8848
-    type: yaml
-
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+  scan:
+    base-packages: io.github.sunny.cherry.tomato.controller
