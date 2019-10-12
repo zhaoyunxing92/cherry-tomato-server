@@ -1,7 +1,7 @@
 /**
  * Copyright(C) 2019 Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.
  */
-package io.github.sunny.cherry.tomato.core.config;
+package io.github.sunny.cherry.tomato.cache.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -18,15 +18,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.text.SimpleDateFormat;
 
 /**
- * 配置redis
- *
  * @author zhaoyunxing
- * @date: 2019-09-20 13:56
+ * @date: 2019-10-12 18:14
  */
 @Configuration
 @ConditionalOnClass(RedisOperations.class)
-public class AppConfig {
-
+public class RedisConfig {
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
         /**
