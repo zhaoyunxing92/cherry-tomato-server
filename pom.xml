@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.sunny</groupId>
-    <artifactId>cherry-tomato-parent</artifactId>
+    <artifactId>cherry-tomato</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
@@ -16,7 +16,7 @@
         <module>cherry-tomato-dependencies</module>
     </modules>
 
-    <name>cherry-tomato-parent</name>
+    <name>cherry-tomato</name>
     <description>小番茄系统</description>
 
     <developers>
@@ -51,6 +51,21 @@
             <dependency>
                 <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-server</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-cache-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-oss-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-security-api</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>

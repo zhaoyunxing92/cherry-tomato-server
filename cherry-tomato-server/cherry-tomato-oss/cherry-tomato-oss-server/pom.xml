@@ -11,5 +11,14 @@
 
     <artifactId>cherry-tomato-oss-server</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-oss-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>
