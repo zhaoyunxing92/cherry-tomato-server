@@ -10,6 +10,6 @@
     </parent>
 
     <artifactId>cherry-tomato-oss</artifactId>
-
+    <description>主要通过mongodb存储图片</description>
 
 </project>

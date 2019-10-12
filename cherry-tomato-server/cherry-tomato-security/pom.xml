@@ -11,6 +11,6 @@
 
 
     <artifactId>cherry-tomato-security</artifactId>
-
+    <description>cherry的安全模块</description>
 
 </project>
