@@ -42,8 +42,9 @@
         <mysql.connector.java.version>5.0.5</mysql.connector.java.version>
         <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <nacos.version>1.1.1</nacos.version>
-        <dubbo.version>2.7.3</dubbo.version>
+<!--        <nacos.version>1.1.1</nacos.version>-->
+<!--        <dubbo.version>2.7.3</dubbo.version>-->
+        <alibaba.cloud.version>2.1.0.RELEASE</alibaba.cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -120,23 +121,31 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-client</artifactId>
-                <version>${nacos.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${dubbo.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.nacos</groupId>-->
+<!--                <artifactId>nacos-client</artifactId>-->
+<!--                <version>${nacos.version}</version>-->
+<!--            </dependency>-->
 
-            <!-- Dubbo Registry Nacos -->
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-registry-nacos</artifactId>
-                <version>${dubbo.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.apache.dubbo</groupId>-->
+<!--                <artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--                <version>${dubbo.version}</version>-->
+<!--            </dependency>-->
+
+<!--            &lt;!&ndash; Dubbo Registry Nacos &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.dubbo</groupId>-->
+<!--                <artifactId>dubbo-registry-nacos</artifactId>-->
+<!--                <version>${dubbo.version}</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
