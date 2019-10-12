@@ -16,6 +16,7 @@
         <module>cherry-tomato-oss</module>
         <module>cherry-tomato-security</module>
         <module>cherry-tomato-cache</module>
+        <module>cherry-tomato-account</module>
     </modules>
 
     <dependencies>

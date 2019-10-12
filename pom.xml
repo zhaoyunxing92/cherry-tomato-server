@@ -69,6 +69,16 @@
             </dependency>
             <dependency>
                 <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-account-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-dubbo-mysql</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-core</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -126,24 +136,24 @@
                 <scope>import</scope>
             </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.nacos</groupId>-->
-<!--                <artifactId>nacos-client</artifactId>-->
-<!--                <version>${nacos.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.alibaba.nacos</groupId>-->
+            <!--                <artifactId>nacos-client</artifactId>-->
+            <!--                <version>${nacos.version}</version>-->
+            <!--            </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>org.apache.dubbo</groupId>-->
-<!--                <artifactId>dubbo-spring-boot-starter</artifactId>-->
-<!--                <version>${dubbo.version}</version>-->
-<!--            </dependency>-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.dubbo</groupId>-->
+            <!--                <artifactId>dubbo-spring-boot-starter</artifactId>-->
+            <!--                <version>${dubbo.version}</version>-->
+            <!--            </dependency>-->
 
-<!--            &lt;!&ndash; Dubbo Registry Nacos &ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.apache.dubbo</groupId>-->
-<!--                <artifactId>dubbo-registry-nacos</artifactId>-->
-<!--                <version>${dubbo.version}</version>-->
-<!--            </dependency>-->
+            <!--            &lt;!&ndash; Dubbo Registry Nacos &ndash;&gt;-->
+            <!--            <dependency>-->
+            <!--                <groupId>org.apache.dubbo</groupId>-->
+            <!--                <artifactId>dubbo-registry-nacos</artifactId>-->
+            <!--                <version>${dubbo.version}</version>-->
+            <!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
