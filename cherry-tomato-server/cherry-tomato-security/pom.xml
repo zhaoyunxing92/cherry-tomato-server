@@ -9,8 +9,13 @@
         <version>${revision}</version>
     </parent>
 
-
     <artifactId>cherry-tomato-security</artifactId>
+    <packaging>pom</packaging>
     <description>cherry的安全模块</description>
+
+    <modules>
+        <module>cherry-tomato-security-api</module>
+        <module>cherry-tomato-security-server</module>
+    </modules>
 
 </project>

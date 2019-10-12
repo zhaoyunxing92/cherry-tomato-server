@@ -2,20 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>cherry-tomato-server</artifactId>
+        <artifactId>cherry-tomato-oss</artifactId>
         <groupId>io.github.sunny</groupId>
         <version>${revision}</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cherry-tomato-oss</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>cherry-tomato-oss-api</artifactId>
 
-    <description>主要通过mongodb存储图片</description>
-    <modules>
-        <module>cherry-tomato-oss-api</module>
-        <module>cherry-tomato-oss-server</module>
-    </modules>
 
 </project>
