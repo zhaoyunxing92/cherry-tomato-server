@@ -25,6 +25,6 @@ dubbo:
   protocol:
     name: dubbo
     port: 20879
-    host: 192.168.3.20
+#    host: 192.168.3.20
   consumer:
     check: false

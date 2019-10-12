@@ -15,4 +15,6 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
-    host: 192.168.3.20
+#  registry:
+#    address: nacos://127.0.0.1:8848
+#    host: 192.168.3.20

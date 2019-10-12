@@ -15,4 +15,4 @@ dubbo:
   protocol:
     name: dubbo
     port: 20881
-    host: 192.168.3.20
+#    host: 192.168.3.20
