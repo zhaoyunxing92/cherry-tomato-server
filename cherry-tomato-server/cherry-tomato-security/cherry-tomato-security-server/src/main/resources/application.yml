@@ -11,8 +11,8 @@ spring:
         server-addr: 127.0.0.1:8848
 dubbo:
   scan:
-    base-packages: io.github.sunny.cherry.tomato.cache.service
+    base-packages: io.github.sunny.cherry.tomato.security.service
   protocol:
     name: dubbo
-    port: 20880
+    port: 20882
     host: 192.168.3.20

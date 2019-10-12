@@ -41,10 +41,11 @@
         <logger name="com.alibaba" level="ERROR"/>
         <logger name="io.lettuce.core" level="INFO"/>
         <logger name="io.netty" level="INFO"/>
+        <logger name="org.apache.dubbo.remoting" level="INFO"/>
         <logger name="org.springframework.web.client.RestTemplate" level="INFO"/>
         <root level="DEBUG">
             <appender-ref ref="console"/>
-            <appender-ref ref="file"/>
+<!--            <appender-ref ref="file"/>-->
         </root>
     </springProfile>
 
@@ -56,6 +57,7 @@
         <logger name="org.hibernate" level="ERROR"/>
         <logger name="org.apache.http" level="ERROR"/>
         <logger name="org.apache.kafka" level="ERROR"/>
+        <logger name="org.apache.dubbo.remoting" level="INFO"/>
         <logger name="io.lettuce.core.protocol.CommandEncoder" level="INFO"/>
         <root level="DEBUG">
             <appender-ref ref="file"/>
