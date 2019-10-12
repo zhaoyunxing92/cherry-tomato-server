@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cherry-tomato-dubbo-mysql</artifactId>
+    <artifactId>cherry-tomato-dubbo-mongo</artifactId>
 
     <dependencies>
         <dependency>
@@ -17,5 +17,4 @@
             <artifactId>cherry-tomato-dubbo</artifactId>
         </dependency>
     </dependencies>
-
 </project>

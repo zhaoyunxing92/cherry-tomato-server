@@ -17,6 +17,7 @@
         <module>cherry-tomato-security</module>
         <module>cherry-tomato-cache</module>
         <module>cherry-tomato-account</module>
+        <module>cherry-tomato-team</module>
     </modules>
 
     <dependencies>

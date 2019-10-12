@@ -74,7 +74,17 @@
             </dependency>
             <dependency>
                 <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-team-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-dubbo-mysql</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-dubbo-mongo</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
