@@ -29,5 +29,6 @@
 
 **/.vagrant
 **/**.box
+/vagrant/Vagrantfile
 
 *.flattened-pom.xml
