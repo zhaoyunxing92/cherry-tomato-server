@@ -4,7 +4,6 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql
-    #privileged: true  # 授权
     command: --default-authentication-plugin=mysql_native_password # 指定使用插件
     network_mode: host
     ports:
@@ -12,12 +11,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: '123456' # root用户密码
     volumes:
-      - ./mysql:/docker-entrypoint-initdb.d # 初始化sql
+      - ./conf/mysql:/docker-entrypoint-initdb.d # 初始化sql
       - /data/mysql:/var/lib/mysql # 数据挂载
   redis:
     image: redis:5.0.4
     container_name: redis
-    #privileged: true  # 授权
     network_mode: host
     ports:
       - 6379:6379
@@ -32,8 +30,6 @@ services:
     ports:
       - 8848:8848
     environment:
-      #      - PREFER_HOST_MODE=hostname
       - MODE=standalone
     volumes:
-      #      - ./standalone-logs/:/home/nacos/logs
-      - ./nacos/custom.properties:/home/nacos/init.d/custom.properties
+      - ./conf/nacos/custom.properties:/home/nacos/init.d/custom.properties
