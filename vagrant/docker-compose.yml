@@ -25,3 +25,15 @@ services:
       - ./conf/redis/redis.conf:/etc/redis/redis.conf # 把当前的redis.conf挂载到容器中
       - /data/redis:/data # 数据目录挂载出来
     command: redis-server /etc/redis/redis.conf
+  nacos:
+    image: nacos/nacos-server:latest
+    container_name: nacos
+    network_mode: host
+    ports:
+      - 8848:8848
+    environment:
+      #      - PREFER_HOST_MODE=hostname
+      - MODE=standalone
+    volumes:
+      #      - ./standalone-logs/:/home/nacos/logs
+      - ./nacos/custom.properties:/home/nacos/init.d/custom.properties
