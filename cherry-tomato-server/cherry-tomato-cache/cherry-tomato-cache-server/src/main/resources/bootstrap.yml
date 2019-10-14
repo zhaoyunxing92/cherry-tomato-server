@@ -13,7 +13,7 @@ dubbo:
   registry:
     address: spring-cloud://localhost:8848
   scan:
-    base-packages: io.github.sunny.cherry.tomato
+    base-packages: io.github.sunny.cherry.tomato.cache.service
   protocol:
     name: dubbo
     port: -1
