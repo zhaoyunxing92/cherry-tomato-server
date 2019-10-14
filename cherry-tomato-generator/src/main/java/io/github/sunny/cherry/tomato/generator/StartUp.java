@@ -18,6 +18,7 @@ import java.util.List;
  * @date: 2018-06-09 15:26
  */
 public class StartUp {
+
     public static void main(String[] args) {
         try {
             List<String> warnings = new ArrayList<String>();
