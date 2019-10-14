@@ -34,16 +34,16 @@
         <!-- !!!! Database Configurations !!!! -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://127.0.0.1:3306/cherry_tomato?useUnicode=true&amp;characterEncoding=UTF-8"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&amp;characterEncoding=UTF-8"
                 userId="root"
-                password="root"/>
+                password="123456"/>
         <!-- 类型转换 -->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.sunny.boot.cherrytomato.project.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="io.github.sunny.cherry.tomato.team.model" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-team/cherry-tomato-team-server/src/main/java">
             <property name="constructorBased" value="false"/>
             <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
@@ -51,18 +51,22 @@
         </javaModelGenerator>
 
         <!-- sql-->
-        <sqlMapGenerator targetPackage="com.sunny.boot.cherrytomato.project.mapper.xml" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="io.github.sunny.cherry.tomato.team.mapper.xml" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-team/cherry-tomato-team-server/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--mapper-->
-        <javaClientGenerator targetPackage="com.sunny.boot.cherrytomato.project.mapper" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.team.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-team/cherry-tomato-team-server/src/main/java/io/github/sunny/cherry/tomato/team/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="org_project" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="cherry_team" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="cherry_team_member" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false">
         </table>
     </context>
 </generatorConfiguration>
