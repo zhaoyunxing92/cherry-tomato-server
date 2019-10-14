@@ -5,6 +5,7 @@ package io.github.sunny.cherry.tomato;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author zhaoyunxing
