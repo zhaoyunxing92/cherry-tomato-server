@@ -34,16 +34,19 @@ public class BaseModel<ID extends Serializable> implements Serializable {
      * 创建人
      */
     private Long creator;
+
     /**
      * 创建时间
      */
-    private Date createDate;
+    private Date creatorTime;
+
     /**
      * 修改人
      */
     private Long modifier;
+
     /**
      * 修改时间
      */
-    private Date modifyDate;
+    private Date modifierTime;
 }

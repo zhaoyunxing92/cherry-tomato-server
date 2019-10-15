@@ -29,8 +29,8 @@ public class CherryGenerator {
             DefaultShellCallback callback = new DefaultShellCallback(true);
             MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
             myBatisGenerator.generate(null);
-        } catch (SQLException | IOException | InterruptedException | XMLParserException | InvalidConfigurationException e) {
-            e.printStackTrace();
+        } catch (SQLException | IOException | InterruptedException | XMLParserException | InvalidConfigurationException ex) {
+            ex.printStackTrace();
         }
     }
 }
