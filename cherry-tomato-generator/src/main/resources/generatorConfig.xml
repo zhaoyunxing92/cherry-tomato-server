@@ -5,9 +5,7 @@
 <generatorConfiguration>
     <!--文本来源：http://blog.csdn.net/sunny243788557/article/details/45166397
                   http://www.jianshu.com/p/e09d2370b796-->
-    <!-- !!!! Driver Class Path !!!! -->
-    <!--<classPathEntry-->
-    <!--location="G:\data\.m2\repository\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>-->
+
     <context id="context" targetRuntime="MyBatis3">
         <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
@@ -17,12 +15,6 @@
             <property name="baseMapper" value="io.github.sunny.cherry.tomato.core.common.mapper.BaseMapper"/>
             <property name="baseModel" value="io.github.sunny.cherry.tomato.core.common.model.BaseModel"/>
         </plugin>
-
-        <!-- Java模型生成equals和hashcode方法
-        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
-
-        <!-- 为生成的Java模型创建一个toString方法
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/> -->
 
         <!-- mybatis自己的注释 -->
         <commentGenerator type="io.github.sunny.cherry.tomato.generator.CherryCommentGenerator">
@@ -47,7 +39,6 @@
             <property name="constructorBased" value="false"/>
             <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
-            <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- sql-->
@@ -56,17 +47,15 @@
         </sqlMapGenerator>
 
         <!--mapper-->
-        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.team.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-team/cherry-tomato-team-server/src/main/java/io/github/sunny/cherry/tomato/team/src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.team.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-team/cherry-tomato-team-server/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="cherry_team" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
+        <table tableName="cherry_team" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <table tableName="cherry_team_member" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false">
+        <table tableName="cherry_team_member" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
         </table>
 
     </context>
