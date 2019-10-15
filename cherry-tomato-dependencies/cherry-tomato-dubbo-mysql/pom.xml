@@ -17,5 +17,4 @@
             <artifactId>cherry-tomato-dubbo</artifactId>
         </dependency>
     </dependencies>
-
 </project>

@@ -13,7 +13,7 @@
         <property name="javaFileEncoding" value="UTF-8"/>
 
         <!-- 为继承的BaseMapper接口添加对应的实现类 -->
-        <plugin type="io.github.sunny.cherry.tomato.generator.mybatis.plugin.InterFaceExtendsPlugin">
+        <plugin type="io.github.sunny.cherry.tomato.generator.plugin.InterFaceExtendsPlugin">
             <property name="baseMapper" value="io.github.sunny.cherry.tomato.core.common.mapper.BaseMapper"/>
             <property name="baseModel" value="io.github.sunny.cherry.tomato.core.common.model.BaseModel"/>
         </plugin>
@@ -68,5 +68,6 @@
         <table tableName="cherry_team_member" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false">
         </table>
+
     </context>
 </generatorConfiguration>
