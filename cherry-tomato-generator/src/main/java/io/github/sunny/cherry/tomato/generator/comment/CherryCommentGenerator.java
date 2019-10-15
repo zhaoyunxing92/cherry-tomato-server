@@ -1,4 +1,4 @@
-package io.github.sunny.cherry.tomato.generator;
+package io.github.sunny.cherry.tomato.generator.comment;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -22,7 +22,6 @@ import static org.mybatis.generator.internal.util.StringUtility.isTrue;
  */
 public class CherryCommentGenerator extends DefaultCommentGenerator {
     private Properties properties;
-    private Properties systemPro;
     private boolean suppressDate;
     private boolean suppressAllComments;
     private String currentDateStr;
@@ -34,9 +33,6 @@ public class CherryCommentGenerator extends DefaultCommentGenerator {
     public CherryCommentGenerator() {
         super();
         properties = new Properties();
-        systemPro = System.getProperties();
-        // suppressDate = false;
-        // suppressAllComments = false;
 
         currentDateStr = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         currentYear = LocalDate.now().getYear();
@@ -63,52 +59,6 @@ public class CherryCommentGenerator extends DefaultCommentGenerator {
         field.addJavaDocLine(sb.toString().replace("\n", " "));
 
         field.addJavaDocLine(" */");
-    }
-
-    @Override
-    public void addFieldComment(Field field, IntrospectedTable introspectedTable) {
-        if (suppressAllComments) {
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        field.addJavaDocLine("/**");
-        sb.append(" * ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        field.addJavaDocLine(sb.toString().replace("\n", " "));
-        field.addJavaDocLine(" */");
-    }
-
-    @Override
-    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
-        if (suppressAllComments) {
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        innerClass.addJavaDocLine("/**");
-        sb.append(" * ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        sb.append(" ");
-        // sb.append(getDateString());
-        innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
-        innerClass.addJavaDocLine(" */");
-    }
-
-    @Override
-    public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable, boolean b) {
-        if (suppressAllComments) {
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        innerClass.addJavaDocLine("/**");
-        sb.append(" * ");
-        sb.append(introspectedTable.getFullyQualifiedTable());
-        innerClass.addJavaDocLine(sb.toString().replace("\n", " "));
-        sb.setLength(0);
-        sb.append(" * @author:");
-        sb.append(" *sdfdf");
-        sb.append(" ");
-        sb.append(currentDateStr);
-        innerClass.addJavaDocLine(" */");
     }
 
     @Override
@@ -189,20 +139,16 @@ public class CherryCommentGenerator extends DefaultCommentGenerator {
         sb.append(" * Copyright(C) " + currentYear + " Hangzhou sunny Technology Co., Ltd. All rights reserved.");
         compilationUnit.addFileCommentLine(sb.toString());
         compilationUnit.addFileCommentLine(" */");
-        return;
     }
 
     @Override
     public void addComment(XmlElement xmlElement) {
-
         xmlElement.addElement(new TextElement("<!-- Don't change -->"));
-        return;
     }
 
     @Override
     public void addRootComment(XmlElement xmlElement) {
         //xmlElement.addElement(new TextElement("<!-- sunny -->"));
-        return;
     }
 
     /**
