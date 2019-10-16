@@ -11,7 +11,7 @@ spring:
         server-addr: 127.0.0.1:8848
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&amp;characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
 
@@ -23,6 +23,7 @@ dubbo:
   protocol:
     name: dubbo
     port: -1
+
 mybatis:
   mapper-locations: classpath:io/github/sunny/cherry/tomato/security/mapper/xml/*.xml
   type-aliases-package: io.github.sunny.cherry.tomato.security.model

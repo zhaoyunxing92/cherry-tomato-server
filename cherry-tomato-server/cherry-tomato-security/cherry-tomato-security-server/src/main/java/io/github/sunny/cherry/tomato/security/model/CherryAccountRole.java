@@ -1,19 +1,19 @@
 /**
- * Copyright(C) 2019 Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.
+ * Copyright(C) 2019 Hangzhou sunny Technology Co., Ltd. All rights reserved.
  */
-package io.github.sunny.cherry.tomato.security.dto;
+package io.github.sunny.cherry.tomato.security.model;
 
 import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @author zhaoyunxing
- * @date: 2019-10-16 13:45
+ * @author sunny
+ * @date: 2019-10-16 13:13:07
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CherryAccountRoleDto extends BaseModel<Long> {
+public class CherryAccountRole extends BaseModel<Long> {
     /**
      * 账户id
      */
