@@ -11,5 +11,10 @@
 
     <artifactId>cherry-tomato-cache-api</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-service-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

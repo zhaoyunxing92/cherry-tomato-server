@@ -9,9 +9,15 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+
 dubbo:
   scan:
     base-packages: io.github.sunny.cherry.tomato.account.service
   protocol:
     name: dubbo
-    port: 20884
+    port: -1

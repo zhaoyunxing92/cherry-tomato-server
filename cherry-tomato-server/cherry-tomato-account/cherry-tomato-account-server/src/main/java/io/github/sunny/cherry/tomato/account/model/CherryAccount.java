@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
  * @date: 2019-10-16 10:20:20
  */
 @Data
-@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 public class CherryAccount extends BaseModel<Long> {
     /**

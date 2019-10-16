@@ -3,7 +3,6 @@
  */
 package io.github.sunny.cherry.tomato.team.service.impl;
 
-import io.github.sunny.cherry.tomato.dubbo.mysql.generator.comment.CherryCommentGenerator;
 import io.github.sunny.cherry.tomato.team.service.TeamService;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -13,5 +12,5 @@ import org.apache.dubbo.config.annotation.Service;
  */
 @Service
 public class TeamServiceImpl implements TeamService {
-    CherryCommentGenerator cherryCommentGenerator = new CherryCommentGenerator();
+
 }

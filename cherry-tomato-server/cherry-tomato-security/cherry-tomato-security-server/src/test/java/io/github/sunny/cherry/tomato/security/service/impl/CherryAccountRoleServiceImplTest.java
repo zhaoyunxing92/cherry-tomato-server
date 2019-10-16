@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.validation.ConstraintViolationException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -18,11 +20,11 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class CherryAccountRoleServiceImplTest {
 
-    @Reference
+    @Reference(validation = "true")
     private CherryAccountRoleService cherryAccountRoleService;
 
     @Test
     public void assignRoles() {
-        cherryAccountRoleService.assignRoles(1005L, 1001L);
+        cherryAccountRoleService.assignRoles(10000L, 1001L);
     }
 }

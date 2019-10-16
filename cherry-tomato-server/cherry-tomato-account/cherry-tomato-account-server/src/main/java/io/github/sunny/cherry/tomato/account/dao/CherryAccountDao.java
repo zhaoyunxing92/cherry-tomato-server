@@ -5,6 +5,7 @@ package io.github.sunny.cherry.tomato.account.dao;
 
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.model.CherryAccount;
+import io.github.sunny.cherry.tomato.core.result.Response;
 
 /**
  * @author zhaoyunxing
@@ -18,5 +19,5 @@ public interface CherryAccountDao {
      * @param dto {@link CherryAccount}
      * @return {@link CherryAccount} 信息
      */
-    CherryAccount register(CherryAccountDto dto);
+    Response<CherryAccount> register(CherryAccountDto dto);
 }
