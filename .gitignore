@@ -23,12 +23,9 @@
 /dist/
 /nbdist/
 /.nb-gradle/
-/logs/
-/src/test/
-/src/main/resources/generatorConfig.xml
+
+**/logs
 
 **/.vagrant
 **/**.box
 /vagrant/Vagrantfile
-
-*.flattened-pom.xml
