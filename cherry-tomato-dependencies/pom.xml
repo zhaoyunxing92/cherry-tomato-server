@@ -17,6 +17,7 @@
         <module>cherry-tomato-web-api</module>
         <module>cherry-tomato-dubbo-mysql</module>
         <module>cherry-tomato-dubbo-mongo</module>
+        <module>cherry-tomato-service-api</module>
     </modules>
 
 </project>
