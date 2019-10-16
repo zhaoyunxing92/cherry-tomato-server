@@ -4,7 +4,6 @@
 package io.github.sunny.cherry.tomato.core.utils;
 
 import io.github.sunny.cherry.tomato.core.result.Response;
-import sun.plugin.navig.motif.OJIPlugin;
 
 /**
  * @author zhaoyunxing
