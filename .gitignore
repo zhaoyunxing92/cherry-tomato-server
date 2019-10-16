@@ -25,7 +25,8 @@
 /.nb-gradle/
 
 **/logs
-
+*.flattened-pom.xml
 **/.vagrant
 **/**.box
 /vagrant/Vagrantfile
+
