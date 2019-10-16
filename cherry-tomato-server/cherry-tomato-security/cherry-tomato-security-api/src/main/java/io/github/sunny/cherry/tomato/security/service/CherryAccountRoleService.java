@@ -22,5 +22,5 @@ public interface CherryAccountRoleService {
      * @param roleId    角色
      * @return {@link CherryAccountRoleDto}
      */
-    Response assignRoles(@Max(value = 1000, message = "请输入正确的账户id") Long accountId, @Min(value = 1000, message = "请输入正确的角色id") Long roleId);
+    Response assignRoles(@Min(value = 1000, message = "请输入正确的账户id") Long accountId, @Min(value = 1000, message = "请输入正确的角色id") Long roleId);
 }

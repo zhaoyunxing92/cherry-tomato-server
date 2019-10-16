@@ -44,7 +44,7 @@ public class CherryAccountServiceImpl implements CherryAccountService {
         Response cherryAccountRoleDtoResponse = cherryAccountRoleService.assignRoles(cherryAccountResponse.getData().getId(), 1001L);
 
         if (cherryAccountResponse.isSuccess() && cherryAccountRoleDtoResponse.isSuccess()) {
-            ResultUtil.success("注册账户成功");
+            return ResultUtil.success("注册账户成功");
         }
         return ResultUtil.error("注册账户成功");
     }

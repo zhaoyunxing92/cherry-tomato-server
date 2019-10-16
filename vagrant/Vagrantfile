@@ -13,13 +13,13 @@ Vagrant.configure("2") do |config|
   config.vm.box_version="1.4"
 
   # docker compose配置
-  config.vm.provision:docker
-  config.vm.provision:docker_compose,
-  yml:[
-   "/cherry/docker-compose.yml"
-  ],
-  rebuild: true,
-  run:"always"
+  #config.vm.provision:docker
+  #config.vm.provision:docker_compose,
+  #yml:[
+  # "/cherry/docker-compose.yml"
+  #],
+  #rebuild: true,
+  #run:"always"
 
   config.vm.network "forwarded_port", guest: 2375, host: 2375
   config.vm.network "forwarded_port", guest: 6379, host: 6379
@@ -28,9 +28,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
   # 同步目录
-  config.vm.synced_folder ".", "/cherry",type: "virtualbox"
-  config.ssh.username = "vagrant"
-  config.ssh.password = "vagrant"
+  #config.vm.synced_folder ".", "/cherry",type: "virtualbox"
+  # windows
+  config.vm.synced_folder ".", "/cherry", type: "rsync"
+  #config.ssh.username = "vagrant"
+  #config.ssh.password = "vagrant"
 
   #virtualbox
   config.vm.provider "virtualbox" do |vb|
