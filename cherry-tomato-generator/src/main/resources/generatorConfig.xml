@@ -35,25 +35,38 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="io.github.sunny.cherry.tomato.account.model" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-account/cherry-tomato-account-server/src/main/java">
+        <javaModelGenerator targetPackage="io.github.sunny.cherry.tomato.security.model" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/java">
             <property name="constructorBased" value="false"/>
             <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
         </javaModelGenerator>
 
         <!-- sql-->
-        <sqlMapGenerator targetPackage="io.github.sunny.cherry.tomato.account.mapper.xml" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-account/cherry-tomato-account-server/src/main/resources">
+        <sqlMapGenerator targetPackage="io.github.sunny.cherry.tomato.security.mapper.xml" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--mapper-->
-        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.account.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-account/cherry-tomato-account-server/src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.security.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="cherry_account" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+        <table tableName="cherry_account_role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+           <!-- <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        </table>
+
+        <table tableName="cherry_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
+        <table tableName="cherry_role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+
+        <table tableName="cherry_role_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
 
     </context>
 </generatorConfiguration>

@@ -17,4 +17,8 @@ public class ResultUtil {
     public static Response error(Integer code, String msg) {
         return new Response<>(code, msg, null, false);
     }
+
+    public static <T extends Response> T success(Integer code, String msg, Object obj) {
+        return (T) new Response<>(code, msg, obj, true);
+    }
 }

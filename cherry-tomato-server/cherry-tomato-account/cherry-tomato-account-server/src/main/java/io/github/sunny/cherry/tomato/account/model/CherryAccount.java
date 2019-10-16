@@ -4,7 +4,6 @@
 package io.github.sunny.cherry.tomato.account.model;
 
 import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
-import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -13,8 +12,8 @@ import lombok.experimental.Accessors;
  * @author sunny
  * @date: 2019-10-16 10:20:20
  */
-@Accessors(chain = true)
 @Data
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = true)
 public class CherryAccount extends BaseModel<Long> {
     /**

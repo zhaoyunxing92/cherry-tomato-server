@@ -98,7 +98,10 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         // lombok 设置
         topLevelClass.addImportedType("lombok.Data");
         topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+        //topLevelClass.addImportedType("lombok.experimental.Accessors");
         topLevelClass.addAnnotation("@Data");
+        // 链式调用导致mybats xml报错
+        //topLevelClass.addAnnotation("@Accessors(chain = true)");
         topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
         //topLevelClass.addImportedType("lombok.Getter");
         //topLevelClass.addImportedType("lombok.Setter");
@@ -131,10 +134,13 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         try {
             Class<?> aClass = Class.forName(baseModel);
             Field[] fields = aClass.getDeclaredFields();
-
+            //importedTypes
             List<String> fieldNames = Stream.of(fields).map(Field::getName).collect(Collectors.toList());
+            Set<String> types = Stream.of(fields).map(Field::getType).map(Class::getName).collect(Collectors.toSet());
+            // 去除重复字段
             clazz.getFields().removeIf(field -> fieldNames.contains(field.getName()));
-
+            // 去除重复导入
+            clazz.getImportedTypes().removeIf(type -> types.contains(type.getFullyQualifiedName()));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

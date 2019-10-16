@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-dubbo</artifactId>
+            <artifactId>cherry-tomato-dubbo-mysql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -23,6 +23,11 @@
         <dependency>
             <groupId>io.github.sunny</groupId>
             <artifactId>cherry-tomato-security-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
