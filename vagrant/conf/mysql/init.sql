@@ -8,7 +8,7 @@ create table if not exists cherry.cherry_account (
 	id bigint not null auto_increment comment '主键id',
 	user_name varchar(32) default null comment '账户名称',
 	email varchar(32) default null comment '账户邮箱',
-	password varchar(32) not null comment '账户密码',
+	password varchar(128) not null comment '账户密码',
 	nickname varchar(16) default null comment '昵称',
 	real_name varchar(16) default null comment '昵称',
 	intro varchar(256) null comment '介绍',
