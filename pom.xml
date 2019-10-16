@@ -43,6 +43,7 @@
         <mysql.connector.java.version>6.0.6</mysql.connector.java.version>
         <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
         <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
         <javax.el.version>2.2.4</javax.el.version>
     </properties>
@@ -197,6 +198,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -215,6 +217,13 @@
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
                     <version>${mybatis.generator.version}</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot}</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
