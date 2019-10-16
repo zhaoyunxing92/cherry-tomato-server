@@ -10,14 +10,25 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
 
 dubbo:
+  registry:
+    address: spring-cloud://localhost:8848
   scan:
     base-packages: io.github.sunny.cherry.tomato.account.service
+  cloud:
+    subscribed-services: cherry-tomato-security-server
   protocol:
     name: dubbo
     port: -1
+  consumer:
+    check: false
+
+mybatis:
+  mapper-locations: classpath:io/github/sunny/cherry/tomato/account/mapper/xml/*.xml
+  type-aliases-package: io.github.sunny.cherry.tomato.account.model
+  type-handlers-package: io.github.sunny.cherry.tomato.dubbo.mysql.handler

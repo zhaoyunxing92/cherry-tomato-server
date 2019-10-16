@@ -19,7 +19,7 @@ dubbo:
   scan:
     base-packages: io.github.sunny.cherry.tomato.controller
   cloud:
-    subscribed-services: cherry-tomato-oss-server,cherry-tomato-cache-server,cherry-tomato-security-server
+    subscribed-services: cherry-tomato-oss-server,cherry-tomato-cache-server,cherry-tomato-security-server,cherry-tomato-account-server
   protocol:
     name: dubbo
     port: -1

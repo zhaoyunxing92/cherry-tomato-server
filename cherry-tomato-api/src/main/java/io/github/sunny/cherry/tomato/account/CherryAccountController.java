@@ -8,6 +8,7 @@ import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class CherryAccountController {
      * @return 注册用户信息
      */
     @PostMapping("/register")
-    public Response register(CherryAccountDto form) {
+    public Response register(@RequestBody CherryAccountDto form) {
         return cherryAccountService.register(form);
     }
 }

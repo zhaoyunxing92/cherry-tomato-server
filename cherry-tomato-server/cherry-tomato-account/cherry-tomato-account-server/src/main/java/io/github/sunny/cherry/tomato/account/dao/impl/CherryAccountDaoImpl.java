@@ -29,6 +29,8 @@ public class CherryAccountDaoImpl implements CherryAccountDao {
     public Response<CherryAccount> register(CherryAccountDto dto) {
         CherryAccount account = new CherryAccount();
         BeanUtils.copyProperties(dto, account);
+        account.setCreator(0L);
+        account.setModifier(0L);
         int rows = cherryAccountMapper.insertSelective(account);
 
         if (rows > 0) {
