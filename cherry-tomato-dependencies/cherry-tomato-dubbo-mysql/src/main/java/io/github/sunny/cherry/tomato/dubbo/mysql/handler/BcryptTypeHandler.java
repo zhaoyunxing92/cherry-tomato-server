@@ -24,7 +24,8 @@ public class BcryptTypeHandler extends BaseTypeHandler<String> {
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, String s, JdbcType jdbcType) throws SQLException {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        bcrypt.encode("123456");
+        String encode = bcrypt.encode(s);
+        preparedStatement.setString(i, encode);
     }
 
     @Override
