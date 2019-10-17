@@ -19,6 +19,7 @@
         <module>cherry-tomato-dubbo-mongo</module>
         <module>cherry-tomato-service-api</module>
         <module>cherry-tomato-server-base</module>
+        <module>cherry-tomato-core</module>
     </modules>
 
 </project>
