@@ -5,12 +5,10 @@ package io.github.sunny.cherry.tomato.web.handler;
 
 import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.RpcException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
  * @date: 2019-10-12 16:59
  */
 @RestControllerAdvice
-@Slf4j
 public class CherryGlobalExceptionHandler {
     /**
      * rpc 调用异常
@@ -31,8 +28,16 @@ public class CherryGlobalExceptionHandler {
      */
     @ExceptionHandler(value = RpcException.class)
     public Response rpcException(HttpServletRequest request, RpcException ex) {
-        log.error("rpcException:{}", ex.getClass().getName());
+
+        if (ex.isTimeout()) {
+            return ResultUtil.error("remote call timeout exception", request.getRequestURL().toString(), ex.getMessage());
+        } else if (ex.isSerialization()) {
+            return ResultUtil.error("remote serialized exception", request.getRequestURL().toString(), ex.getMessage());
+        } else if (ex.isNetwork()) {
+            return ResultUtil.error("remote network exception", request.getRequestURL().toString(), ex.getMessage());
+        }
         return ResultUtil.error("remote call exception", request.getRequestURL().toString(), ex.getMessage());
+
     }
 
     /**
@@ -43,7 +48,6 @@ public class CherryGlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public Response exception(HttpServletRequest request, Exception ex) {
-        log.error("exception:{}", ex.getClass().getName());
         if (ex instanceof HttpRequestMethodNotSupportedException) {
             return ResultUtil.error("request method not supported", request.getRequestURL().toString(), ex.getMessage());
         }
