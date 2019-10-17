@@ -36,7 +36,7 @@ public class CherryGlobalExceptionHandler {
         } else if (ex.isNetwork()) {
             return ResultUtil.error("remote network exception", request.getRequestURL().toString(), ex.getMessage());
         } else if (ex.isNoInvokerAvailableAfterFilter()) {
-            return ResultUtil.error("remote no invoke exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote no started exception", request.getRequestURL().toString(), ex.getMessage());
         }
         return ResultUtil.error("remote call exception", request.getRequestURL().toString(), ex.getMessage());
     }
