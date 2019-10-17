@@ -18,4 +18,12 @@ public interface CherryAccountService {
      * @return {@link Response} 信息
      */
     Response register(CherryAccountDto dto);
+
+    /**
+     * 登录
+     *
+     * @param dto {@link CherryAccountDto}
+     * @return {@link Response} 信息
+     */
+    Response login(CherryAccountDto dto);
 }
