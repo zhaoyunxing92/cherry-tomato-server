@@ -30,14 +30,15 @@ public class CherryGlobalExceptionHandler {
     public Response rpcException(HttpServletRequest request, RpcException ex) {
 
         if (ex.isTimeout()) {
-            return ResultUtil.error("remote call timeout exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote invoke timeout exception", request.getRequestURL().toString(), ex.getMessage());
         } else if (ex.isSerialization()) {
             return ResultUtil.error("remote serialized exception", request.getRequestURL().toString(), ex.getMessage());
         } else if (ex.isNetwork()) {
             return ResultUtil.error("remote network exception", request.getRequestURL().toString(), ex.getMessage());
+        } else if (ex.isNoInvokerAvailableAfterFilter()) {
+            return ResultUtil.error("remote no invoke exception", request.getRequestURL().toString(), ex.getMessage());
         }
         return ResultUtil.error("remote call exception", request.getRequestURL().toString(), ex.getMessage());
-
     }
 
     /**
@@ -53,5 +54,4 @@ public class CherryGlobalExceptionHandler {
         }
         return ResultUtil.error("system exception", request.getRequestURL().toString(), ex.getMessage());
     }
-
 }
