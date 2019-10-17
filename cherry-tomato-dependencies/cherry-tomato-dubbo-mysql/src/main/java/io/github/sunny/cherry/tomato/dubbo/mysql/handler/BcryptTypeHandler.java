@@ -22,14 +22,14 @@ import java.sql.SQLException;
 public class BcryptTypeHandler extends BaseTypeHandler<String> {
 
     @Override
-    public void setNonNullParameter(PreparedStatement preparedStatement, int i, String s, JdbcType jdbcType) throws SQLException {
+    public void setNonNullParameter(PreparedStatement preparedStatement, int i, String parameter, JdbcType jdbcType) throws SQLException {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
-        String encode = bcrypt.encode(s);
+        String encode = bcrypt.encode(parameter);
         preparedStatement.setString(i, encode);
     }
 
     @Override
-    public String getNullableResult(ResultSet resultSet, String s) throws SQLException {
+    public String getNullableResult(ResultSet resultSet, String parameter) throws SQLException {
         return null;
     }
 
