@@ -31,16 +31,17 @@ public class CherryGlobalExceptionHandler {
     @ExceptionHandler(value = RpcException.class)
     public Response rpcException(HttpServletRequest request, RpcException ex) {
 
+        String url = request.getRequestURL().toString();
         if (ex.isTimeout()) {
-            return ResultUtil.error("remote invoke timeout exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote invoke timeout exception", url, ex.getMessage());
         } else if (ex.isSerialization()) {
-            return ResultUtil.error("remote serialized exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote serialized exception", url, ex.getMessage());
         } else if (ex.isNetwork()) {
-            return ResultUtil.error("remote network exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote network exception", url, ex.getMessage());
         } else if (ex.isNoInvokerAvailableAfterFilter()) {
-            return ResultUtil.error("remote no started exception", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("remote no started exception", url, ex.getMessage());
         }
-        return ResultUtil.error("remote call exception", request.getRequestURL().toString(), ex.getMessage());
+        return ResultUtil.error("remote call exception", url, ex.getMessage());
     }
 
     /**
@@ -51,18 +52,19 @@ public class CherryGlobalExceptionHandler {
      */
     @ExceptionHandler(value = Exception.class)
     public Response exception(HttpServletRequest request, Exception ex) {
+        String url = request.getRequestURL().toString();
         if (ex instanceof HttpRequestMethodNotSupportedException) {
-            return ResultUtil.error("request method not supported", request.getRequestURL().toString(), ex.getMessage());
+            return ResultUtil.error("request method not supported", url, ex.getMessage());
         } else if (ex instanceof MethodArgumentNotValidException) {
             MethodArgumentNotValidException argumentNotValidException = (MethodArgumentNotValidException) ex;
             String msg = argumentNotValidException.getBindingResult().getAllErrors().get(0).getDefaultMessage();
-            return ResultUtil.error("argument not valid exception", request.getRequestURL().toString(), msg);
+            return ResultUtil.error("argument not valid exception", url, msg);
         } else if (ex instanceof HttpMessageNotReadableException) {
             // 请求体为空异常
             HttpMessageNotReadableException notReadableException = (HttpMessageNotReadableException) ex;
             String msg = notReadableException.getMessage();
-            return ResultUtil.error("not readable exception", request.getRequestURL().toString(), msg);
+            return ResultUtil.error("not readable exception", url, msg);
         }
-        return ResultUtil.error("system exception", request.getRequestURL().toString(), ex.getMessage());
+        return ResultUtil.error("system exception", url, ex.getMessage());
     }
 }
