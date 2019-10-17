@@ -1,6 +1,13 @@
 # cherry-tomato-server
 小番茄服务。
 
+## 使用的工具
+
+* [ASCLL转换](http://tool.oschina.net/encode?type=3)
+
+  参数验证用到的国际化，中文转码
+
+
 ## 遇到问题
 
 ### dubbo开启参数验证遇到问题
