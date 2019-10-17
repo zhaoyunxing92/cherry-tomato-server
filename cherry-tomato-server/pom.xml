@@ -20,11 +20,10 @@
         <module>cherry-tomato-team</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-core</artifactId>
-        </dependency>
-    </dependencies>
-
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>io.github.sunny</groupId>-->
+<!--            <artifactId>cherry-tomato-core</artifactId>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
 </project>

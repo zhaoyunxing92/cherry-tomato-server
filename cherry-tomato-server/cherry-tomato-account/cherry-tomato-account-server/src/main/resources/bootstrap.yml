@@ -27,6 +27,9 @@ dubbo:
     port: -1
   consumer:
     check: false
+    validation: true
+#  provider:
+#    validation: true
 
 mybatis:
   mapper-locations: classpath:io/github/sunny/cherry/tomato/account/mapper/xml/*.xml

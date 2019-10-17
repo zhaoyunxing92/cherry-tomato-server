@@ -26,7 +26,7 @@ public class CherryAccountServiceImpl implements CherryAccountService {
 
     @Autowired
     private CherryAccountDao cherryAccountDao;
-    @Reference(validation = "true")
+    @Reference
     private CherryAccountRoleService cherryAccountRoleService;
 
     /**

@@ -24,7 +24,7 @@
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="ch.qos.logback.classic.PatternLayout">
-                <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS}|[%thread]|%-5level|%logger{50}|%msg%n</pattern>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS}|[%thread]|%-5level|%logger{50}|%line|%msg%n</pattern>
             </layout>
         </encoder>
         <!--滚动策略 按照天保存 保存7天-->
@@ -41,7 +41,10 @@
         <logger name="com.alibaba" level="ERROR"/>
         <logger name="io.lettuce.core" level="INFO"/>
         <logger name="io.netty" level="INFO"/>
-        <logger name="org.apache.dubbo.remoting.transport.netty4" level="INFO"/>
+        <logger name="org.apache.dubbo.remoting" level="INFO"/>
+        <logger name="com.zaxxer.hikari.HikariConfig" level="INFO"/>
+        <logger name="com.zaxxer.hikari.pool.HikariPool" level="INFO"/>
+        <logger name="org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator" level="INFO"/>
         <logger name="org.springframework.web.client.RestTemplate" level="INFO"/>
         <root level="DEBUG">
             <appender-ref ref="console"/>
@@ -57,7 +60,10 @@
         <logger name="org.hibernate" level="ERROR"/>
         <logger name="org.apache.http" level="ERROR"/>
         <logger name="org.apache.kafka" level="ERROR"/>
-        <logger name="org.apache.dubbo.remoting.transport.netty4" level="INFO"/>
+        <logger name="com.zaxxer.hikari.HikariConfig" level="INFO"/>
+        <logger name="com.zaxxer.hikari.pool.HikariPool" level="INFO"/>
+        <logger name="org.apache.dubbo.remoting" level="INFO"/>
+        <logger name="org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator" level="INFO"/>
         <logger name="io.lettuce.core.protocol.CommandEncoder" level="INFO"/>
         <root level="DEBUG">
             <appender-ref ref="file"/>

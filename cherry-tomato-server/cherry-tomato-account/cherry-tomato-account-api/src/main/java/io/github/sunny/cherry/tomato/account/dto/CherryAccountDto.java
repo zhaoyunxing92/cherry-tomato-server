@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
 /**
  * @author sunny
@@ -17,7 +18,7 @@ import javax.validation.constraints.Pattern;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CherryAccountDto extends BaseModel<Long> {
+public class CherryAccountDto extends BaseModel<Long> implements Serializable {
     /**
      * 账户名称
      */

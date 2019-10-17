@@ -6,7 +6,6 @@ package io.github.sunny.cherry.tomato.security.service;
 import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.security.dto.CherryAccountRoleDto;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 /**

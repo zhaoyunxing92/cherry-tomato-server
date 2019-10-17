@@ -53,6 +53,11 @@
         <dependencies>
             <dependency>
                 <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-server-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-service-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -178,13 +183,6 @@
 
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
