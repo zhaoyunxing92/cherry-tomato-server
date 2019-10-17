@@ -6,7 +6,9 @@ package io.github.sunny.cherry.tomato.web.handler;
 import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.rpc.RpcException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -51,6 +53,15 @@ public class CherryGlobalExceptionHandler {
     public Response exception(HttpServletRequest request, Exception ex) {
         if (ex instanceof HttpRequestMethodNotSupportedException) {
             return ResultUtil.error("request method not supported", request.getRequestURL().toString(), ex.getMessage());
+        } else if (ex instanceof MethodArgumentNotValidException) {
+            MethodArgumentNotValidException argumentNotValidException = (MethodArgumentNotValidException) ex;
+            String msg = argumentNotValidException.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+            return ResultUtil.error("argument not valid exception", request.getRequestURL().toString(), msg);
+        } else if (ex instanceof HttpMessageNotReadableException) {
+            // 请求体为空异常
+            HttpMessageNotReadableException notReadableException = (HttpMessageNotReadableException) ex;
+            String msg = notReadableException.getMessage();
+            return ResultUtil.error("not readable exception", request.getRequestURL().toString(), msg);
         }
         return ResultUtil.error("system exception", request.getRequestURL().toString(), ex.getMessage());
     }
