@@ -14,27 +14,23 @@ public class ResultUtil {
     private ResultUtil() {
     }
 
-    public static <T extends Response> T error(Integer code, String msg) {
-        return (T) new Response<>(code, msg, null, false);
+    public static <T extends Response> T error(String msg, String url, Object data) {
+        return (T) new Response<>(msg, url, data, false);
+    }
+
+    public static <T extends Response> T error(String msg, String url) {
+        return error(msg, url, null);
     }
 
     public static <T extends Response> T error(String msg) {
-        return error(500, msg);
-    }
-
-    public static <T extends Response> T success(Integer code, String msg, Object obj) {
-        return (T) new Response<>(code, msg, obj, true);
-    }
-
-    public static <T extends Response> T success(Integer code, String msg) {
-        return success(code, msg, null);
-    }
-
-    public static <T extends Response> T success(String msg) {
-        return success(0, msg);
+        return error(msg, null, null);
     }
 
     public static <T extends Response> T success(String msg, Object obj) {
-        return success(0, msg, obj);
+        return (T) new Response<>(msg, null, obj, true);
+    }
+
+    public static <T extends Response> T success(String msg) {
+        return success(msg, null);
     }
 }

@@ -6,8 +6,12 @@ package io.github.sunny.cherry.tomato.web.handler;
 import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.rpc.RpcException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.yaml.snakeyaml.constructor.DuplicateKeyException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 全局异常统一处理
@@ -24,8 +28,22 @@ public class CherryGlobalExceptionHandler {
      * @return 异常信息
      */
     @ExceptionHandler(value = RpcException.class)
-    public Response rpcException(RpcException ex) {
-        return ResultUtil.error(500, ex.getMessage());
+    public Response rpcException(HttpServletRequest request, RpcException ex) {
+        return ResultUtil.error("remote call exception", request.getRequestURL().toString(), ex.getMessage());
+    }
+
+    /**
+     * 唯一键重复异常
+     *
+     * @param ex DuplicateKeyException
+     * @return 异常信息
+     */
+    @ExceptionHandler(value = Exception.class)
+    public Response exception(HttpServletRequest request, Exception ex) {
+        if (ex instanceof HttpRequestMethodNotSupportedException) {
+            return ResultUtil.error("request method not supported", request.getRequestURL().toString(), ex.getMessage());
+        }
+        return ResultUtil.error("system exception", request.getRequestURL().toString(), ex.getMessage());
     }
 
 }

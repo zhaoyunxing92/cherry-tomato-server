@@ -17,13 +17,14 @@ public class Response<T> implements Serializable {
 
     private static final long serialVersionUID = 393612537159594290L;
     /**
-     * code码
-     */
-    private Integer code;
-    /**
      * 消息
      */
     private String msg;
+
+    /**
+     * 请求url
+     */
+    private String url;
     /**
      * 数据
      */
