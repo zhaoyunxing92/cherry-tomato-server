@@ -24,6 +24,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-security-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-account-api</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 

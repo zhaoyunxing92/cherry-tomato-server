@@ -26,4 +26,12 @@ public interface CherryAccountService {
      * @return {@link Response} 信息
      */
     Response login(CherryAccountDto dto);
+
+    /**
+     * 根据用户名称获取账号
+     *
+     * @param name 用户名
+     * @return @link CherryAccountDto}
+     */
+    Response<CherryAccountDto> findAccountByUserName(String name);
 }

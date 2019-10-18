@@ -186,4 +186,11 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
 
+    <select id="selectAccountByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cherry_account
+        where user_name = #{name,jdbcType=VARCHAR}
+    </select>
+
 </mapper>

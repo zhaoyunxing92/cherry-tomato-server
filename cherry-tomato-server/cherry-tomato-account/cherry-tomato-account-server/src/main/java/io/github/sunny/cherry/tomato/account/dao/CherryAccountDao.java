@@ -20,4 +20,6 @@ public interface CherryAccountDao {
      * @return {@link CherryAccount} 信息
      */
     Response<CherryAccount> register(CherryAccountDto dto);
+
+    CherryAccount findAccountByUserName(String name);
 }

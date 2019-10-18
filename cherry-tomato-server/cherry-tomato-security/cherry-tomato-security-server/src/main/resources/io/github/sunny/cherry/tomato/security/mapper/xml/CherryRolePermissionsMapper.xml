@@ -41,4 +41,20 @@
             </if>
         </trim>
     </insert>
+
+    <!--获取用户权限-->
+    <select id="selectPermissionsByAccountId" parameterType="java.lang.Long" resultType="java.lang.String">
+        select
+            d.name
+        from
+            cherry_account a
+        left join cherry_account_role b on
+            a.id = b.account_id
+        left join cherry_role_permissions c on
+            b.role_id=c.role_id
+        left join cherry_permissions d on
+            c.permissions_id=d.id
+        where
+            a.id = #{accountId,jdbcType=BIGINT}
+    </select>
 </mapper>

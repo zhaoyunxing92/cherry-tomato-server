@@ -12,8 +12,11 @@ import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountRoleService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 /**
  * 账户模块
@@ -58,5 +61,23 @@ public class CherryAccountServiceImpl implements CherryAccountService {
     @Override
     public Response login(CherryAccountDto dto) {
         return null;
+    }
+
+    /**
+     * 根据用户名称获取账号
+     *
+     * @param name 用户名
+     * @return @link CherryAccountDto}
+     */
+    @Override
+    public Response<CherryAccountDto> findAccountByUserName(String name) {
+        CherryAccount account = cherryAccountDao.findAccountByUserName(name);
+        if (Objects.isNull(account)) {
+            return ResultUtil.success("查询账号成功", null);
+        } else {
+            CherryAccountDto dto = new CherryAccountDto();
+            BeanUtils.copyProperties(account, dto);
+            return ResultUtil.success("查询账号成功", dto);
+        }
     }
 }

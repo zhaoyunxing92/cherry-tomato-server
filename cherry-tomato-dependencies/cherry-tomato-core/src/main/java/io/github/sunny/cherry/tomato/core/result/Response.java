@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author sunny
@@ -34,4 +35,12 @@ public class Response<T> implements Serializable {
      */
     private boolean success;
 
+    /**
+     * 是否有数据
+     *
+     * @return 有数据返回true
+     */
+    public boolean hasData() {
+        return Objects.nonNull(data);
+    }
 }

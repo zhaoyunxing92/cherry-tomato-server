@@ -38,4 +38,9 @@ public class CherryAccountDaoImpl implements CherryAccountDao {
         }
         return ResultUtil.error("创建账户失败");
     }
+
+    @Override
+    public CherryAccount findAccountByUserName(String name) {
+        return cherryAccountMapper.selectAccountByUserName(name);
+    }
 }

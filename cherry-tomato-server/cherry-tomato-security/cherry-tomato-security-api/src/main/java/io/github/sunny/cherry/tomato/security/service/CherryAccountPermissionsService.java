@@ -10,17 +10,18 @@ import javax.validation.constraints.Min;
 import java.util.Set;
 
 /**
+ * 角色服务
+ *
  * @author zhaoyunxing
  * @date: 2019-10-16 13:45
  */
-public interface CherryAccountRoleService {
+public interface CherryAccountPermissionsService {
 
     /**
      * 分配角色
      *
      * @param accountId 账户id
-     * @param roleId    角色
-     * @return {@link CherryAccountRoleDto}
+     * @return 角色
      */
-    Response assignRoles(@Min(value = 1000, message = "请输入正确的账户id") Long accountId, @Min(value = 1000, message = "请输入正确的角色id") Long roleId);
+    Response<Set<String>> getPermissions(Long accountId);
 }
