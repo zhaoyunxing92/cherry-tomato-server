@@ -6,6 +6,7 @@ package io.github.sunny.cherry.tomato.web.service;
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
+import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountPermissionsService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,11 +17,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 用户认证服务
@@ -44,9 +44,10 @@ public class AuthUserDetailService implements UserDetailsService {
         if (account.isSuccess() && account.hasData()) {
             CherryAccountDto dto = account.getData();
             // 用户权限
-            Response<Set<String>> permissions = cherryAccountPermissionsService.getPermissions(dto.getId());
-
-            List<GrantedAuthority> authorities = permissions.getData().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+            Response<List<String>> permissions = cherryAccountPermissionsService.getPermissions(dto.getId());
+            permissions.getData().forEach(System.out::print);
+            // 去重复
+            List<GrantedAuthority> authorities = Optional.ofNullable(permissions.getData()).orElse(Collections.singletonList("tourist")).stream().distinct().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 
             return new User(dto.getUserName(), dto.getPassword(), dto.getEnabled(), dto.getAccountNonExpired(), true, dto.getAccountNonLocked(), authorities);
         } else {

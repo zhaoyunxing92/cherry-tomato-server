@@ -7,6 +7,7 @@ import io.github.sunny.cherry.tomato.core.common.mapper.BaseMapper;
 import io.github.sunny.cherry.tomato.security.model.CherryRolePermissions;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,5 +22,5 @@ public interface CherryRolePermissionsMapper extends BaseMapper<CherryRolePermis
      * @param accountId 账号id
      * @return 权限
      */
-    Set<String> selectPermissionsByAccountId(Long accountId);
+    List<String> selectPermissionsByAccountId(Long accountId);
 }

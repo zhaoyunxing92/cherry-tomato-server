@@ -7,6 +7,7 @@ import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.security.dto.CherryAccountRoleDto;
 
 import javax.validation.constraints.Min;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -23,5 +24,5 @@ public interface CherryAccountPermissionsService {
      * @param accountId 账户id
      * @return 角色
      */
-    Response<Set<String>> getPermissions(Long accountId);
+    Response<List<String>> getPermissions(Long accountId);
 }

@@ -4,12 +4,12 @@
 package io.github.sunny.cherry.tomato.web.security.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -27,11 +27,9 @@ import java.util.Collections;
 public class CherrySpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationProvider cherrySpringSecurityProvider;
-    private final UserDetailsService authUserDetailService;
 
-    public CherrySpringSecurityConfig(AuthenticationProvider cherrySpringSecurityProvider, UserDetailsService authUserDetailService) {
+    public CherrySpringSecurityConfig(AuthenticationProvider cherrySpringSecurityProvider) {
         this.cherrySpringSecurityProvider = cherrySpringSecurityProvider;
-        this.authUserDetailService = authUserDetailService;
     }
 
     /**
@@ -54,18 +52,14 @@ public class CherrySpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/**").fullyAuthenticated()
-                .antMatchers("/login").permitAll()
-                .and().oauth2Login();
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .and().formLogin();
+        // 跨域配置
         http.cors().configurationSource(corsConfigurationSource());
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(cherrySpringSecurityProvider);
-    }
-
-    @Override
-    public UserDetailsService userDetailsService() {
-        return this.authUserDetailService;
     }
 }

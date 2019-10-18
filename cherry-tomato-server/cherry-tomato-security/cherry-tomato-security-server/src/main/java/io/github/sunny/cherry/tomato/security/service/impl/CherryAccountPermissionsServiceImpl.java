@@ -10,6 +10,7 @@ import io.github.sunny.cherry.tomato.security.service.CherryAccountPermissionsSe
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,8 +34,8 @@ public class CherryAccountPermissionsServiceImpl implements CherryAccountPermiss
      * @return 角色
      */
     @Override
-    public Response<Set<String>> getPermissions(Long accountId) {
-        Set<String> permissions = cherryRolePermissionsMapper.selectPermissionsByAccountId(accountId);
+    public Response<List<String>> getPermissions(Long accountId) {
+        List<String> permissions = cherryRolePermissionsMapper.selectPermissionsByAccountId(accountId);
         return ResultUtil.success("获取权限成功", permissions);
     }
 }

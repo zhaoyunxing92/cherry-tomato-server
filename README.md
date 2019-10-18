@@ -7,6 +7,11 @@
 
   参数验证用到的国际化，中文转码
 
+## spring boot 整合 security
+
+* [基于springboot的security机制](https://segmentfault.com/a/1190000013057238)
+
+* [spring security开启注解](https://blog.csdn.net/l18767118724/article/details/72934564)
 
 ## 遇到问题
 
