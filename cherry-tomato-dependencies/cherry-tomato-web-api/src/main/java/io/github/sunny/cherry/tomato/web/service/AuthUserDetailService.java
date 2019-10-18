@@ -18,10 +18,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 用户认证服务
+ * 实现{@link UserDetailsService}加载用户信息
  *
  * @author zhaoyunxing
  * @date: 2019-10-18 10:47
@@ -40,10 +43,11 @@ public class AuthUserDetailService implements UserDetailsService {
 
         if (account.isSuccess() && account.hasData()) {
             CherryAccountDto dto = account.getData();
+            // 用户权限
             Response<Set<String>> permissions = cherryAccountPermissionsService.getPermissions(dto.getId());
-            Collection<GrantedAuthority> authorities = new ArrayList<>();
 
-            permissions.getData().forEach(power -> authorities.add(new SimpleGrantedAuthority(power)));
+            List<GrantedAuthority> authorities = permissions.getData().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+
             return new User(dto.getUserName(), dto.getPassword(), dto.getEnabled(), dto.getAccountNonExpired(), true, dto.getAccountNonLocked(), authorities);
         } else {
             throw new UsernameNotFoundException(String.format("该用户[%s]不存在！", username));
