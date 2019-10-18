@@ -20,11 +20,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class CherrySecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService authUserDetailService;
-    private final AuthenticationProvider securityProvider;
+    private final AuthenticationProvider cherrySecurityProvider;
 
-    public CherrySecurityConfig(UserDetailsService authUserDetailService, AuthenticationProvider securityProvider) {
+    public CherrySecurityConfig(UserDetailsService authUserDetailService, AuthenticationProvider cherrySecurityProvider) {
         this.authUserDetailService = authUserDetailService;
-        this.securityProvider = securityProvider;
+        this.cherrySecurityProvider = cherrySecurityProvider;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class CherrySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //自定义AuthenticationProvider
-        auth.authenticationProvider(securityProvider);
+        auth.authenticationProvider(cherrySecurityProvider);
     }
 
     @Override

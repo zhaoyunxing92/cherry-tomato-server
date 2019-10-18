@@ -27,3 +27,4 @@ dubbo:
   #    host: 192.168.3.20
   consumer:
     check: false
+    timeout: 6000
