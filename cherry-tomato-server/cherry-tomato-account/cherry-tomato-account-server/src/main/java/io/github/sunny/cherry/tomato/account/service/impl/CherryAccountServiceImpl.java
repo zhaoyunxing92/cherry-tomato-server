@@ -48,4 +48,15 @@ public class CherryAccountServiceImpl implements CherryAccountService {
         }
         return ResultUtil.error("注册账户失败");
     }
+
+    /**
+     * 登录
+     *
+     * @param dto {@link CherryAccountDto}
+     * @return {@link Response} 信息
+     */
+    @Override
+    public Response login(CherryAccountDto dto) {
+        return null;
+    }
 }
