@@ -1,12 +1,11 @@
 /**
  * Copyright(C) 2019 Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.
  */
-package io.github.sunny.cherry.tomato.web.service;
+package io.github.sunny.cherry.tomato.web.security.service;
 
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountPermissionsService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,9 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * 用户认证服务
@@ -45,9 +42,9 @@ public class AuthUserDetailService implements UserDetailsService {
             CherryAccountDto dto = account.getData();
             // 用户权限
             Response<List<String>> permissions = cherryAccountPermissionsService.getPermissions(dto.getId());
-            permissions.getData().forEach(System.out::print);
-            // 去重复
-            List<GrantedAuthority> authorities = Optional.ofNullable(permissions.getData()).orElse(Collections.singletonList("tourist")).stream().distinct().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+
+            // 可以不用去重 new User(...) 已经去除重复 Collections.unmodifiableSet(sortAuthorities(authorities))
+            List<GrantedAuthority> authorities = permissions.getData().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
 
             return new User(dto.getUserName(), dto.getPassword(), dto.getEnabled(), dto.getAccountNonExpired(), true, dto.getAccountNonLocked(), authorities);
         } else {
