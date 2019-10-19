@@ -104,7 +104,7 @@ create table if not exists cherry.cherry_team_member (
 -- 插入账户
 insert ignore into cherry.cherry_account
 (user_name, email, password, intro, creator, modifier)
-values('zhaoyunxing', '2385585770@qq.com', '123456',  'java程序员', 0, 0),('sunny', 'zhaoyunxing@163.com', '123456',  'java程序员', 0, 0);
+values('zhaoyunxing', '2385585770@qq.com', '$2a$10$AJHaPBbIf0qldHwfdOt1k.I5tvYGFsVboYIQMTl357IVbHjtCzNIu',  'java程序员', 0, 0),('sunny', 'zhaoyunxing@163.com', '$2a$10$j4EgfxhiqqiBeXU8NTOaaeYYCwOC6fpmO7eGJoBQael30Nz4b45K2',  'java程序员', 0, 0);
 
 
 --  插入角色
