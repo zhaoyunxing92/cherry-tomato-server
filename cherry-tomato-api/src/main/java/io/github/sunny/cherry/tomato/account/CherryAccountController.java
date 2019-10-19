@@ -7,13 +7,11 @@ import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.form.CherryAccountForm;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
+import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -43,16 +41,8 @@ public class CherryAccountController {
         return cherryAccountService.register(dao);
     }
 
-    /**
-     * 注册账户，分配普通权限
-     *
-     * @param form {@link CherryAccountForm}
-     * @return 注册用户信息
-     */
-    @PostMapping("/login")
-    public Response login(@Validated(CherryAccountForm.Login.class) @RequestBody CherryAccountForm form) {
-        CherryAccountDto dao = new CherryAccountDto();
-        BeanUtils.copyProperties(form, dao);
-        return cherryAccountService.login(dao);
+    @GetMapping("/hello")
+    public Response hello() {
+        return ResultUtil.success("ok", "hello");
     }
 }
