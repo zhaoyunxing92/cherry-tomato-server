@@ -40,6 +40,7 @@
   > 原因：使用hibernate bean validator ,但是beanvalidator是依赖于与javax validator和javax.el的。说的更加直白一点就是依赖于servlet容器，如果dubbo是交给tomcat或者jetty服务器去管理的，那么OK，没有这个问题，但是我们现在不是，所以我们需要提供错误所提示的jar。
 
   解决：添加对应的jar
+  
 ```xml
 <dependency>
    <groupId>javax.el</groupId>
