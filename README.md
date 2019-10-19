@@ -13,6 +13,10 @@
 
 * [spring security开启注解](https://blog.csdn.net/l18767118724/article/details/72934564)
 
+* [spring security前后端分离](https://www.jianshu.com/p/650a497b3a40)
+
+* [spring security获取当前上下文](https://blog.csdn.net/cloume/article/details/84983006)
+
 ## 遇到问题
 
 ### dubbo开启参数验证遇到问题
