@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -41,6 +42,11 @@ public class Response<T> implements Serializable {
      * @return 有数据返回true
      */
     public boolean hasData() {
+        if (data instanceof Collection) {
+            return !((Collection) data).isEmpty();
+        } else if (data instanceof Object[]) {
+            return ((Object[]) data).length > 0;
+        }
         return Objects.nonNull(data);
     }
 }
