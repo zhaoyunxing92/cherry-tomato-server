@@ -9,8 +9,10 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: '123456' # root用户密码
+      - MYSQL_ROOT_PASSWORD=123456 # root用户密码
+      - TZ=Asia/Shanghai
     volumes:
+      - ./conf/mysql/mysql.cnf:/etc/mysql/mysql.cnf # 把当前的mysql.conf挂载到容器中- ./mysql.cnf:/etc/my.cnf # 把当前的mysql.conf挂载到容器中
       - ./conf/mysql:/docker-entrypoint-initdb.d # 初始化sql
       - /data/mysql:/var/lib/mysql # 数据挂载
   redis:
