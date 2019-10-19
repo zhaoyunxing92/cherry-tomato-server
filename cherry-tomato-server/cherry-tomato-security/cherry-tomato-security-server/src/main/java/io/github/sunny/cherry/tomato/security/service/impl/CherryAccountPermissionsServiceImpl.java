@@ -11,6 +11,7 @@ import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -29,13 +30,16 @@ public class CherryAccountPermissionsServiceImpl implements CherryAccountPermiss
 
     /**
      * 分配角色
+     * 如果创建的人没有分配角色需要处理下   permissions.removeIf(Objects::isNull);
      *
      * @param accountId 账户id
      * @return 角色
      */
     @Override
     public Response<List<String>> getPermissions(Long accountId) {
+        // 注意去除null
         List<String> permissions = cherryRolePermissionsMapper.selectPermissionsByAccountId(accountId);
+        permissions.removeIf(Objects::isNull);
         return ResultUtil.success("获取权限成功", permissions);
     }
 }
