@@ -34,7 +34,7 @@ public class CherryAccountForm {
     /**
      * 账户密码
      */
-    @NotNull(message = "{cherry.api.password.constraints.NotNull.message}", groups = {Login.class})
+    @NotNull(message = "{cherry.api.password.constraints.NotNull.message}", groups = {Login.class, Register.class})
     private String password;
 
     /**

@@ -10,9 +10,11 @@ import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 /**
@@ -34,6 +36,7 @@ public class CherryAccountController {
      * @param form {@link CherryAccountForm}
      * @return 注册用户信息
      */
+    @PreAuthorize("hasRole('add_account')")
     @PostMapping("/register")
     public Response register(@Validated(CherryAccountForm.Register.class) @RequestBody CherryAccountForm form) {
         CherryAccountDto dao = new CherryAccountDto();

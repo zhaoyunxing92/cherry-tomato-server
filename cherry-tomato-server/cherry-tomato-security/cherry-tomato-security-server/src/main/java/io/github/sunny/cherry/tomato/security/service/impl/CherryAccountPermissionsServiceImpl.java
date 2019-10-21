@@ -23,7 +23,7 @@ public class CherryAccountPermissionsServiceImpl implements CherryAccountPermiss
 
     private final CherryRolePermissionsMapper cherryRolePermissionsMapper;
 
-    @Autowired
+
     public CherryAccountPermissionsServiceImpl(CherryRolePermissionsMapper cherryRolePermissionsMapper) {
         this.cherryRolePermissionsMapper = cherryRolePermissionsMapper;
     }
