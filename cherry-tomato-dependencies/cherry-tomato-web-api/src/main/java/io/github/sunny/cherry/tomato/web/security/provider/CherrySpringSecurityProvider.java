@@ -28,11 +28,7 @@ public class CherrySpringSecurityProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         String username = token.getName();
-
-        UserDetails userDetails = null;
-        if (username != null) {
-            userDetails = authUserDetailService.loadUserByUsername(username);
-        }
+        UserDetails userDetails = authUserDetailService.loadUserByUsername(username);
 
         if (userDetails == null) {
             throw new UsernameNotFoundException("用户名/密码无效");

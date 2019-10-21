@@ -62,9 +62,9 @@ public class CherryAuthenticationHandler implements AuthenticationSuccessHandler
         res.setHeader("Access-Control-Allow-Origin", "*");
         res.setHeader("Access-Control-Allow-Methods", "*");
         res.setContentType("application/json;charset=utf-8");
-        res.setStatus(HttpStatus.FORBIDDEN.value());
+        res.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 
-        res.getWriter().write(JSONObject.toJSONString(ResultUtil.error("请先登录")));
+        res.getWriter().write(JSONObject.toJSONString(ResultUtil.error(ex.getMessage())));
     }
 
     @Override

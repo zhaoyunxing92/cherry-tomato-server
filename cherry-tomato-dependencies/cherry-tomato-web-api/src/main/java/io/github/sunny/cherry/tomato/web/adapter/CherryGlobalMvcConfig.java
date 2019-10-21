@@ -3,10 +3,7 @@
  */
 package io.github.sunny.cherry.tomato.web.adapter;
 
-import io.github.sunny.cherry.tomato.web.resolver.CherryLocaleResolver;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
@@ -16,11 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  */
 @Configuration
 public class CherryGlobalMvcConfig extends WebMvcConfigurationSupport {
-    @Bean
-    public LocaleResolver localeResolver() {
-
-        return new CherryLocaleResolver();
-    }
+//    @Bean
+//    public LocaleResolver localeResolver() {
+//        return new CherryLocaleResolver();
+//    }
 
     /**
      * 配置自己的拦截器

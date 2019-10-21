@@ -7,13 +7,11 @@ import io.github.sunny.cherry.tomato.web.security.handler.CherryAuthenticationHa
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -31,13 +29,10 @@ import java.util.Collections;
 public class CherrySpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationProvider cherrySpringSecurityProvider;
-    private final UserDetailsService authUserDetailService;
-
     private final CherryAuthenticationHandler cherryAuthenticationHandler;
 
-    public CherrySpringSecurityConfig(AuthenticationProvider cherrySpringSecurityProvider, UserDetailsService authUserDetailService, CherryAuthenticationHandler cherryAuthenticationHandler) {
+    public CherrySpringSecurityConfig(AuthenticationProvider cherrySpringSecurityProvider, CherryAuthenticationHandler cherryAuthenticationHandler) {
         this.cherrySpringSecurityProvider = cherrySpringSecurityProvider;
-        this.authUserDetailService = authUserDetailService;
         this.cherryAuthenticationHandler = cherryAuthenticationHandler;
     }
 
@@ -67,10 +62,12 @@ public class CherrySpringSecurityConfig extends WebSecurityConfigurerAdapter {
         //必须授权才能范围
         http.authorizeRequests()
                 .anyRequest().authenticated();
+//                .antMatchers(HttpMethod.POST,"/api/login").permitAll()
+//                .antMatchers(HttpMethod.POST,"/login").permitAll();
         // 登录
         http.formLogin() //使用自带的登录
                 .loginProcessingUrl("/login")
-                .usernameParameter("userName")
+                .usernameParameter("username")
                 .passwordParameter("password")
                 .successHandler(cherryAuthenticationHandler)
                 .failureHandler(cherryAuthenticationHandler)
@@ -87,6 +84,7 @@ public class CherrySpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         //http.addFilterBefore()
+        //http.addFilterAfter()
 
     }
 
