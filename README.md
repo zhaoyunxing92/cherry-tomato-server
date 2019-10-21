@@ -9,6 +9,10 @@
 
 ## 项目集成组件
 
+- [x] [dubbo](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/dubbo.md) spring cloud alibaba结合dubbo
+
+- [x] [nacos](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/nacos.md) dubbo的服务注册中心
+
 - [x] [spring-security](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/spring-security.md) 安全框架
 
 ## 遇到问题
