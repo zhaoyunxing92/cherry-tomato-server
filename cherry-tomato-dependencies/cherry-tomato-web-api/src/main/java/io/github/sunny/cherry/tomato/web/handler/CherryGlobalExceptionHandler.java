@@ -7,6 +7,7 @@ import io.github.sunny.cherry.tomato.core.result.Response;
 import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.rpc.RpcException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -64,6 +65,9 @@ public class CherryGlobalExceptionHandler {
             HttpMessageNotReadableException notReadableException = (HttpMessageNotReadableException) ex;
             String msg = notReadableException.getMessage();
             return ResultUtil.error("not readable exception", url, msg);
+        } else if (ex instanceof AccessDeniedException) {
+            String msg = ex.getMessage();
+            return ResultUtil.error("no permissions", url, msg);
         }
         return ResultUtil.error("system exception", url, ex.getMessage());
     }
