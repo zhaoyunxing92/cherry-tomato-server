@@ -7,15 +7,9 @@
 
   参数验证用到的国际化，中文转码
 
-## spring boot 整合 security
+## 项目集成组件
 
-* [基于springboot的security机制](https://segmentfault.com/a/1190000013057238)
-
-* [spring security开启注解](https://blog.csdn.net/l18767118724/article/details/72934564)
-
-* [spring security前后端分离](https://www.jianshu.com/p/650a497b3a40)
-
-* [spring security获取当前上下文](https://blog.csdn.net/cloume/article/details/84983006)
+- [x] [spring-security](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/spring-security.md) 安全框架
 
 ## 遇到问题
 
