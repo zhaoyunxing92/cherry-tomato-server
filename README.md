@@ -15,6 +15,8 @@
 
 - [x] [spring-security](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/spring-security.md) 安全框架
 
+- [x] [mybatis](https://github.com/zhaoyunxing92/cherry-tomato/blob/cherry2.0/doc/md/mybatis.md) spring boot mybatis
+
 ## 遇到问题
 
 ### dubbo开启参数验证遇到问题
