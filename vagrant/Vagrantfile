@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 22, host: 2222
   config.vm.network "forwarded_port", guest: 8848, host: 8848
   config.vm.network "forwarded_port", guest: 3306, host: 3306
+  config.vm.network "forwarded_port", guest: 8180, host: 8180
+  config.vm.network "forwarded_port", guest: 9876, host: 9876
 
   # 同步目录
   config.vm.synced_folder ".", "/cherry",type: "virtualbox"
