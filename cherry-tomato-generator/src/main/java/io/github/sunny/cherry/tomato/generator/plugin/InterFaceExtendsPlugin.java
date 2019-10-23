@@ -57,7 +57,7 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         // 获取实体类
         FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
-        //mapper 文件生成过一次就生成
+        //mapper 文件只生成一次
         if (hasInterfaceMapperFile(introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetProject(), interfaze.getType().getPackageName(), interfaze.getType().getShortName())) {
             return false;
         }
@@ -134,13 +134,16 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         try {
             Class<?> aClass = Class.forName(baseModel);
             Field[] fields = aClass.getDeclaredFields();
-            //importedTypes
-            List<String> fieldNames = Stream.of(fields).map(Field::getName).collect(Collectors.toList());
-            Set<String> types = Stream.of(fields).map(Field::getType).map(Class::getName).collect(Collectors.toSet());
-            // 去除重复字段
-            clazz.getFields().removeIf(field -> fieldNames.contains(field.getName()));
+
             // 去除重复导入
+            Set<String> types = Stream.of(fields).map(Field::getType).map(Class::getName).collect(Collectors.toSet());
             clazz.getImportedTypes().removeIf(type -> types.contains(type.getFullyQualifiedName()));
+
+            // 去除重复字段
+            List<String> fieldNames = Stream.of(fields).map(Field::getName).collect(Collectors.toList());
+            clazz.getFields().removeIf(field -> fieldNames.contains(field.getName()));
+            // 根据去重后字段再import一次(ImportedType 是set集合自动去重)
+            clazz.getFields().forEach(field -> clazz.addImportedType(field.getType()));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

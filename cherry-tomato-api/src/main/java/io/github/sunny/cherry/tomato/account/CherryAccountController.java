@@ -44,6 +44,20 @@ public class CherryAccountController {
         return cherryAccountService.register(dao);
     }
 
+    /**
+     * 通过事物消息注册
+     *
+     * @param form {@link CherryAccountForm}
+     * @return 注册用户信息
+     */
+   // @PreAuthorize("hasRole('add_account')")
+    @PostMapping("/msg/register")
+    public Response msgRegister(@Validated(CherryAccountForm.Register.class) @RequestBody CherryAccountForm form) {
+        CherryAccountDto dao = new CherryAccountDto();
+        BeanUtils.copyProperties(form, dao);
+        return cherryAccountService.sendRegisterAction(dao);
+    }
+
     @GetMapping("/hello")
     public Response hello() {
         return ResultUtil.success("ok", "hello");

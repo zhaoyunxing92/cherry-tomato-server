@@ -3,6 +3,7 @@
  */
 package io.github.sunny.cherry.tomato.account.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import io.github.sunny.cherry.tomato.account.dao.CherryAccountDao;
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.model.CherryAccount;
@@ -12,8 +13,10 @@ import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountRoleService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
@@ -25,12 +28,21 @@ import java.util.Objects;
  * @date: 2019-10-12 17:53
  */
 @Service
+@org.springframework.stereotype.Service
 public class CherryAccountServiceImpl implements CherryAccountService {
 
-    @Autowired
-    private CherryAccountDao cherryAccountDao;
+    private final CherryAccountDao cherryAccountDao;
+    private final RocketMQTemplate rocketMQTemplate;
+    private final TxMsgService txMsgService;
+
     @Reference
     private CherryAccountRoleService cherryAccountRoleService;
+
+    public CherryAccountServiceImpl(CherryAccountDao cherryAccountDao, RocketMQTemplate rocketMQTemplate, TxMsgService txMsgService) {
+        this.cherryAccountDao = cherryAccountDao;
+        this.rocketMQTemplate = rocketMQTemplate;
+        this.txMsgService = txMsgService;
+    }
 
     /**
      * 注册账户
@@ -50,6 +62,39 @@ public class CherryAccountServiceImpl implements CherryAccountService {
             return ResultUtil.success("注册账户成功");
         }
         return ResultUtil.error("注册账户失败");
+    }
+
+    /**
+     * 发送注册账号请求
+     *
+     * @param dto
+     */
+    @Override
+    public Response sendRegisterAction(CherryAccountDto dto) {
+        String json = JSONObject.toJSONString(dto);
+
+        Message<String> msg = MessageBuilder.withPayload(json).build();
+        // 发送事物消息
+        rocketMQTemplate.sendMessageInTransaction("producer_txmsg_account", "topic_txmsg", msg, null);
+        return null;
+    }
+
+    /**
+     * 通过事物消息注册账号,这里需要作幂等
+     *
+     * @param txId
+     * @param dto
+     */
+    @Override
+    public void msgRegister(String txId, CherryAccountDto dto) {
+        String action = "register";
+        if (txMsgService.isExists(txId, action)) {
+            return;
+        }
+        // 注册账号
+        cherryAccountDao.register(dto);
+        // 保存事物消息
+        txMsgService.save(txId, action);
     }
 
     /**

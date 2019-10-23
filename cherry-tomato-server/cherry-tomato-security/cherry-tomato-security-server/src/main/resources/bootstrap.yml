@@ -9,6 +9,11 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    stream:
+      rocketmq: # rocket mq
+        binder:
+          name-server: 127.0.0.1:9876
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&characterEncoding=UTF-8&useSSL=false

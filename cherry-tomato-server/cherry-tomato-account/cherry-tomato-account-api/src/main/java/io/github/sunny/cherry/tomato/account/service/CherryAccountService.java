@@ -20,6 +20,22 @@ public interface CherryAccountService {
     Response register(CherryAccountDto dto);
 
     /**
+     * 发送注册账号请求
+     *
+     * @param dto
+     */
+    Response sendRegisterAction(CherryAccountDto dto);
+
+    /**
+     * 通过事物消息注册账号
+     *
+     * @param txId 事物id号
+     * @param dto
+     */
+    void msgRegister(String txId, CherryAccountDto dto);
+
+
+    /**
      * 登录
      *
      * @param dto {@link CherryAccountDto}

@@ -70,14 +70,14 @@ services:
     depends_on:
       - rmqnamesrv
   # rocket console
-  rmqconsole:
-    image: styletang/rocketmq-console-ng
-    container_name: rocket-console
-    network_mode: host
-    ports:
-      - 8180:8180
-    environment:
-      - JAVA_OPTS=-Drocketmq.config.namesrvAddr=localhost:9876 -Dserver.port=8180 -Drocketmq.config.isVIPChannel=false
-      - JAVA_OPT_EXT=-Xms128m -Xmx128m -Xmn128m
-    depends_on:
-      - rmqnamesrv
+#  rmqconsole:
+#    image: styletang/rocketmq-console-ng
+#    container_name: rocket-console
+#    network_mode: host
+#    ports:
+#      - 8180:8180
+#    environment:
+#      - JAVA_OPTS=-Drocketmq.config.namesrvAddr=localhost:9876 -Dserver.port=8180 -Drocketmq.config.isVIPChannel=false
+#      - JAVA_OPT_EXT=-Xms128m -Xmx128m -Xmn128m
+#    depends_on:
+#      - rmqnamesrv

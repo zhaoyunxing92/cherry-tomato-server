@@ -101,6 +101,14 @@ create table if not exists cherry.cherry_team_member (
 	CONSTRAINT uk_team_user UNIQUE KEY (team_id,user_id)
 ) engine=innodb default charset=utf8 comment='团队成员表';
 
+-- 事物日志表
+CREATE TABLE if not exists cherry.tx_msg (
+	id varchar(64) NOT NULL COMMENT '事物消息id',
+	`action` varchar(100) NOT NULL COMMENT '表示当前执行的动作',
+	`modifier_time` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL on update CURRENT_TIMESTAMP COMMENT '插入时间',
+	 PRIMARY KEY tx_msg_pk (id)
+)ENGINE=InnoDB COMMENT='事物消息记录表' ;
+
 -- 插入账户
 insert ignore into cherry.cherry_account
 (user_name, email, password, intro, creator, modifier)

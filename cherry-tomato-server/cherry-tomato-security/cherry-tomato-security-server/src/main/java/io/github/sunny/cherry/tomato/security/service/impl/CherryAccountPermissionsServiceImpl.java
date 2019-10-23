@@ -8,11 +8,9 @@ import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.mapper.CherryRolePermissionsMapper;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountPermissionsService;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * @author zhaoyunxing
@@ -22,7 +20,6 @@ import java.util.Set;
 public class CherryAccountPermissionsServiceImpl implements CherryAccountPermissionsService {
 
     private final CherryRolePermissionsMapper cherryRolePermissionsMapper;
-
 
     public CherryAccountPermissionsServiceImpl(CherryRolePermissionsMapper cherryRolePermissionsMapper) {
         this.cherryRolePermissionsMapper = cherryRolePermissionsMapper;
