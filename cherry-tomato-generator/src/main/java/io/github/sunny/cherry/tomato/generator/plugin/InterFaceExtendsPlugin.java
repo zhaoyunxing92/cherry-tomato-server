@@ -59,10 +59,13 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         if (hasInterfaceMapperFile(introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetProject(), interfaze.getType().getPackageName(), interfaze.getType().getShortName())) {
             return false;
         }
-        // 清空导入
-        interfaze.getImportedTypes().clear();
+
         // import接口
         if (!StringUtils.isEmpty(baseMapper)) {
+            // 清空导入
+            interfaze.getImportedTypes().clear();
+            // mapper 去除方法
+            interfaze.getMethods().clear();
             // 获取实体类
             FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
             interfaze.addImportedType(new FullyQualifiedJavaType(baseMapper));
@@ -82,9 +85,6 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         //添加 @Repository注解
         interfaze.addAnnotation("@Repository");
         interfaze.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
-        // mapper 去除方法
-        interfaze.getMethods().clear();
-
         return true;
     }
 
