@@ -39,3 +39,8 @@ mybatis:
   mapper-locations: classpath:io/github/sunny/cherry/tomato/account/mapper/xml/*.xml
   type-aliases-package: io.github.sunny.cherry.tomato.account.model
   type-handlers-package: io.github.sunny.cherry.tomato.dubbo.mysql.handler
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: cherry-tomato-account

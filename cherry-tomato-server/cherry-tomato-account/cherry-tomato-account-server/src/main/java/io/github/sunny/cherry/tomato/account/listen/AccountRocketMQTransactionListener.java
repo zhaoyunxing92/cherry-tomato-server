@@ -3,7 +3,6 @@
  */
 package io.github.sunny.cherry.tomato.account.listen;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
@@ -30,7 +29,8 @@ public class AccountRocketMQTransactionListener implements RocketMQLocalTransact
     private final CherryAccountService cherryAccountService;
     private final TxMsgService txMsgService;
 
-    public AccountRocketMQTransactionListener(CherryAccountService cherryAccountService, TxMsgService txMsgService) {this.cherryAccountService = cherryAccountService;
+    public AccountRocketMQTransactionListener(CherryAccountService cherryAccountService, TxMsgService txMsgService) {
+        this.cherryAccountService = cherryAccountService;
         this.txMsgService = txMsgService;
     }
 
@@ -46,7 +46,7 @@ public class AccountRocketMQTransactionListener implements RocketMQLocalTransact
     public RocketMQLocalTransactionState executeLocalTransaction(Message msg, Object arg) {
 
         try {
-            String payload = msg.getPayload().toString();
+            String payload = new String((byte[]) msg.getPayload());
             CherryAccountDto dto = JSONObject.parseObject(payload, CherryAccountDto.class);
             cherryAccountService.msgRegister(Objects.requireNonNull(msg.getHeaders().getId()).toString(), dto);
             // 提交commit后消息可以消费
@@ -64,7 +64,7 @@ public class AccountRocketMQTransactionListener implements RocketMQLocalTransact
      */
     @Override
     public RocketMQLocalTransactionState checkLocalTransaction(Message msg) {
-        if (txMsgService.isExists(Objects.requireNonNull(msg.getHeaders().getId()).toString(),"register")) {
+        if (txMsgService.isExists(Objects.requireNonNull(msg.getHeaders().getId()).toString(), "register")) {
             return RocketMQLocalTransactionState.COMMIT;
         }
         return RocketMQLocalTransactionState.UNKNOWN;

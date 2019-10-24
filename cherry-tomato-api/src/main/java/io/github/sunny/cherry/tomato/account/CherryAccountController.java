@@ -50,12 +50,13 @@ public class CherryAccountController {
      * @param form {@link CherryAccountForm}
      * @return 注册用户信息
      */
-   // @PreAuthorize("hasRole('add_account')")
+    // @PreAuthorize("hasRole('add_account')")
     @PostMapping("/msg/register")
     public Response msgRegister(@Validated(CherryAccountForm.Register.class) @RequestBody CherryAccountForm form) {
         CherryAccountDto dao = new CherryAccountDto();
         BeanUtils.copyProperties(form, dao);
-        return cherryAccountService.sendRegisterAction(dao);
+        cherryAccountService.sendRegisterAction(dao);
+        return ResultUtil.success("hello");
     }
 
     @GetMapping("/hello")

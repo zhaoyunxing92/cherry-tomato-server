@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
  * @date: 2019-10-23 17:47
  */
 @Service
-@RocketMQMessageListener(topic = "topic_txmsg", consumerGroup = "security_consumer")
-public class CherryTxMsgConsumer implements RocketMQListener<String> {
+@RocketMQMessageListener(topic = "test", consumerGroup = "security_consumer_5")
+public class CherryTxMsgConsumer5 implements RocketMQListener<String> {
 
     private final CherryAccountRoleService cherryAccountRoleService;
     private final TxMsgService txMsgService;
 
-    public CherryTxMsgConsumer(CherryAccountRoleService cherryAccountRoleService, TxMsgService txMsgService) {
+    public CherryTxMsgConsumer5(CherryAccountRoleService cherryAccountRoleService, TxMsgService txMsgService) {
         this.cherryAccountRoleService = cherryAccountRoleService;
         this.txMsgService = txMsgService;
     }

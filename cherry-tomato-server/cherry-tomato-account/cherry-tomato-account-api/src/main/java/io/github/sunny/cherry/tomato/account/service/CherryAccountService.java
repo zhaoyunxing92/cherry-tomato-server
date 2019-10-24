@@ -24,7 +24,7 @@ public interface CherryAccountService {
      *
      * @param dto
      */
-    Response sendRegisterAction(CherryAccountDto dto);
+    void sendRegisterAction(CherryAccountDto dto);
 
     /**
      * 通过事物消息注册账号
@@ -32,7 +32,7 @@ public interface CherryAccountService {
      * @param txId 事物id号
      * @param dto
      */
-    void msgRegister(String txId, CherryAccountDto dto);
+    Response msgRegister(String txId, CherryAccountDto dto);
 
 
     /**

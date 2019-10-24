@@ -8,6 +8,8 @@ import io.github.sunny.cherry.tomato.account.mapper.TxMsgMapper;
 import io.github.sunny.cherry.tomato.account.model.TxMsg;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * @author zhaoyunxing
  * @date: 2019-10-23 17:29
@@ -41,6 +43,9 @@ public class TxMsgService {
      */
     public boolean isExists(String txId, String action) {
         TxMsg txMsg = txMsgMapper.selectByPrimaryKey(txId);
+        if(Objects.isNull(txMsg)){
+            return false;
+        }
         return txMsg.getAction().equals(action);
     }
 }

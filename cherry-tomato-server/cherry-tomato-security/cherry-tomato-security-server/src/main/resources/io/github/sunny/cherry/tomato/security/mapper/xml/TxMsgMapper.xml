@@ -35,4 +35,7 @@
         </trim>
     </insert>
 
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select id,`action`,modifier_time from tx_msg where id=#{id,jdbcType=VARCHAR}
+    </select>
 </mapper>

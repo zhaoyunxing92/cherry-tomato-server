@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan("io.github.sunny.cherry.tomato.account.mapper")
+//@EnableBinding({ Source.class, Sink.class })
 public class AccountServer {
     public static void main(String[] args) {
         SpringApplication.run(AccountServer.class, args);

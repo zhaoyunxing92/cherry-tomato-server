@@ -3,10 +3,8 @@
  */
 package io.github.sunny.cherry.tomato.account.mapper;
 
-import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.model.CherryAccount;
 import io.github.sunny.cherry.tomato.core.common.mapper.BaseMapper;
-import io.github.sunny.cherry.tomato.core.result.Response;
 import org.springframework.stereotype.Repository;
 
 /**

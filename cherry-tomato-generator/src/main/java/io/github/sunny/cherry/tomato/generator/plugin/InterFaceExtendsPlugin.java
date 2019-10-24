@@ -55,15 +55,18 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
      */
     @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        // 获取实体类
-        FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
         //mapper 文件只生成一次
         if (hasInterfaceMapperFile(introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetProject(), interfaze.getType().getPackageName(), interfaze.getType().getShortName())) {
             return false;
         }
+        // 清空导入
+        interfaze.getImportedTypes().clear();
         // import接口
         if (!StringUtils.isEmpty(baseMapper)) {
+            // 获取实体类
+            FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
             interfaze.addImportedType(new FullyQualifiedJavaType(baseMapper));
+            interfaze.addImportedType(new FullyQualifiedJavaType(entityType.getFullyQualifiedName()));
             interfaze.addSuperInterface(new FullyQualifiedJavaType(baseMapper + "<" + entityType.getShortName() + "," + primaryKeyType + ">"));
         }
         /*
@@ -75,7 +78,7 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         interfaze.addJavaDocLine(" */");
 
         // import实体类
-        interfaze.addImportedType(entityType);
+       // interfaze.addImportedType(entityType);
         //添加 @Repository注解
         interfaze.addAnnotation("@Repository");
         interfaze.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Repository"));
@@ -94,23 +97,15 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
      */
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        //addSerialVersionUID(topLevelClass, introspectedTable);
-        // lombok 设置
-        topLevelClass.addImportedType("lombok.Data");
-        topLevelClass.addImportedType("lombok.EqualsAndHashCode");
-        //topLevelClass.addImportedType("lombok.experimental.Accessors");
-        topLevelClass.addAnnotation("@Data");
-        // 链式调用导致mybats xml报错
-        //topLevelClass.addAnnotation("@Accessors(chain = true)");
-        topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
-        //topLevelClass.addImportedType("lombok.Getter");
-        //topLevelClass.addImportedType("lombok.Setter");
-        //topLevelClass.addImportedType("lombok.ToString");
-        //topLevelClass.addAnnotation("@Getter");
-        //topLevelClass.addAnnotation("@Setter");
-        //topLevelClass.addAnnotation("@ToString");
 
-
+        if (!StringUtils.isEmpty(baseModel)) {
+            topLevelClass.addImportedType("lombok.EqualsAndHashCode");
+            topLevelClass.addAnnotation("@EqualsAndHashCode(callSuper = true)");
+            topLevelClass.addImportedType(baseModel);
+            topLevelClass.setSuperClass(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
+            // 剔除公共的字段
+            removeRepeatedFields(topLevelClass);
+        }
         // 设置头
         topLevelClass.addJavaDocLine("/**");
         topLevelClass.addJavaDocLine(" * @author " + System.getProperty("user.name", "zhaoyunxing"));
@@ -119,13 +114,21 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
         // 获取表第一个字段作为主键类型
         primaryKeyType = topLevelClass.getFields().get(0).getType().getShortName();
 
-        if (!StringUtils.isEmpty(baseModel)) {
-            topLevelClass.addImportedType(baseModel);
-            topLevelClass.setSuperClass(new FullyQualifiedJavaType(baseModel + "<" + primaryKeyType + ">"));
-        }
-        // 剔除公共的字段
-        removeRepeatedFields(topLevelClass);
+        //addSerialVersionUID(topLevelClass, introspectedTable);
+        // lombok 设置
+        topLevelClass.addImportedType("lombok.Data");
 
+        //topLevelClass.addImportedType("lombok.experimental.Accessors");
+        topLevelClass.addAnnotation("@Data");
+        // 链式调用导致mybats xml报错
+        //topLevelClass.addAnnotation("@Accessors(chain = true)");
+
+        //topLevelClass.addImportedType("lombok.Getter");
+        //topLevelClass.addImportedType("lombok.Setter");
+        //topLevelClass.addImportedType("lombok.ToString");
+        //topLevelClass.addAnnotation("@Getter");
+        //topLevelClass.addAnnotation("@Setter");
+        //topLevelClass.addAnnotation("@ToString");
         return true;
     }
 
@@ -136,9 +139,9 @@ public class InterFaceExtendsPlugin extends PluginAdapter {
             Field[] fields = aClass.getDeclaredFields();
 
             // 去除重复导入
-            Set<String> types = Stream.of(fields).map(Field::getType).map(Class::getName).collect(Collectors.toSet());
-            clazz.getImportedTypes().removeIf(type -> types.contains(type.getFullyQualifiedName()));
-
+            //Set<String> types = Stream.of(fields).map(Field::getType).map(Class::getName).collect(Collectors.toSet());
+           // clazz.getImportedTypes().removeIf(type -> types.contains(type.getFullyQualifiedName()));
+            clazz.getImportedTypes().clear();
             // 去除重复字段
             List<String> fieldNames = Stream.of(fields).map(Field::getName).collect(Collectors.toList());
             clazz.getFields().removeIf(field -> fieldNames.contains(field.getName()));

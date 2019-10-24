@@ -6,11 +6,6 @@ package io.github.sunny.cherry.tomato.account.model;
 import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 
 /**
  * @author sunny

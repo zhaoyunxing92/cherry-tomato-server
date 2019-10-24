@@ -70,13 +70,12 @@ public class CherryAccountServiceImpl implements CherryAccountService {
      * @param dto
      */
     @Override
-    public Response sendRegisterAction(CherryAccountDto dto) {
+    public void sendRegisterAction(CherryAccountDto dto) {
         String json = JSONObject.toJSONString(dto);
 
         Message<String> msg = MessageBuilder.withPayload(json).build();
         // 发送事物消息
         rocketMQTemplate.sendMessageInTransaction("producer_txmsg_account", "topic_txmsg", msg, null);
-        return null;
     }
 
     /**
@@ -86,15 +85,16 @@ public class CherryAccountServiceImpl implements CherryAccountService {
      * @param dto
      */
     @Override
-    public void msgRegister(String txId, CherryAccountDto dto) {
+    public Response msgRegister(String txId, CherryAccountDto dto) {
         String action = "register";
         if (txMsgService.isExists(txId, action)) {
-            return;
+            return ResultUtil.success("注册账户成功");
         }
         // 注册账号
         cherryAccountDao.register(dto);
         // 保存事物消息
         txMsgService.save(txId, action);
+        return ResultUtil.success("注册账户成功");
     }
 
     /**
