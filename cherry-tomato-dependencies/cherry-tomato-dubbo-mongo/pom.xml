@@ -14,8 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-dubbo</artifactId>
+            <artifactId>cherry-tomato-dubbo-nacos</artifactId>
         </dependency>
     </dependencies>
-    
+
 </project>

@@ -3,9 +3,12 @@ spring:
     name: @project.artifactId@
   profiles:
     active: local
+
 dubbo:
   scan:
     base-packages: io.github.sunny.cherry.tomato.account.service
   protocol:
     name: dubbo
-    port: 20884
+    port: 20881
+  registry:
+    address: nacos://192.168.56.200:8848

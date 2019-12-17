@@ -3,16 +3,10 @@
  */
 package io.github.sunny.cherry.tomato.account.service.impl;
 
-import io.github.sunny.cherry.tomato.account.dao.CherryAccountDao;
 import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
-import io.github.sunny.cherry.tomato.account.model.CherryAccount;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.security.service.CherryAccountRoleService;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 账户模块
@@ -20,31 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
  * @author zhaoyunxing
  * @date: 2019-10-12 17:53
  */
-@Service
+@Service(interfaceClass = CherryAccountService.class)
 public class CherryAccountServiceImpl implements CherryAccountService {
-
-    @Autowired
-    private CherryAccountDao cherryAccountDao;
-    @Reference(validation = "true")
-    private CherryAccountRoleService cherryAccountRoleService;
 
     /**
      * 注册账户
      *
      * @param dto {@link CherryAccountDto}
-     * @return {@link Response}
+     * @return {@link CherryAccountDto}
      */
-    @Transactional(rollbackFor = Exception.class)
     @Override
-    public Response register(CherryAccountDto dto) {
-        // 添加账户
-        Response<CherryAccount> cherryAccountResponse = cherryAccountDao.register(dto);
-        //添加权限
-        Response cherryAccountRoleDtoResponse = cherryAccountRoleService.assignRoles(cherryAccountResponse.getData().getId(), 1001L);
-
-        if (cherryAccountResponse.isSuccess() && cherryAccountRoleDtoResponse.isSuccess()) {
-            ResultUtil.success("注册账户成功");
-        }
-        return ResultUtil.error("注册账户成功");
+    public Response<CherryAccountDto> register(CherryAccountDto dto) {
+        return null;
     }
 }

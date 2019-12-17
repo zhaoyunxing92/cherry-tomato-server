@@ -17,5 +17,5 @@ public interface CherryAccountService {
      * @param dto {@link CherryAccountDto}
      * @return {@link Response} 信息
      */
-    Response register(CherryAccountDto dto);
+    Response<CherryAccountDto> register(CherryAccountDto dto);
 }

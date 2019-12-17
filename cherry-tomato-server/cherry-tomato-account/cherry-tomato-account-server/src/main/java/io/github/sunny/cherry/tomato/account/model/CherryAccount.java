@@ -53,15 +53,15 @@ public class CherryAccount extends BaseModel<Long> {
     /**
      * 账户是否过期：0=过期，1=未过期
      */
-    private Boolean accountNonExpired;
+    private Boolean accountNonExpired = false;
 
     /**
      * 账户是否锁定：0=锁定，1=未锁定
      */
-    private Boolean accountNonLocked;
+    private Boolean accountNonLocked = false;
 
     /**
      * 是否启用：0=不启用，1=启用
      */
-    private Boolean enabled;
+    private Boolean enabled = false;
 }
