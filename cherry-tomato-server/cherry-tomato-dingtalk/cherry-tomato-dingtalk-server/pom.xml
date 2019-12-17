@@ -3,27 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cherry-tomato</artifactId>
+        <artifactId>cherry-tomato-dingtalk</artifactId>
         <groupId>io.github.sunny</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cherry-tomato-generator</artifactId>
+    <artifactId>cherry-tomato-dingtalk-server</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-core</artifactId>
+            <artifactId>cherry-tomato-dubbo-mongo</artifactId>
         </dependency>
     </dependencies>
 
+<!--    <build>-->
+    <!--        <resources>-->
+    <!--            <resource>-->
+    <!--                <directory>src/main/resources</directory>-->
+    <!--                <filtering>true</filtering>-->
+    <!--            </resource>-->
+    <!--        </resources>-->
+    <!--    </build>-->
 </project>

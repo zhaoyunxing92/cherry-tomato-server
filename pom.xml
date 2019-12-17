@@ -6,7 +6,7 @@
 
     <groupId>io.github.sunny</groupId>
     <artifactId>cherry-tomato</artifactId>
-    <version>2.0.0</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <description>小番茄系统</description>
 
@@ -16,6 +16,7 @@
         <module>cherry-tomato-core</module>
         <module>cherry-tomato-generator</module>
         <module>cherry-tomato-dependencies</module>
+        <module>cherry-tomato-starter</module>
     </modules>
 
 
@@ -29,6 +30,8 @@
     <properties>
         <revision>2.0.0</revision>
         <spring.boot>2.1.0.RELEASE</spring.boot>
+        <dubbo.version>2.7.4.1</dubbo.version>
+        <nacos.version>1.1.1</nacos.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -46,10 +49,21 @@
         <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
         <hibernate-validator.version>5.1.0.Final</hibernate-validator.version>
         <javax.el.version>2.2.4</javax.el.version>
+        <flatten-maven-plugin.version>1.1.0</flatten-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
             <dependency>
                 <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-service-api</artifactId>
@@ -57,32 +71,7 @@
             </dependency>
             <dependency>
                 <groupId>io.github.sunny</groupId>
-                <artifactId>cherry-tomato-server</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.sunny</groupId>
-                <artifactId>cherry-tomato-cache-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.sunny</groupId>
-                <artifactId>cherry-tomato-oss-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.sunny</groupId>
-                <artifactId>cherry-tomato-security-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-account-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.sunny</groupId>
-                <artifactId>cherry-tomato-team-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -153,7 +142,11 @@
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -163,9 +156,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${alibaba.cloud.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -208,22 +201,40 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${flatten-maven-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.mybatis.generator</groupId>
-                    <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>${mybatis.generator.version}</version>
-                </plugin>
-
-                <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring.boot}</version>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>

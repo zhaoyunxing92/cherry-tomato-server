@@ -16,8 +16,10 @@ import java.io.Serializable;
 public class Response<T> implements Serializable {
 
     private static final long serialVersionUID = 393612537159594290L;
+
+    private String traceId;
     /**
-     * code码
+     * code
      */
     private Integer code;
     /**

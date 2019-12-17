@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cherry-tomato-account</artifactId>
         <groupId>io.github.sunny</groupId>
-        <version>2.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,15 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-dubbo-mysql</artifactId>
+            <artifactId>cherry-tomato-dubbo-mongo</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.sunny</groupId>
             <artifactId>cherry-tomato-account-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-security-api</artifactId>
         </dependency>
     </dependencies>
 

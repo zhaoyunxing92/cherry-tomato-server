@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: local
+dubbo:
+  scan:
+    base-packages: io.github.sunny.cherry.tomato.account.service
+  protocol:
+    name: dubbo
+    port: 20884

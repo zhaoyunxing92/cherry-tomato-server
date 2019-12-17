@@ -5,9 +5,8 @@ package io.github.sunny.cherry.tomato.core.common.valid;
 
 /**
  * @author sunny
- * @class: com.sunny.boot.cherrytomato.common.valid.UpdateGroup
  * @date: 2018-06-18 23:41
- * @des: 更新校验
+ * @desc: 更新校验
  */
 public interface UpdateGroup {
 }

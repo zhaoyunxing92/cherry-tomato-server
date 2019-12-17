@@ -4,7 +4,6 @@
 package io.github.sunny.cherry.tomato.web.handler;
 
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import org.apache.dubbo.rpc.RpcException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -24,7 +23,7 @@ public class CherryGlobalExceptionHandler {
      * @return 异常信息
      */
     @ExceptionHandler(value = RpcException.class)
-    public Response rpcException(RpcException ex) {
+    public Response<?> rpcException(RpcException ex) {
         return ResultUtil.error(500, ex.getMessage());
     }
 

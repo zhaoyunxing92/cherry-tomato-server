@@ -8,7 +8,6 @@ import io.github.sunny.cherry.tomato.account.dto.CherryAccountDto;
 import io.github.sunny.cherry.tomato.account.model.CherryAccount;
 import io.github.sunny.cherry.tomato.account.service.CherryAccountService;
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.core.utils.ResultUtil;
 import io.github.sunny.cherry.tomato.security.service.CherryAccountRoleService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.apache.dubbo.config.annotation.Service;

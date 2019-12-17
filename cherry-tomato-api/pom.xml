@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cherry-tomato</artifactId>
         <groupId>io.github.sunny</groupId>
-        <version>2.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,22 +15,6 @@
         <dependency>
             <groupId>io.github.sunny</groupId>
             <artifactId>cherry-tomato-web-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-cache-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-oss-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-security-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.sunny</groupId>

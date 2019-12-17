@@ -6,18 +6,15 @@
     <parent>
         <artifactId>cherry-tomato</artifactId>
         <groupId>io.github.sunny</groupId>
-        <version>2.0.0</version>
+        <version>${revision}</version>
     </parent>
 
     <artifactId>cherry-tomato-server</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>cherry-tomato-oss</module>
-        <module>cherry-tomato-security</module>
-        <module>cherry-tomato-cache</module>
         <module>cherry-tomato-account</module>
-        <module>cherry-tomato-team</module>
+        <module>cherry-tomato-dingtalk</module>
     </modules>
 
     <dependencies>

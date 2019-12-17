@@ -36,7 +36,7 @@ public class CherryAccount extends BaseModel<Long> {
     private String nickname;
 
     /**
-     * 昵称
+     * 真实姓名
      */
     private String realName;
 
@@ -46,7 +46,7 @@ public class CherryAccount extends BaseModel<Long> {
     private String intro;
 
     /**
-     * logo地址
+     * 头像地址
      */
     private String avatar;
 

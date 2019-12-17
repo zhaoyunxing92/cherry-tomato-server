@@ -5,9 +5,8 @@ package io.github.sunny.cherry.tomato.core.common.valid;
 
 /**
  * @author sunny
- * @class: com.sunny.boot.cherrytomato.common.valid.InsertGroup
  * @date: 2018-06-18 23:15
- * @des: 添加校验组
+ * @desc: 添加校验组
  */
 public interface InsertGroup {
 }

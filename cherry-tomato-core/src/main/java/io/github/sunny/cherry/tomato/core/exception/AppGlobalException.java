@@ -5,10 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
+ * 全局异常
+ *
  * @author sunny
- * @class: com.sunny.workflow.user.exception.AppGlobalException
  * @date: 2018-05-18 13:31
- * @des: 全局异常
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cherry-tomato-dependencies</artifactId>
         <groupId>io.github.sunny</groupId>
-        <version>2.0.0</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -17,4 +17,5 @@
             <artifactId>cherry-tomato-dubbo</artifactId>
         </dependency>
     </dependencies>
+    
 </project>

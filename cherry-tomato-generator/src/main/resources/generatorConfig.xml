@@ -26,46 +26,46 @@
         <!-- !!!! Database Configurations !!!! -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://127.0.0.1:3306/cherry?useUnicode=true&amp;characterEncoding=UTF-8"
-                userId="root"
-                password="123456"/>
+                connectionURL="jdbc:mysql://172.16.24.49:3306/t3_pickride_fp?useUnicode=true&amp;characterEncoding=UTF-8"
+                userId="pgm_user"
+                password="mDuYeuj5s8e5YPHh"/>
         <!-- 类型转换 -->
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="io.github.sunny.cherry.tomato.security.model" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/java">
+        <javaModelGenerator targetPackage="com.t3.ts.pickride.business.fp.entity" targetProject="D:/t3/pickride-business-fp/pickride-business-fp-provider/src/main/java">
             <property name="constructorBased" value="false"/>
             <property name="enableSubPackages" value="true"/>
             <property name="immutable" value="false"/>
         </javaModelGenerator>
 
         <!-- sql-->
-        <sqlMapGenerator targetPackage="io.github.sunny.cherry.tomato.security.mapper.xml" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="D:/t3/pickride-business-fp/pickride-business-fp-provider/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!--mapper-->
-        <javaClientGenerator targetPackage="io.github.sunny.cherry.tomato.security.mapper" targetProject="/home/sunny/code/java/spring-training-hall/cherry-tomato/cherry-tomato-server/cherry-tomato-security/cherry-tomato-security-server/src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.t3.ts.pickride.business.fp.mapper" targetProject="D:/t3/pickride-business-fp/pickride-business-fp-provider/src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="cherry_account_role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
-           <!-- <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-        </table>
-
-        <table tableName="cherry_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
-             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
-
-        <table tableName="cherry_role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+        <table tableName="t_often_use_route" domainObjectName="OftenUseRoute" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByPrimaryKey="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 
-        <table tableName="cherry_role_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="cherry_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--             <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="cherry_role" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="cherry_role_permissions" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
 
     </context>
