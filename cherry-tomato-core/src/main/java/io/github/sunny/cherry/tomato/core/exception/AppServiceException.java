@@ -13,6 +13,10 @@ import io.github.sunny.cherry.tomato.core.result.Response;
  */
 public class AppServiceException extends AppGlobalException {
 
+    public AppServiceException(Long code, String msg) {
+        super(Response.error(code, msg));
+    }
+
     public AppServiceException(Response response) {
         super(response);
     }

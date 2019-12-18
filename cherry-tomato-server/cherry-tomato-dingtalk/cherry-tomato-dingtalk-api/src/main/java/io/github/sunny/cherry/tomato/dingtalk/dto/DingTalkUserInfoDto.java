@@ -6,6 +6,7 @@ package io.github.sunny.cherry.tomato.dingtalk.dto;
 import io.github.sunny.cherry.tomato.core.common.dto.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * {
@@ -43,6 +44,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class DingTalkUserInfoDto extends BaseDto {
 
     /**

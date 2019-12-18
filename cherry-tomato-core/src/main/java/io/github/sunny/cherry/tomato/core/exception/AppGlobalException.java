@@ -18,6 +18,7 @@ public class AppGlobalException extends RuntimeException {
     private Response response;
 
     public AppGlobalException(Response response) {
+        super(response.getCode() + ":" + response.getMsg());
         this.response = response;
     }
 

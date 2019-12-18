@@ -28,7 +28,7 @@ public class DingTalkUserController {
     /**
      * 获取用户信息
      *
-     * @param req
+     * @param req 用户信息
      * @return
      */
     @GetMapping("/info")

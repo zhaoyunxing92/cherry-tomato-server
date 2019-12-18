@@ -1,6 +1,5 @@
 package io.github.sunny.cherry.tomato.core.result;
 
-import io.github.sunny.cherry.tomato.core.common.dto.BaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -36,7 +35,24 @@ public class Response<T> implements Serializable {
      */
     private boolean success;
 
-    public static Response<?> error(long code,String msg) {
+    /**
+     * 失败
+     *
+     * @param code
+     * @param msg
+     * @return
+     */
+    public static  Response<?> error(long code, String msg) {
         return new Response("", code, msg, null, false);
+    }
+
+    /**
+     * 成功
+     *
+     * @param msg
+     * @return
+     */
+    public static Response success(String msg, Object obj) {
+        return  new Response("", 0, msg, obj, true);
     }
 }

@@ -10,7 +10,7 @@ import com.dingtalk.api.response.OapiGettokenResponse;
 import com.taobao.api.ApiException;
 import io.github.sunny.cherry.tomato.core.exception.AppServiceException;
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.dingtalk.constant.Constant;
+import io.github.sunny.cherry.tomato.dingtalk.constant.Constants;
 import io.github.sunny.cherry.tomato.dingtalk.dao.MicroAppTokenDao;
 import io.github.sunny.cherry.tomato.dingtalk.model.AccessToken;
 import io.github.sunny.cherry.tomato.dingtalk.model.MicroApp;
@@ -52,12 +52,8 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     @Override
     public String getAccessToken(String corpId, String appKey) {
         AccessToken accessToken = microAppTokenDao.findByCorpIdAndAppKey(corpId, appKey);
-        /**
-         *  7200秒token失效
-         */
-        // 时差
-       // long until = new Date().toInstant().until(accessToken.getExpiresIn().toInstant(), ChronoUnit.DAYS);
-        if (Objects.isNull(accessToken) ||  new Date().toInstant().until(accessToken.getExpiresIn().toInstant(), ChronoUnit.SECONDS) <= 0) {
+
+        if (Objects.isNull(accessToken) || new Date().toInstant().until(accessToken.getExpiresIn().toInstant(), ChronoUnit.SECONDS) <= 0) {
             return dingTalkAccessToken(corpId, appKey);
         }
         return accessToken.getAccessToken();
@@ -66,9 +62,9 @@ public class AccessTokenServiceImpl implements AccessTokenService {
     /**
      * 获取token 并且缓存
      *
-     * @param corpId
-     * @param appKey
-     * @return
+     * @param corpId 企业id
+     * @param appKey 小程序key
+     * @return token
      */
     private String dingTalkAccessToken(String corpId, String appKey) {
         MicroApp microApp = dingTalkMicroAppService.selectMicroApp(corpId, appKey);
@@ -90,21 +86,18 @@ public class AccessTokenServiceImpl implements AccessTokenService {
      */
     private AccessToken dingTalkAccessToken2(String appKey, String appSecret) {
         try {
-            DingTalkClient client = new DefaultDingTalkClient(Constant.get_token);
+            DingTalkClient client = new DefaultDingTalkClient(Constants.get_token);
             OapiGettokenRequest request = new OapiGettokenRequest();
 
             request.setAppkey(appKey);
             request.setAppsecret(appSecret);
             request.setHttpMethod("GET");
             OapiGettokenResponse response = client.execute(request);
-            // response.get
-            Long errcode = response.getErrcode();
-            if (errcode != 0) {
-                throw new AppServiceException(Response.error(errcode, response.getErrmsg()));
+            Long code = response.getErrcode();
+            if (code != 0) {
+                throw new AppServiceException(code, response.getErrmsg());
             }
-            /**
-             * 计算token过期时间 7200-200
-             */
+            //计算token过期时间 7200-200
             Date expiresIn = Date.from(LocalDateTime.now().plusSeconds(response.getExpiresIn() - 200).atZone(ZoneId.systemDefault()).toInstant());
             AccessToken token = new AccessToken();
             token.setAccessToken(response.getAccessToken());
