@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cherry-tomato-web-api</artifactId>
+    <artifactId>cherry-tomato-web</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-dubbo</artifactId>
+            <artifactId>cherry-tomato-dubbo-nacos</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

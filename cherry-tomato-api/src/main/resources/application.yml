@@ -7,16 +7,14 @@ spring:
     name: @project.artifactId@
   profiles:
     active: local
+
 dubbo:
-  registry:
-    address: spring-cloud://localhost:8848
   scan:
-    base-packages: io.github.sunny.cherry.tomato.controller
-  cloud:
-    subscribed-services: cherry-tomato-cache-server
+    base-packages: io.github.sunny.cherry.tomato
   protocol:
     name: dubbo
-    port: -1
-#    host: 192.168.3.20
+    port: 21000
+  registry:
+    address: nacos://192.168.56.200:8848
   consumer:
     check: false

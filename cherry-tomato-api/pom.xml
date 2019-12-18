@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-web-api</artifactId>
+            <artifactId>cherry-tomato-web</artifactId>
         </dependency>
         <dependency>
             <groupId>io.github.sunny</groupId>

@@ -15,7 +15,7 @@
 
     <modules>
         <module>cherry-tomato-dubbo</module>
-        <module>cherry-tomato-web-api</module>
+        <module>cherry-tomato-web</module>
         <module>cherry-tomato-dubbo-mysql</module>
         <module>cherry-tomato-dubbo-mongo</module>
         <module>cherry-tomato-service-api</module>
