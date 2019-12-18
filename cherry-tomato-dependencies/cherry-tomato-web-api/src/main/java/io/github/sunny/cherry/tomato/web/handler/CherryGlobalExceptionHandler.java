@@ -24,7 +24,7 @@ public class CherryGlobalExceptionHandler {
      */
     @ExceptionHandler(value = RpcException.class)
     public Response<?> rpcException(RpcException ex) {
-        return ResultUtil.error(500, ex.getMessage());
+        return Response.error(500, ex.getMessage());
     }
 
 }

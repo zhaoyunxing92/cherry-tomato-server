@@ -14,6 +14,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DingTalkServer {
     public static void main(String[] args) {
-        SpringApplication.run(DingTalkServer.class, args);
+         SpringApplication.run(DingTalkServer.class, args);
     }
 }

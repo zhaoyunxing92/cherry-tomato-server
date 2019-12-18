@@ -54,6 +54,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- nacos -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-registry-nacos</artifactId>
@@ -64,11 +65,19 @@
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-service-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>cherry-tomato-dingtalk-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>io.github.sunny</groupId>
                 <artifactId>cherry-tomato-account-api</artifactId>

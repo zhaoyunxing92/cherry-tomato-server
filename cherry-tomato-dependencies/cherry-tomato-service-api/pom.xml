@@ -17,6 +17,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
+        <!--jsr验证-->
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
