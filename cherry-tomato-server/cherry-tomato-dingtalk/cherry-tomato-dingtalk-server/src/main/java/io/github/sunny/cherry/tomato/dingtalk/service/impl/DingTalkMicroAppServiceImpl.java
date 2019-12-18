@@ -10,6 +10,7 @@ import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkMicroAppService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -35,6 +36,7 @@ public class DingTalkMicroAppServiceImpl implements DingTalkMicroAppService {
      */
     @Override
     public void registerMicroAppService(MicroApp microApp) {
+        microApp.setCreatorTime(new Date());
         microappDao.insert(microApp);
     }
 
@@ -51,10 +53,7 @@ public class DingTalkMicroAppServiceImpl implements DingTalkMicroAppService {
         MicroApp microApp = new MicroApp();
         BeanUtils.copyProperties(dingTalkProperties, microApp);
         registerMicroAppService(microApp);
-
         // 获取token
-
-
         return null;
     }
 
@@ -68,7 +67,7 @@ public class DingTalkMicroAppServiceImpl implements DingTalkMicroAppService {
     @Override
     public MicroApp selectMicroApp(String corpId, String appKey) {
         MicroApp microApp = microappDao.findByCorpIdAndAppKey(corpId, appKey);
-        if(Objects.isNull(microApp)){
+        if (Objects.isNull(microApp)) {
             microApp = new MicroApp();
             BeanUtils.copyProperties(dingTalkProperties, microApp);
             registerMicroAppService(microApp);

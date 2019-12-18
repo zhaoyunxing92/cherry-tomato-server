@@ -3,7 +3,10 @@
  */
 package io.github.sunny.cherry.tomato.dingtalk.model;
 
+import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
@@ -17,8 +20,10 @@ import java.util.List;
  * @desc:
  */
 @Data
-@Document(collection = "microapp")
-public class MicroApp {
+@EqualsAndHashCode(callSuper = true)
+@Document(collection = "micro_app")
+public class MicroApp extends BaseModel<String> {
+
     /**
      * 代理app
      */
@@ -55,8 +60,5 @@ public class MicroApp {
      * 处理的事件
      */
     private List<String> callBackTag;
-    /**
-     * 创建时间
-     */
-    private Date createTime = new Date();
+
 }

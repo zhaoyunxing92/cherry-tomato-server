@@ -3,6 +3,7 @@
  */
 package io.github.sunny.cherry.tomato.dingtalk.req;
 
+import io.github.sunny.cherry.tomato.core.common.req.BaseReq;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class DingTalkUserInfoReq {
+public class DingTalkUserInfoReq extends BaseReq {
     /**
      * 免登授权码
      */

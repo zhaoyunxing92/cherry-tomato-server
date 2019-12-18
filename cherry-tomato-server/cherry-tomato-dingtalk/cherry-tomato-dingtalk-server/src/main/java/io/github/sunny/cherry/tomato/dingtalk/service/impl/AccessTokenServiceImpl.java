@@ -19,6 +19,7 @@ import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkMicroAppService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -51,29 +52,24 @@ public class AccessTokenServiceImpl implements AccessTokenService {
      */
     @Override
     public String getAccessToken(String corpId, String appKey) {
+        MicroApp microApp = dingTalkMicroAppService.selectMicroApp(corpId, appKey);
+
+        Assert.notNull(microApp, String.format("该企业[%s]小的小程序[%s]没有登记", corpId, appKey));
         AccessToken accessToken = microAppTokenDao.findByCorpIdAndAppKey(corpId, appKey);
 
-        if (Objects.isNull(accessToken) || new Date().toInstant().until(accessToken.getExpiresIn().toInstant(), ChronoUnit.SECONDS) <= 0) {
-            return dingTalkAccessToken(corpId, appKey);
+        if (Objects.isNull(accessToken)) {
+            accessToken = dingTalkAccessToken(microApp.getAppKey(), microApp.getAppSecret());
+            accessToken.setCorpId(corpId);
+            accessToken.setCreatorTime(new Date());
+            accessToken.setModifierTime(new Date());
+            microAppTokenDao.save(accessToken);
+        } else if (ChronoUnit.SECONDS.between(accessToken.getModifierTime().toInstant(), Instant.now()) >= accessToken.getExpiresIn()-1) {
+            AccessToken token = dingTalkAccessToken(microApp.getAppKey(), microApp.getAppSecret());
+            accessToken.setAccessToken(token.getAccessToken());
+            accessToken.setExpiresIn(token.getExpiresIn());
+            accessToken.setModifierTime(new Date());
+            microAppTokenDao.save(accessToken);
         }
-        return accessToken.getAccessToken();
-    }
-
-    /**
-     * 获取token 并且缓存
-     *
-     * @param corpId 企业id
-     * @param appKey 小程序key
-     * @return token
-     */
-    private String dingTalkAccessToken(String corpId, String appKey) {
-        MicroApp microApp = dingTalkMicroAppService.selectMicroApp(corpId, appKey);
-        Assert.notNull(microApp, String.format("该企业[%s]小的小程序[%s]没有登记", corpId, appKey));
-
-        AccessToken accessToken = dingTalkAccessToken2(appKey, microApp.getAppSecret());
-        accessToken.setCorpId(corpId);
-        microAppTokenDao.save(accessToken);
-
         return accessToken.getAccessToken();
     }
 
@@ -84,7 +80,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
      * @param appSecret 秘钥
      * @return AccessToken
      */
-    private AccessToken dingTalkAccessToken2(String appKey, String appSecret) {
+    private AccessToken dingTalkAccessToken(String appKey, String appSecret) {
         try {
             DingTalkClient client = new DefaultDingTalkClient(Constants.get_token);
             OapiGettokenRequest request = new OapiGettokenRequest();
@@ -98,11 +94,10 @@ public class AccessTokenServiceImpl implements AccessTokenService {
                 throw new AppServiceException(code, response.getErrmsg());
             }
             //计算token过期时间 7200-200
-            Date expiresIn = Date.from(LocalDateTime.now().plusSeconds(response.getExpiresIn() - 200).atZone(ZoneId.systemDefault()).toInstant());
             AccessToken token = new AccessToken();
             token.setAccessToken(response.getAccessToken());
             token.setAppKey(appKey);
-            token.setExpiresIn(expiresIn);
+            token.setExpiresIn(response.getExpiresIn());
             return token;
         } catch (ApiException ex) {
             throw new AppServiceException(Response.error(500, ex.getErrMsg()));

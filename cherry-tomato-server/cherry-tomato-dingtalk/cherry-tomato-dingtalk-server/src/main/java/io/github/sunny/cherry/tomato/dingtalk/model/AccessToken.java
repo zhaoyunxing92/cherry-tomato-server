@@ -3,7 +3,10 @@
  */
 package io.github.sunny.cherry.tomato.dingtalk.model;
 
+import io.github.sunny.cherry.tomato.core.common.model.BaseModel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
@@ -13,7 +16,9 @@ import java.util.Date;
  * @desc:
  */
 @Data
-public class AccessToken {
+@EqualsAndHashCode(callSuper = true)
+@Document(collection = "access_token")
+public class AccessToken extends BaseModel<String> {
 
     /**
      * 企业id
@@ -30,6 +35,6 @@ public class AccessToken {
     /**
      * 过期时间
      */
-    private Date expiresIn;
+    private Long expiresIn;
 
 }
