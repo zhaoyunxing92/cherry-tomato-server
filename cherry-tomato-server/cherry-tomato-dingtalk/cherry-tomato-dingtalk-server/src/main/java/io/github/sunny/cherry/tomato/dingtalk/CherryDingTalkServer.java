@@ -12,8 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @desc:
  */
 @SpringBootApplication
-public class DingTalkServer {
+public class CherryDingTalkServer {
     public static void main(String[] args) {
-         SpringApplication.run(DingTalkServer.class, args);
+         SpringApplication.run(CherryDingTalkServer.class, args);
     }
 }

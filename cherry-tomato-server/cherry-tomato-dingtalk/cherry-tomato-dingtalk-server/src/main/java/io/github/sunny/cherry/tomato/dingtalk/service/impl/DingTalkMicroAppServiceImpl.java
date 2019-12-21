@@ -3,10 +3,10 @@
  */
 package io.github.sunny.cherry.tomato.dingtalk.service.impl;
 
-import io.github.sunny.cherry.tomato.dingtalk.config.DingTalkProperties;
 import io.github.sunny.cherry.tomato.dingtalk.dao.MicroAppDao;
 import io.github.sunny.cherry.tomato.dingtalk.model.MicroApp;
 import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkMicroAppService;
+import io.github.sunny.dingtalk.embedded.DingTalkProperties;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 

@@ -4,12 +4,12 @@
 package io.github.sunny.cherry.tomato.dingtalk.service.impl;
 
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.dingtalk.config.DingTalkProperties;
 import io.github.sunny.cherry.tomato.dingtalk.dao.MicroAppDao;
 import io.github.sunny.cherry.tomato.dingtalk.model.MicroApp;
 import io.github.sunny.cherry.tomato.dingtalk.req.DingTalkUserInfoReq;
 import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkMicroAppService;
 import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkTokenService;
+import io.github.sunny.dingtalk.embedded.DingTalkProperties;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.BeanUtils;
 

@@ -1,7 +1,7 @@
 /**
  * Copyright(C) 2019 Hangzhou zhaoyunxing Technology Co., Ltd. All rights reserved.
  */
-package io.github.sunny.cherry.tomato.dingtalk.config;
+package io.github.sunny.dingtalk.embedded;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

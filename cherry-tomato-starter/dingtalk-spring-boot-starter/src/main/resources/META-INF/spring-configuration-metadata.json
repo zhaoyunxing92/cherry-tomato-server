@@ -1,0 +1,60 @@
+{
+  "groups": [
+    {
+      "name": "cherry.dingtalk",
+      "type": "io.github.sunny.dingtalk.embedded.DingTalkProperties",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "cherry.dingtalk.aes-key",
+      "type": "java.lang.String",
+      "description": "数据加密密钥。用于回调数据的加密，长度固定为43个字符，从a-z, A-Z, 0-9共62个字符中选取,您可以随机生成，ISV(服务提供商)推荐使用注册套件时填写的EncodingAESKey",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.agent-id",
+      "type": "java.lang.Long",
+      "description": "代理app",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.app-key",
+      "type": "java.lang.String",
+      "description": "appKey",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.app-secret",
+      "type": "java.lang.String",
+      "description": "app secret",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.call-back-tag",
+      "type": "java.util.List<java.lang.String>",
+      "description": "处理的事件",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.callback-url",
+      "type": "java.lang.String",
+      "description": "事件回调地址",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.corp-id",
+      "type": "java.lang.String",
+      "description": "企业id",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    },
+    {
+      "name": "cherry.dingtalk.token",
+      "type": "java.lang.String",
+      "description": "加解密需要用到的token，ISV(服务提供商)推荐使用注册套件时填写的token，普通企业可以随机填写",
+      "sourceType": "io.github.sunny.dingtalk.embedded.DingTalkProperties"
+    }
+  ],
+  "hints": []
+}

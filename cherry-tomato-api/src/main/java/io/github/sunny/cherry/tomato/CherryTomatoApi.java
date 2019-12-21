@@ -5,16 +5,15 @@ package io.github.sunny.cherry.tomato;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author zhaoyunxing
  * @date: 2019-09-20 13:34
  */
 @SpringBootApplication
-public class CherryTomato {
+public class CherryTomatoApi {
 
     public static void main(String[] args) {
-        SpringApplication.run(CherryTomato.class, args);
+        SpringApplication.run(CherryTomatoApi.class, args);
     }
 }

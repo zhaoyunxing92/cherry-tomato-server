@@ -16,7 +16,14 @@
             <groupId>io.github.sunny</groupId>
             <artifactId>cherry-tomato-dubbo-mongo</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>dingtalk-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.sunny</groupId>
+            <artifactId>cherry-tomato-dingtalk-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.taobao.top</groupId>
             <artifactId>taobao-sdk-java-auto</artifactId>
@@ -25,17 +32,6 @@
             <systemPath>${pom.basedir}/lib/taobao-sdk-java-auto.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>io.github.sunny</groupId>
-            <artifactId>cherry-tomato-dingtalk-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <scope>provided</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -43,11 +39,11 @@
     </dependencies>
 
     <build>
-            <resources>
-                <resource>
-                    <directory>src/main/resources</directory>
-                    <filtering>true</filtering>
-                </resource>
-            </resources>
-        </build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>

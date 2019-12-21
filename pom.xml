@@ -54,6 +54,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.github.sunny</groupId>
+                <artifactId>dingtalk-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <!-- nacos -->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -185,7 +190,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,7 +1,7 @@
 package io.github.sunny.cherry.tomato.dingtalk.service.impl;
 
 import io.github.sunny.cherry.tomato.core.result.Response;
-import io.github.sunny.cherry.tomato.dingtalk.DingTalkServer;
+import io.github.sunny.cherry.tomato.dingtalk.CherryDingTalkServer;
 import io.github.sunny.cherry.tomato.dingtalk.dto.DingTalkUserInfoDto;
 import io.github.sunny.cherry.tomato.dingtalk.req.DingTalkUserInfoReq;
 import io.github.sunny.cherry.tomato.dingtalk.service.DingTalkUserInfoService;
@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @date: 2019-12-18 15:40
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DingTalkServer.class)
+@SpringBootTest(classes = CherryDingTalkServer.class)
 @Slf4j
 public class DingTalkUserInfoServiceImplTest {
     @Reference
