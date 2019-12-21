@@ -24,7 +24,7 @@ core:
 storage:
   elasticsearch:
     nameSpace: ${SW_NAMESPACE:skywalking}
-    clusterNodes: ${SW_STORAGE_ES_CLUSTER_NODES:0.0.0.0:9200}
+    clusterNodes: ${SW_STORAGE_ES_CLUSTER_NODES:192.168.56.200:9200}
     indexShardsNumber: ${SW_STORAGE_ES_INDEX_SHARDS_NUMBER:2}
     indexReplicasNumber: ${SW_STORAGE_ES_INDEX_REPLICAS_NUMBER:0}
     # Batch process setting, refer to https://www.elastic.co/guide/en/elasticsearch/client/java-api/5.5/java-docs-bulk-processor.html

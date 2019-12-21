@@ -20,6 +20,7 @@
         <module>cherry-tomato-dubbo-mongo</module>
         <module>cherry-tomato-service-api</module>
         <module>cherry-tomato-dubbo-nacos</module>
+        <module>cherry-tomato-logging</module>
     </modules>
 
 </project>

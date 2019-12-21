@@ -43,7 +43,8 @@
         <logger name="io.netty" level="INFO"/>
         <logger name="org.apache.dubbo.remoting" level="INFO"/>
         <logger name="org.springframework.web.client.RestTemplate" level="INFO"/>
-        <root level="DEBUG">
+        <logger name="org.apache.dubbo.remoting.transport.netty4.NettyClientHandler" level="INFO"/>
+        <root level="INFO">
             <appender-ref ref="console"/>
 <!--            <appender-ref ref="file"/>-->
         </root>

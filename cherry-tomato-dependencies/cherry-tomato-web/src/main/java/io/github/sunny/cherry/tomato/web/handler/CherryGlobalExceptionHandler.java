@@ -27,7 +27,17 @@ public class CherryGlobalExceptionHandler {
     public Response<?> rpcException(RpcException ex) {
         return Response.error(500, ex.getMessage());
     }
-
+    /**
+     * rpc 调用异常
+     *
+     * @param ex RpcException
+     * @return 异常信息
+     */
+    @ExceptionHandler(value = RuntimeException.class)
+    public Response<?> runException(RuntimeException ex) {
+        System.out.println(555);
+        return Response.error(500, ex.getMessage());
+    }
     /**
      * rpc 调用异常
      *

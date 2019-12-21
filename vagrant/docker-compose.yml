@@ -42,12 +42,13 @@ services:
     depends_on:
       - elasticsearch
     restart: always
-    #前边为外网端口号,后边为容器应用端口号
     ports:
       - 11800:11800
       - 12800:12800
     environment:
       TZ: Asia/Shanghai
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CLUSTER_NODES: 192.168.56.200:9200
     volumes:
       - ./config/skywalking/oap/application.yml:/skywalking/config/application.yml
   skywalking-ui:
@@ -58,5 +59,6 @@ services:
     restart: always
     ports:
       - 18080:8080
-    volumes:
-      - ./config/skywalking/ui/webapp.yml:/skywalking/webapp/webapp.yml
+    environment:
+      collector.ribbon.listOfServers: 192.168.56.200:12800
+      security.user.admin.password: admin123

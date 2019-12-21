@@ -29,7 +29,7 @@ public class DingTalkUserController {
      * 获取用户信息
      *
      * @param req 用户信息
-     * @return
+     * @return DingTalkUserInfoDto
      */
     @GetMapping("/info")
     public Response<DingTalkUserInfoDto> getAccessToken(@RequestBody DingTalkUserInfoReq req) {

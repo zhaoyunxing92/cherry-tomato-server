@@ -1,16 +1,12 @@
 server:
   port: 8080
-
 collector:
   path: /graphql
   ribbon:
     ReadTimeout: 10000
     # Point to all backend's restHost:restPort, split by ,
-    listOfServers: 127.0.0.1:12800
-
+    listOfServers: 192.168.56.200:12800
 security:
   user:
-    # username
     admin:
-      # password
-      password: admin123
+      password: admin123 # password
