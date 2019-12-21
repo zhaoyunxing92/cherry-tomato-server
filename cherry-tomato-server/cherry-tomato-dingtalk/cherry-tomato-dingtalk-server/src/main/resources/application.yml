@@ -14,6 +14,8 @@ dubbo:
     port: 20881
   registry:
     address: nacos://192.168.56.200:8848
+  application:
+    owner: zhaoyunxing
 
 cherry:
   dingtalk:
